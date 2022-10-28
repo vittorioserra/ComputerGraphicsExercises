@@ -168,31 +168,11 @@ function interp(dist, target_r, start_c, end_c){
 
         let t = target_r - dist;
 
-        if(start_c > end_c){
+        pixel_val = start_c + t*Math.abs(end_c - start_c);
 
-            pixel_val = start_c - t*(end_c - start_c);
-
-        }
-
-        //if(start_c <= end_c){
-
-        //    pixel_val = start_c + t*(start_c - end_c);
-start_c
-        //}
 
         return pixel_val;
 
 }
 
 
-function interp_mod(dist, target_r, start_c, end_c){
-
-        let pixel_val = 0;
-
-        let t = target_r - dist;
-
-        pixel_val = end_c + t*(end_c - start_c);
-
-        return pixel_val;
-
-}
