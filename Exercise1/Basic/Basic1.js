@@ -136,7 +136,7 @@ function drawSmoothCircle(canvas) {
             if((norm >= (rb_in)) && (norm <= (rb_in + 1))){
 
                 img.data[fb_pos] = 0;
-                img.data[fb_pos + 1] = interp(norm, 45, 255, 127)//210;
+                img.data[fb_pos + 1] = interp(norm, rb_in, 255, 127)//210;
                 img.data[fb_pos + 2] = 0;
                 img.data[fb_pos + 3] = 255;
 
@@ -147,9 +147,9 @@ function drawSmoothCircle(canvas) {
             if((norm >= (rb_out)) && (norm < (rb_out + 1))){
 
                 img.data[fb_pos] = 0;
-                img.data[fb_pos + 1] = 127;//interp_mod(norm, 55, 255, 127);
+                img.data[fb_pos + 1] = 127;//interp_mod(norm, rb_out, 255, 127);
                 img.data[fb_pos + 2] = 0;
-                img.data[fb_pos + 3] = interp(norm, 55, 255, 0);
+                img.data[fb_pos + 3] = interp(norm, rb_out, 255, 0);
 
             }
 
