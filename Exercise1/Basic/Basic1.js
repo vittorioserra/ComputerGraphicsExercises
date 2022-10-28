@@ -25,7 +25,7 @@ function drawPixelwiseCircle(canvas) {
 
             norm = Math.sqrt(Math.pow((x - x_c), 2) + Math.pow((y - y_c), 2))
 
-            if(norm < 50){
+            if(norm < r_c){
 
                 img.data[fb_pos] = 0;
                 img.data[fb_pos + 1] = 255;
