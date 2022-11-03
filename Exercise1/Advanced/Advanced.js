@@ -51,9 +51,15 @@ function f_c(z, c) {
     // TODO 1.4a):      Compute the result of function f_c for a given z and
     //                  a given c. Use the helper functions.
 
+    let mult_res = mult(z, z);
 
+    //console.log(mult_res);
 
+    let add_res = add(mult_res, c);
 
+    //console.log(add_res);
+
+    return add_res;
 }
 
 function countIterations(start_z, c, max_iter) {
@@ -62,14 +68,33 @@ function countIterations(start_z, c, max_iter) {
     //                  exceeds 2. If the sequence does not diverge during
     //                  the first max_iter iterations, return max_iter. Use
     //                  function f_c().
+    let ctr = 0;
+    let z_new = start_z;
+    let z_old = start_z;
 
+    while((abs(z_old) < 2) && (ctr < max_iter)){
 
+        z_new = f_c(z_old, c);
+
+        z_old = z_new;
+        ctr += 1;
+
+    }
+
+    //return ctr;
 
     // TODO 1.4b):      Change the return value of this function to avoid
     //                  banding. 
 
+    let mu = ctr*1.0 + 1.0 - Math.log(Math.log(abs(z_new))/Math.log(2));
 
 
+    if(ctr == max_iter){
+        return max_iter;
+    }else{
+        return mu;
+    }
+    //console.log(mu);
 
 }
 
@@ -100,6 +125,16 @@ function getColorForIter(iter) {
         //                  numbers for which the sequence diverges should be
         //                  shaded white. Use the global variable max_iter.
 
+        if(iter >= max_iter*1.0){ // iter
+
+            color = [255,255,255];
+
+        }else{
+
+            color = [0,0,0];
+
+        }
+
 
 
     } else if (colorscheme == "greyscale") {
@@ -108,7 +143,14 @@ function getColorForIter(iter) {
         //                  iteration count. The more iterations are needed
         //                  for divergence, the darker the color should be.
         //                  Be aware of integer division!
+        let black_c = 0;
+        let white_c = 255;
 
+        let pos_cmap = Math.floor((white_c - black_c)*iter / max_iter);
+
+        let c_var = white_c - pos_cmap;
+
+        color = [c_var, c_var, c_var];
 
 
     } else if (colorscheme == "underwater") {
@@ -117,7 +159,24 @@ function getColorForIter(iter) {
         //                  maximum iteration count. The more iterations are
         //                  needed for divergence, the more green and less
         //                  blue the color should be.
+        let min_c = 0;
+        let max_c = 255;
 
+        let local_iter = Math.abs(iter);
+
+        let pos_cmap = Math.floor((max_c - min_c)*iter / max_iter);
+
+        let c_var_blue = max_c - pos_cmap;
+        let c_var_green = min_c + pos_cmap;
+
+        //if(c_var_blue < 0.0){
+        //    color = [255, 0, 0];
+        //} else if (c_var_green < 0.0){
+        //  color = [255, 0, 0];
+        //}else{
+            //color = [0, c_var_green, c_var_blue];
+        //}
+        color = [0, c_var_green, c_var_blue];
 
 
     } else { // rainbow
@@ -129,6 +188,45 @@ function getColorForIter(iter) {
         //                  needed iterations). Use the HSV model and convert
         //                  HSV to RGB colors using function hsv2rgb.
 
+        //all in hsv color mode;
+
+        let max_hue_deg = 360.0;
+        let min_hue = 0.0;
+
+        //all is normed to unitary value
+        let saturation = 1.0;
+
+        let value = 1.0;
+
+        if(iter >= max_iter){
+            value = 0.0;
+        }
+
+        let hue_pos = (iter*1.0)/(max_iter*1.0) * max_hue_deg;
+        let hue_pos_rad = hue_pos*Math.pi/180.0;
+
+        let hue_offset = 180.0; // cyian
+        let hue_pos_offset = hue_pos + hue_offset;
+
+        if(hue_pos_offset >= 360.0){
+            hue_pos_offset = hue_pos_offset - 360.0;
+        }
+
+        //it has to move in the other direction
+        let hue_pos_inverted = hue_offset - hue_pos;
+
+        if(hue_pos_inverted >= 360.0){
+            hue_pos_inverted = hue_pos_offset - 360.0;
+        }
+
+        if(hue_pos_inverted < 0.0){
+            hue_pos_inverted = hue_pos_offset + 360.0;
+        }
+
+
+        let hsv_c_normed = [hue_pos_offset, saturation, value];
+
+        color = hsv2rgb(hsv_c_normed);
 
     }
     return color;
@@ -143,7 +241,49 @@ function hsv2rgb(hsv) {
 
     // TODO 1.4b):      Replace the following line by code performing the
     //                  HSV to RGB convertion known from the lecture.
-    let rgb = [255, 255, 255];
+
+    let c = v * s;
+    let hue_normed = 1 - Math.abs(((h*1)/60)%2 -1);
+    let x = c * hue_normed;
+    let m = v- c;
+
+    let r_prime = 0;
+    let g_prime = 0;
+    let b_prime = 0;
+
+    let h_sextant = h/60.0;
+
+    if((h_sextant >= 0.0) && (h_sextant < 1.0)){
+        r_prime = c;
+        g_prime = x;
+        b_prime = 0;
+    }else if((h_sextant >= 1.0)&&(h_sextant < 2.0)){
+        r_prime = x;
+        g_prime = c;
+        b_prime = 0;
+    }else if((h_sextant >= 2.0)&&(h_sextant < 3.0)){
+        r_prime = 0;
+        g_prime = c;
+        b_prime = x;
+    }else if((h_sextant >= 3.0)&&(h_sextant < 4.0)){
+        r_prime = 0;
+        g_prime = x;
+        b_prime = c;
+    }else if((h_sextant >= 4.0)&&(h_sextant < 5.0)){
+        r_prime = x;
+        g_prime = 0;
+        b_prime = c;
+    }else if((h_sextant >= 5.0)&&(h_sextant < 6.0)){
+        r_prime = c;
+        g_prime = 0;
+        b_prime = x;
+    }
+
+    let r_rgb = (r_prime + m)*255;
+    let g_rgb = (g_prime + m)*255;
+    let b_rgb = (b_prime + m)*255;
+
+    let rgb = [r_rgb, g_rgb, b_rgb];
 
 
 
@@ -165,9 +305,18 @@ function mandelbrotSet(image) {
         //                  Mandelbrot set. Use functions countIterations() 
         //                  and getColorForIter().
 
-        let rgb = [(c.re + 0.5) * 255, (c.im + 0.5) * 255, 0];
+        let z = new ComplexNumberFromCoords(x, y,'mandelbrot_canvas');
 
+        let iter_n = countIterations(z, c, max_iter);
+        //console.log(color);
 
+        //let rgb = [(c.re + 0.5) * 255, (c.im + 0.5) * 255, 0];
+
+        let rgb = getColorForIter(iter_n);
+
+        //print(rgb)
+
+        //let rgb = [(color.re + 0.5) * 255, (color.im + 0.5) * 255, 0];
         image.data[i] = rgb[0];
         image.data[i + 1] = rgb[1];
         image.data[i + 2] = rgb[2];
@@ -186,7 +335,18 @@ function juliaSet(image) {
         //                  functions ComplexNumberFromCoords(),
         //                  countIterations() and getColorForIter().
 
-        let rgb = [128, 128, 128];
+        let z = new ComplexNumberFromCoords(x, y, "julia_canvas");
+        let c = juliaC;
+
+        let iter_n = countIterations(z, c, max_iter);
+        //console.log(color);
+
+        //let rgb = [(c.re + 0.5) * 255, (c.im + 0.5) * 255, 0];
+
+        let rgb = getColorForIter(iter_n);
+
+
+        //let rgb = [128, 128, 128];
 
 
         image.data[i] = rgb[0];
@@ -277,7 +437,7 @@ function setupMandelbrot(canvas) {
 
     // TODO 1.4c):      Uncomment the following line to enable zooming.
 
-    //canvas.addEventListener('DOMMouseScroll', onMouseWheel, false);
+    canvas.addEventListener('DOMMouseScroll', onMouseWheel, false);
 
 }
 
@@ -322,6 +482,10 @@ function onMouseDown(e) {
         //                  start the dragging process. Use the global
         //                  variables dragging (bool) and lastPoint (two
         //                  dimensional vector).
+        let x_drag = x;
+        let y_drag = y;
+        lastPoint = [x, y];
+        dragging = true; // start dragging process
 
 
     }
@@ -350,8 +514,21 @@ function onMouseMove(e) {
         //                  shift the plane accordingly. To do so, change
         //                  the global variable center which is used to
         //                  compute the complex number corresponding to a pixel.
+        let x_drag_curr = x;
+        let y_drag_curr = y;
 
+        let last_drag_cmplx = new ComplexNumberFromCoords(lastPoint[0], lastPoint[1], "mandelbrot_canvas");
+        let curr_drag_cmplx = new ComplexNumberFromCoords(x_drag_curr, y_drag_curr, "mandelbrot_canvas");
 
+        //console.log(last_drag_cmplx);
+        //console.log(curr_drag_cmplx);
+
+        let dist_cmplx = sub(curr_drag_cmplx, last_drag_cmplx);
+
+        //console.log(dist_cmplx);
+
+        //move center
+        center = add(center, dist_cmplx);
 
         // rerender image
         RenderMandelbrotSet();
@@ -361,7 +538,7 @@ function onMouseMove(e) {
 function onMouseUp(e) {
     // TODO 1.4c):      Prevent dragging of the plane once the mouse is
     //                  not pressed anymore.
-
+    dragging = false;
 
 }
 

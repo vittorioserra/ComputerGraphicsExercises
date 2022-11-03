@@ -426,3 +426,65 @@
             </content>
     </page>
 </body>
+
+<page size="A4">
+            <content>
+              <exercise prefix="Extra Exercises" title="2D Graphics for Procedural Images"
+			  points="free to choose">
+                <!-- ------------------------------------------------------------------------------------------------------------- -->
+                <task title="Render Mandelbrot Burning Ship set" points="free to choose"  submitfile="Extra.js">
+                  <p>In this extra exercise I simply want to render the "Burning Ship" Mandelbrot set on the <code>canvas</code>.
+                  </p>
+                  <p>
+                      In the middle of this page, you can see two <code>canvas</code>es. The left one will be filled with a rendering of the so-called "Burning Ship" Mandelbrot set.
+                  </p>
+                  <p>
+                      The burning shipis given by the following formula
+                      \begin{align}
+                      z_{k+1} &= F(z_k) + z_0, k = 1, 2, ... \\
+                      &where \\
+                      F(z_n) &= (|Re(z)+i*Im(z)|)^2
+                      \end{align}
+                  </p>
+
+                  <center><table class="boxes">
+                      <tr>
+                          <td>
+                              <center>Mandelbrot set</center>
+                              <canvas id="burningship_canvas" width=297 height=198 data-call="setupBurningShip" data-call-src="./Advanced/Extra.js"></canvas>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>
+                              <form>
+                                  <fieldset>
+                                      <h1>Color Scheme</h1>
+                                      <div>
+                                        <input type="radio" id="black &amp; white" name="colors" value="black & white" onclick="onChangeColorScheme();" checked>
+                                        <label for="black &amp; white"> black &amp; white</label><br>
+                                        <input type="radio" id="greyscale" name="colors" value="greyscale" onclick="onChangeColorScheme();">
+                                        <label for="greyscale"> greyscale colors</label><br>
+                                        <input type="radio" id="underwater" name="colors" value="underwater" onclick="onChangeColorScheme();">
+                                        <label for="underwater"> underwater colors</label><br>
+                                        <input type="radio" id="rainbow" name="colors" value="rainbow" onclick="onChangeColorScheme();">
+                                        <label for="rainbow"> HSV rainbow colors</label><br>
+                                      </div>
+                                  </fieldset>
+                              </form>
+                              <form>
+                                  <fieldset>
+                                      <h1>Maximum Iterations</h1>
+                                      <div>
+                                        <input type="range" id="slider" min="5" max="100" step="1" value="30" onchange="onChangeMaxIter(this.value);" />
+                                      </div>
+                                  </fieldset>
+                              </form>
+                          </td>
+                      </tr>
+                  </table></center>
+                </task>
+              </exercise>
+            </content>
+    </page>
+</body>
+
