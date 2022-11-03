@@ -25,7 +25,7 @@ function drawPixelwiseCircle(canvas) {
 
             norm = Math.sqrt(Math.pow((x - x_c), 2) + Math.pow((y - y_c), 2))
 
-            if(norm < 50){
+            if(norm < r_c){
 
                 img.data[fb_pos] = 0;
                 img.data[fb_pos + 1] = 255;
@@ -136,7 +136,7 @@ function drawSmoothCircle(canvas) {
             if((norm >= (rb_in)) && (norm <= (rb_in + 1))){
 
                 img.data[fb_pos] = 0;
-                img.data[fb_pos + 1] = interp(norm, 45, 255, 127)//210;
+                img.data[fb_pos + 1] = interp(norm, rb_in, 255, 127)//210;
                 img.data[fb_pos + 2] = 0;
                 img.data[fb_pos + 3] = 255;
 
@@ -147,9 +147,9 @@ function drawSmoothCircle(canvas) {
             if((norm >= (rb_out)) && (norm < (rb_out + 1))){
 
                 img.data[fb_pos] = 0;
-                img.data[fb_pos + 1] = 127;//interp_mod(norm, 55, 255, 127);
+                img.data[fb_pos + 1] = 127;//interp_mod(norm, rb_out, 255, 127);
                 img.data[fb_pos + 2] = 0;
-                img.data[fb_pos + 3] = interp(norm, 55, 255, 0);
+                img.data[fb_pos + 3] = interp(norm, rb_out, 255, 0);
 
             }
 
@@ -168,31 +168,11 @@ function interp(dist, target_r, start_c, end_c){
 
         let t = target_r - dist;
 
-        if(start_c > end_c){
+        pixel_val = start_c + t*Math.abs(end_c - start_c);
 
-            pixel_val = start_c - t*(end_c - start_c);
-
-        }
-
-        //if(start_c <= end_c){
-
-        //    pixel_val = start_c + t*(start_c - end_c);
-start_c
-        //}
 
         return pixel_val;
 
 }
 
 
-function interp_mod(dist, target_r, start_c, end_c){
-
-        let pixel_val = 0;
-
-        let t = target_r - dist;
-
-        pixel_val = end_c + t*(end_c - start_c);
-
-        return pixel_val;
-
-}
