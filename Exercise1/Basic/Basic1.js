@@ -8,8 +8,8 @@ function drawPixelwiseCircle(canvas) {
     //                and modify it to create a 
     //                circle.
 
-    let x_c = 100;
-    let y_c = 100;
+    let x_c = 100-1; // start already at 0,0 --> center coordinates need to be decreased by unity value
+    let y_c = 100-1;
 
     let r_c = 50;
 
@@ -49,8 +49,8 @@ function drawContourCircle(canvas) {
     //                contour around the circle.
 
 
-    let x_c = 100;
-    let y_c = 100;
+    let x_c = 100-1;
+    let y_c = 100-1;
 
     let rb_in = 45;
     let rb_out = 55;
@@ -97,8 +97,8 @@ function drawSmoothCircle(canvas) {
     let img = context.createImageData(200, 200);
 
 
-    let x_c = 100;
-    let y_c = 100;
+    let x_c = 100-1;
+    let y_c = 100-1;
 
     let rb_in = 45;
     let rb_out = 55;
@@ -157,7 +157,6 @@ function drawSmoothCircle(canvas) {
         }
 
     }
-
 
     context.putImageData(img, 0, 0);
 }
