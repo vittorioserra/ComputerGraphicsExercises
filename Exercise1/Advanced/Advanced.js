@@ -53,11 +53,7 @@ function f_c(z, c) {
 
     let mult_res = mult(z, z);
 
-    //console.log(mult_res);
-
     let add_res = add(mult_res, c);
-
-    //console.log(add_res);
 
     return add_res;
 }
@@ -81,12 +77,10 @@ function countIterations(start_z, c, max_iter) {
 
     }
 
-    //return ctr;
-
     // TODO 1.4b):      Change the return value of this function to avoid
     //                  banding. 
 
-    let mu = ctr*1.0 + 1.0 - Math.log(Math.log(abs(z_new))/Math.log(2));
+    let mu = ctr*1.0 + 1.0 - Math.log(Math.log(abs(z_new))/Math.log(2.0));
 
 
     if(ctr == max_iter){
@@ -94,7 +88,6 @@ function countIterations(start_z, c, max_iter) {
     }else{
         return mu;
     }
-    //console.log(mu);
 
 }
 
@@ -116,8 +109,6 @@ function getColorForIter(iter) {
 
     // return color according to chosen color scheme
     let color = [128, 128, 128];
-
-
     
     if (colorscheme == "black & white") {
         // TODO 1.4a):      Return the correct color for the iteration count
@@ -127,15 +118,13 @@ function getColorForIter(iter) {
 
         if(iter >= max_iter*1.0){ // iter
 
-            color = [255,255,255];
+            color = [0,0,0];
 
         }else{
 
-            color = [0,0,0];
+            color = [255,255,255];
 
         }
-
-
 
     } else if (colorscheme == "greyscale") {
         // TODO 1.4b):      Choose a greyscale color according to the given
@@ -162,22 +151,16 @@ function getColorForIter(iter) {
         let min_c = 0;
         let max_c = 255;
 
-        let local_iter = Math.abs(iter);
-
         let pos_cmap = Math.floor((max_c - min_c)*iter / max_iter);
 
         let c_var_blue = max_c - pos_cmap;
         let c_var_green = min_c + pos_cmap;
 
-        //if(c_var_blue < 0.0){
-        //    color = [255, 0, 0];
-        //} else if (c_var_green < 0.0){
-        //  color = [255, 0, 0];
-        //}else{
-            //color = [0, c_var_green, c_var_blue];
-        //}
-        color = [0, c_var_green, c_var_blue];
-
+        if(iter >= 1.0*max_iter){
+            color = [0,0,0];
+        }else{
+            color = [0, c_var_green, c_var_blue];
+        }
 
     } else { // rainbow
         // TODO 1.4b):      Choose a rainbow color according to the given
@@ -208,21 +191,14 @@ function getColorForIter(iter) {
         let hue_offset = 180.0; // cyian
         let hue_pos_offset = hue_pos + hue_offset;
 
-        if(hue_pos_offset >= 360.0){
+        while(hue_pos_offset >= 360.0){
             hue_pos_offset = hue_pos_offset - 360.0;
         }
 
-        //it has to move in the other direction
-        let hue_pos_inverted = hue_offset - hue_pos;
-
-        if(hue_pos_inverted >= 360.0){
-            hue_pos_inverted = hue_pos_offset - 360.0;
+        //this should never happend, just added in case we decide to invert the color map
+        while(hue_pos_offset < 0.0){
+            hue_pos_offset = hue_pos_offset + 360.0;
         }
-
-        if(hue_pos_inverted < 0.0){
-            hue_pos_inverted = hue_pos_offset + 360.0;
-        }
-
 
         let hsv_c_normed = [hue_pos_offset, saturation, value];
 
@@ -243,9 +219,9 @@ function hsv2rgb(hsv) {
     //                  HSV to RGB convertion known from the lecture.
 
     let c = v * s;
-    let hue_normed = 1 - Math.abs(((h*1)/60)%2 -1);
+    let hue_normed = 1.0 - Math.abs(((h*1.0)/60.0)%2.0 -1.0);
     let x = c * hue_normed;
-    let m = v- c;
+    let m = v - c;
 
     let r_prime = 0;
     let g_prime = 0;
@@ -285,8 +261,6 @@ function hsv2rgb(hsv) {
 
     let rgb = [r_rgb, g_rgb, b_rgb];
 
-
-
     return rgb;
 }
 
@@ -308,15 +282,9 @@ function mandelbrotSet(image) {
         let z = new ComplexNumberFromCoords(x, y,'mandelbrot_canvas');
 
         let iter_n = countIterations(z, c, max_iter);
-        //console.log(color);
-
-        //let rgb = [(c.re + 0.5) * 255, (c.im + 0.5) * 255, 0];
 
         let rgb = getColorForIter(iter_n);
 
-        //print(rgb)
-
-        //let rgb = [(color.re + 0.5) * 255, (color.im + 0.5) * 255, 0];
         image.data[i] = rgb[0];
         image.data[i + 1] = rgb[1];
         image.data[i + 2] = rgb[2];
@@ -339,15 +307,8 @@ function juliaSet(image) {
         let c = juliaC;
 
         let iter_n = countIterations(z, c, max_iter);
-        //console.log(color);
-
-        //let rgb = [(c.re + 0.5) * 255, (c.im + 0.5) * 255, 0];
 
         let rgb = getColorForIter(iter_n);
-
-
-        //let rgb = [128, 128, 128];
-
 
         image.data[i] = rgb[0];
         image.data[i + 1] = rgb[1];
@@ -520,12 +481,7 @@ function onMouseMove(e) {
         let last_drag_cmplx = new ComplexNumberFromCoords(lastPoint[0], lastPoint[1], "mandelbrot_canvas");
         let curr_drag_cmplx = new ComplexNumberFromCoords(x_drag_curr, y_drag_curr, "mandelbrot_canvas");
 
-        //console.log(last_drag_cmplx);
-        //console.log(curr_drag_cmplx);
-
-        let dist_cmplx = sub(curr_drag_cmplx, last_drag_cmplx);
-
-        //console.log(dist_cmplx);
+        let dist_cmplx = sub(last_drag_cmplx, curr_drag_cmplx); // CHANGED : MORE INTUITIVE FOR MOUSE; LESS FOR TOUCHPAD!!!
 
         //move center
         center = add(center, dist_cmplx);
@@ -544,7 +500,7 @@ function onMouseUp(e) {
 
 function onMouseWheel(e) {
     let delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
-    zoom = zoom + delta;
+    zoom = zoom - delta; // CHANGED : MORE INTUIITIVE FOR MOUSE; LESS FOR TOUCHPAD
 
     // render
     RenderMandelbrotSet();

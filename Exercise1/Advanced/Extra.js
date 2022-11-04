@@ -48,56 +48,36 @@ function abs(x) {
 /////////  Magic Math  //////////
 /////////////////////////////////
 function f_c(z, c) {
-    // TODO 1.4a):      Compute the result of function f_c for a given z and
-    //                  a given c. Use the helper functions.
-
-    let mult_res = mult(z, z);
 
     let z_conv = new ComplexNumber(Math.abs(z.re), Math.abs(z.im));
     z_conv = mult(z_conv, z_conv);
 
-    //console.log(mult_res);
-
-    let add_res = add(mult_res, c);
-
-    //console.log(add_res);
+    let add_res = add(z_conv, c);
 
     return add_res;
 }
 
 function countIterations(start_z, c, max_iter) {
-    // TODO 1.4a):      Count iterations needed for the sequence to diverge.
-    //                  z is declared diverged as soon as its absolute value
-    //                  exceeds 2. If the sequence does not diverge during
-    //                  the first max_iter iterations, return max_iter. Use
-    //                  function f_c().
+
     let ctr = 0;
     let z_new = start_z;
     let z_old = start_z;
 
-    while((abs(z_old) < 2) && (ctr < max_iter)){
+    while((abs(z_old) < 4) && (ctr < max_iter)){
 
         z_new = f_c(z_old, c);
-
         z_old = z_new;
         ctr += 1;
 
     }
 
-    //return ctr;
-
-    // TODO 1.4b):      Change the return value of this function to avoid
-    //                  banding.
-
     let mu = ctr*1.0 + 1.0 - Math.log(Math.log(abs(z_new))/Math.log(2));
-
 
     if(ctr == max_iter){
         return max_iter;
     }else{
         return mu;
     }
-    //console.log(mu);
 
 }
 
@@ -120,8 +100,6 @@ function getColorForIter(iter) {
     // return color according to chosen color scheme
     let color = [128, 128, 128];
 
-
-
     if (colorscheme == "black & white") {
         // TODO 1.4a):      Return the correct color for the iteration count
         //                  stored in iter. Pixels corresponding to complex
@@ -137,8 +115,6 @@ function getColorForIter(iter) {
             color = [0,0,0];
 
         }
-
-
 
     } else if (colorscheme == "greyscale") {
         // TODO 1.4b):      Choose a greyscale color according to the given
@@ -172,15 +148,7 @@ function getColorForIter(iter) {
         let c_var_blue = max_c - pos_cmap;
         let c_var_green = min_c + pos_cmap;
 
-        //if(c_var_blue < 0.0){
-        //    color = [255, 0, 0];
-        //} else if (c_var_green < 0.0){
-        //  color = [255, 0, 0];
-        //}else{
-            //color = [0, c_var_green, c_var_blue];
-        //}
         color = [0, c_var_green, c_var_blue];
-
 
     } else { // rainbow
         // TODO 1.4b):      Choose a rainbow color according to the given
@@ -235,7 +203,6 @@ function getColorForIter(iter) {
     return color;
 }
 
-
 function hsv2rgb(hsv) {
     let h = hsv[0];
     let s = hsv[1];
@@ -288,8 +255,6 @@ function hsv2rgb(hsv) {
 
     let rgb = [r_rgb, g_rgb, b_rgb];
 
-
-
     return rgb;
 }
 
@@ -311,46 +276,8 @@ function mandelbrotSet(image) {
         let z = new ComplexNumberFromCoords(x, y,'burningship_canvas');
 
         let iter_n = countIterations(z, c, max_iter);
-        //console.log(color);
-
-        //let rgb = [(c.re + 0.5) * 255, (c.im + 0.5) * 255, 0];
 
         let rgb = getColorForIter(iter_n);
-
-        //print(rgb)
-
-        //let rgb = [(color.re + 0.5) * 255, (color.im + 0.5) * 255, 0];
-        image.data[i] = rgb[0];
-        image.data[i + 1] = rgb[1];
-        image.data[i + 2] = rgb[2];
-        image.data[i + 3] = 255;
-    }
-}
-
-function juliaSet(image) {
-    for (let i = 0; i < 4 * image.width * image.height; i += 4) {
-        let pixel = i / 4;
-        let x = pixel % image.width;
-        let y = image.height - pixel / image.width;
-
-        // TODO 1.4d):      Replace the following line by creation of the
-        //                  Julia set for c = juliaC (global variable). Use
-        //                  functions ComplexNumberFromCoords(),
-        //                  countIterations() and getColorForIter().
-
-        let z = new ComplexNumberFromCoords(x, y, "julia_canvas");
-        let c = juliaC;
-
-        let iter_n = countIterations(z, c, max_iter);
-        //console.log(color);
-
-        //let rgb = [(c.re + 0.5) * 255, (c.im + 0.5) * 255, 0];
-
-        let rgb = getColorForIter(iter_n);
-
-
-        //let rgb = [128, 128, 128];
-
 
         image.data[i] = rgb[0];
         image.data[i + 1] = rgb[1];
@@ -377,21 +304,6 @@ function RenderMandelbrotSet() {
     ctx.putImageData(image, 0, 0);
 }
 
-function RenderJuliaSet() {
-    // get the canvas
-    let canvas = document.getElementById("julia_canvas");
-    let ctx = canvas.getContext("2d");
-
-    // create a new image
-    let image = ctx.createImageData(canvas.width, canvas.height);
-
-    // render Julia set
-    juliaSet(image);
-
-    // write image back to canvas
-    ctx.putImageData(image, 0, 0);
-}
-
 
 ///////////////////////////////
 //////////   "main"   /////////
@@ -401,7 +313,7 @@ function RenderJuliaSet() {
 let max_iter = 30;
 
 // coordinate system center
-let center = new ComplexNumber(-0.5, 0);
+let center = new ComplexNumber(-0.5, -0.5);
 
 // zoom stage
 let zoom = 0;
@@ -419,10 +331,12 @@ let looper = null;
 // helper variable for moving around
 let lastPoint;
 
-// c for Julia set creation
+//c for Julia set creation
 let juliaC = new ComplexNumber(0.4, 0.1);
 
-function setupBurningship(canvas) {
+let burningShipC = new ComplexNumber(-0.5,-.05);
+
+function setupBurningShip(canvas) {
     // reset color scheme and maximum iteration number
     let radios = document.getElementsByName('colors');
     radios[0].checked = true;
@@ -431,7 +345,7 @@ function setupBurningship(canvas) {
 
     // render
     RenderMandelbrotSet();
-    RenderJuliaSet();
+    //RenderJuliaSet();
 
     // add event listeners
     canvas.addEventListener('mousedown', onMouseDown, false);
@@ -459,7 +373,7 @@ function onMouseDown(e) {
         // choose new c for Julia set creation
         clearInterval(looper);
         juliaC = new ComplexNumberFromCoords(x, y, 'burningship_canvas');
-        RenderJuliaSet();
+        //RenderJuliaSet();
     } else if (e.shiftKey) {
         if (firstLinePointSet == false) {
             firstLinePointSet = true;
@@ -523,12 +437,7 @@ function onMouseMove(e) {
         let last_drag_cmplx = new ComplexNumberFromCoords(lastPoint[0], lastPoint[1], "burningship_canvas");
         let curr_drag_cmplx = new ComplexNumberFromCoords(x_drag_curr, y_drag_curr, "burningship_canvas");
 
-        //console.log(last_drag_cmplx);
-        //console.log(curr_drag_cmplx);
-
-        let dist_cmplx = sub(curr_drag_cmplx, last_drag_cmplx);
-
-        //console.log(dist_cmplx);
+        let dist_cmplx = sub(last_drag_cmplx, curr_drag_cmplx);
 
         //move center
         center = add(center, dist_cmplx);
@@ -547,7 +456,7 @@ function onMouseUp(e) {
 
 function onMouseWheel(e) {
     let delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
-    zoom = zoom + delta;
+    zoom = zoom - delta; // more intuitive zoom for mouse wheel, less intuitive for touchpad unluckiuly...
 
     // render
     RenderMandelbrotSet();
@@ -561,11 +470,10 @@ function onChangeMaxIter(value) {
 
     // render
     RenderMandelbrotSet();
-    RenderJuliaSet();
 }
 
 function onChangeColorScheme() {
     // render
     RenderMandelbrotSet();
-    RenderJuliaSet();
+    //RenderJuliaSet();
 }
