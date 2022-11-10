@@ -84,92 +84,32 @@ function bresenham(image, line) {
     let x = x0;
 
     let delta_x = x1 - x0;
-    //console.log(delta_x)
     let delta_y = y1 - y0;
+    //console.log(delta_x)
     //console.log(delta_y)
 
-    let D = delta_x - Math.round(2*delta_y);
+    //let D = delta_x - Math.round(2*delta_y);
+    //let delta_DE = Math.round(-2*delta_y);
+    //let delta_DNE= Math.round(2*(delta_x - delta_y));
     //console.log(D)
-    let delta_DE = Math.round(-2*delta_y);
-    let delta_DNE= Math.round(2*(delta_x - delta_y));
 
     // start loop to set nPixels 
-    let nPixels = delta_x; // think about how many pixels need to be set - zero is not correct ;)
-
-    //console.log(nPixels)
-
-    /*if((m_float > 1)&(m_float < Infinity)){
-
-        let D = delta_x - Math.round(2*delta_y);
-        //console.log(D)
-        let delta_DE = Math.round(-2*delta_y);
-        let delta_DNE= Math.round(2*(delta_x - delta_y));
-        let delta_DN = Math.round(2*delta_x);
-
-        //new case
-        console.log("1. Oktant");
-        for (let i = 0; i < nPixels; ++i) {
-        // set pixel using the helper function setPixelS()
-
-        let local_point = new Point(x,y);
-
-        setPixelS(image, local_point, new Color(0,0,0), pixelScale);
-
-        // update error
-
-        x = x + 1;
-
-        //console.log(x)
-        //console.log(y)
-
-        // update coordinates depending on the error
-
-        if(D >= 0){
-
-            y = y+1;
-            D = D + delta_DNE;
-
-        }else{
-
-            D = D + delta_DN;
-
-        }
-
-
-        //console.log(D)
-
-
-    }
-
-
-    }else*/
+    let nPixels = delta_x;
 
     //second octant
-
     if((m_float >= 0.0)&( m_float < 1)&(x0 < x1)){
 
         let D = delta_x - Math.round(2*delta_y);
-        //console.log(D)
         let delta_DE = Math.round(-2*delta_y);
         let delta_DNE= Math.round(2*(delta_x - delta_y));
 
         console.log("2. Oktant");
 
         for (let i = 0; i < nPixels; ++i) {
-            // set pixel using the helper function setPixelS()
 
             let local_point = new Point(x,y);
 
             setPixelS(image, local_point, new Color(0,0,0), pixelScale);
-
-            // update error
-
-            x = x + 1;
-
-            //console.log(x)
-            //console.log(y)
-
-            // update coordinates depending on the error
 
             if(D < 0){
 
@@ -181,31 +121,30 @@ function bresenham(image, line) {
                 D = D + delta_DE;
 
             }
+
+            x = x + 1;
+
+
         }
 
     }
 
-    if((m_float >= -1.0)&( m_float < 0)&(x0 < x1)){
+   if((m_float >= -1.0)&( m_float < 0)&(x0 < x1)){
 
-        //let D = Math.round(2*delta_y) - delta_x;//delta_x - Math.round(2*delta_y);
-        let D = delta_x - Math.round(2*delta_y);
+        delta_y = -1*delta_y
 
-        console.log("D : %i", D)
+        let D = Math.round(2*delta_y) - delta_x;
         let delta_DE = Math.round(-2*delta_y);
         let delta_DNE= Math.round(2*(delta_x - delta_y));
 
+        console.log("D : %i", D)
         console.log("3. Oktant");
 
         for (let i = 0; i < nPixels; ++i) {
-            // set pixel using the helper function setPixelS()
 
             let local_point = new Point(x,y);
 
             setPixelS(image, local_point, new Color(0,0,0), pixelScale);
-
-            // update error
-
-            x = x + 1;
 
             console.log("X : %i ", x)
             console.log("Y : %i ", y)
@@ -213,21 +152,188 @@ function bresenham(image, line) {
             // update coordinates depending on the error
 
             if(D > 0){
-
-                D = D + delta_DE;
+                D = D - delta_DNE;
                 y = y-1;
-
             }else{
-
-                D = D + delta_DNE;
-
-
+                D = D - delta_DE;
             }
+
+            x = x + 1;
 
             console.log("D : %i", D)
         }
 
     }
+
+    //gespiegelt
+    if((m_float >= 0.0)&( m_float < 1)&(x1 < x0)){
+
+
+        let y = y1;
+        let x = x1;
+
+        let delta_x = -(x1 - x0);
+        let delta_y = -(y1 - y0);
+        //console.log(delta_x)
+        //console.log(delta_y)
+
+        //let D = delta_x - Math.round(2*delta_y);
+        //let delta_DE = Math.round(-2*delta_y);
+        //let delta_DNE= Math.round(2*(delta_x - delta_y));
+        //console.log(D)
+
+        // start loop to set nPixels
+        let nPixels = delta_x;
+
+        let D = delta_x - Math.round(2*delta_y);
+        let delta_DE = Math.round(-2*delta_y);
+        let delta_DNE= Math.round(2*(delta_x - delta_y));
+
+        console.log("2. Oktant");
+
+        for (let i = 0; i < nPixels; ++i) {
+
+            let local_point = new Point(x,y);
+
+            setPixelS(image, local_point, new Color(0,0,0), pixelScale);
+
+            if(D < 0){
+
+                y = y+1;
+                D = D + delta_DNE;
+
+            }else{
+
+                D = D + delta_DE;
+
+            }
+
+            x = x + 1;
+
+
+        }
+
+    }
+
+    if((m_float >= -1.0)&( m_float < 0)&(x1 < x0)){
+
+        let y = y1;
+        let x = x1;
+
+        let delta_x = -(x1 - x0);
+        let delta_y = -(y1 - y0);
+
+        delta_y = -1*delta_y
+
+        let D = Math.round(2*delta_y) - delta_x;
+        let delta_DE = Math.round(-2*delta_y);
+        let delta_DNE= Math.round(2*(delta_x - delta_y));
+
+        let nPixels = delta_x;
+
+        console.log("D : %i", D)
+        console.log("7. Oktant");
+
+        for (let i = 0; i < nPixels; ++i) {
+
+            let local_point = new Point(x,y);
+
+            setPixelS(image, local_point, new Color(0,0,0), pixelScale);
+
+            console.log("X : %i ", x)
+            console.log("Y : %i ", y)
+
+            // update coordinates depending on the error
+
+            if(D > 0){
+                D = D - delta_DNE;
+                y = y-1;
+            }else{
+                D = D - delta_DE;
+            }
+
+            x = x + 1;
+
+            console.log("D : %i", D)
+        }
+
+    }
+
+    if((m_float > 1.0)&(m_float < Infinity )&(y0<y1)){
+
+        let y = y1;
+        let x = x1;
+
+        let delta_x = (x1 - x0);
+        let delta_y = (y1 - y0);
+
+        let D = delta_x - Math.round(2*delta_y);
+        let delta_DE = Math.round(-2*delta_y);
+        let delta_DNE= Math.round(2*(delta_x - delta_y));
+
+        console.log("2. Oktant");
+
+        for (let i = 0; i < nPixels; ++i) {
+
+            let local_point = new Point(x,y);
+
+            setPixelS(image, local_point, new Color(0,0,0), pixelScale);
+
+            if(D < 0){
+
+                x = x+1;
+                D = D + delta_DNE;
+
+            }else{
+
+                D = D + delta_DE;
+
+            }
+
+            y = y + 1;
+
+
+        }
+
+    }
+
+
+   if((m_float >= -1.0*Infinity)&( m_float < -1)&(y0 < y1)){
+
+        delta_y = -1*delta_y
+
+        let D = Math.round(2*delta_y) - delta_x;
+        let delta_DE = Math.round(-2*delta_y);
+        let delta_DNE= Math.round(2*(delta_x - delta_y));
+
+        console.log("D : %i", D)
+        console.log("3. Oktant");
+
+        for (let i = 0; i < nPixels; ++i) {
+
+            let local_point = new Point(x,y);
+
+            setPixelS(image, local_point, new Color(0,0,0), pixelScale);
+
+            console.log("X : %i ", x)
+            console.log("Y : %i ", y)
+
+            // update coordinates depending on the error
+
+            if(D > 0){
+                D = D - delta_DNE;
+                x = x-1;
+            }else{
+                D = D - delta_DE;
+            }
+
+            y = y + 1;
+
+            console.log("D : %i", D)
+        }
+
+    }
+
 
 }
 
