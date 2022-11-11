@@ -131,18 +131,13 @@ function bresenham(image, line) {
         if(D<=0){
             if((y1 - y0 < 0)&(!slope_1)){// if the slope is negative and the absolute value is less than 1
                 y = y - 1;
-                D = D + delta_DNE
             }else{
                 y = y + 1;
-                D = D + delta_DNE;
             }
+            D = D + delta_DNE;
             
         }else{
-            if((y1 - y0 < 0)&(!slope_1)){// if the slope is negative and the absolute value is less than 1
-                D = D + delta_DE
-            }else{
                 D = D + delta_DE;
-            }
         }
         // update error
 
