@@ -45,15 +45,15 @@ function floodFill4(image, pixel, fillColor) {
     if(curr_color==null){
         return;
     }else if((curr_color.r==fillColor.r)&(curr_color.g==fillColor.g)&(curr_color.b==fillColor.b)){
-        console.log("Same color, returning")
+        //console.log("Same color, returning")
         return;
     }else if((pixel.x < 0)|(pixel.y < 0)){
-        console.log("Boundary reached, returning");
+        //console.log("Boundary reached, returning");
         return;
     }else{
         // set pixel color
         setPixel(image, pixel, fillColor);
-        console.log("Setting pixel : %i, %i", pixel.x, pixel.y);
+        //console.log("Setting pixel : %i, %i", pixel.x, pixel.y);
     }
 
     // start recursion (4 neighboring pixels)
