@@ -1,0 +1,8 @@
+Pros :
+-->Easy to implement, as it implies a repetition of the same code. Easy enough to be implemented in assembly-language.
+-->Code (machine-code) can be optimized for size.
+--> This algorithm can be used on every 2D-canvas, regardless of its size.
+Cons :
+-->The algorithm is recursive. For each recusion the current "execution-data" has to be saved on the stack. The latter causes an increased memory need, which could be problematic on extremely constrained devices.
+-->Because of the recursion, the execution time is elevated.
+-->Not all compilers are able to handle recursion, e.g. Fortran-70 did not explicitly allow recursive functions and subroutines, a feature that only got implemented in Fortran-90. The latter could render the implementation of this algorithm impossible.
