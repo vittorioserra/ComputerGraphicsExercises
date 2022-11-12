@@ -205,26 +205,7 @@ function scanline(image, polygon) {
 
                 }
 
-                /*
-                console.log("Edge Case");
-                let x_start = activeEdgeTable.entries[i+0].x_intersect;
-                let x_end   = activeEdgeTable.entries[i+3].x_intersect;
-                console.log("Inv slope is : %f", activeEdgeTable.entries[0].invSlope);
-                console.log("Inv slope is : %f", activeEdgeTable.entries[1].invSlope);
-                console.log("Inv slope is : %f", activeEdgeTable.entries[2].invSlope);
-                console.log("Inv slope is : %f", activeEdgeTable.entries[3].invSlope);
-                let px_diff = Math.abs(x_end - x_start);
-                //console.log("px diff : %i", px_diff);
-                console.log("Line %i, starting at %i, ending at %i", y_scanline, x_start, x_end)
-                //set the pixels
-                for(let px_cnt = 0; px_cnt < px_diff; px_cnt++){
-                    let px_elem_local = new Point(Math.round(x_start+px_cnt), y_scanline);
-                    setPixel(image, px_elem_local, new Color(255,0,0));
-                    //console.log("setting pixel")
-                }
-                break;
-                */
-
+               
             }
 
 
