@@ -149,10 +149,42 @@ function scanline(image, polygon) {
             }
         }
 
+        //catch two edges with the same x_intercept --> must go in pair, also same line !
 
 
-
+        //TODO : LOOK INTO THIS SOLUTION; IMHO THE OTHER OPTION IS GOOD
+        /*
+         * SOLUTION ONGOING
+         */
         activeEdgeTable.entries.sort(compareActiveEdgeTableEntries);
+        /*
+        if(activeEdgeTable.nEntries%4 == 0){
+
+            console.log("Edge case detected");
+
+            for(let i = 0; i < activeEdgeTable.nEntries; i=i+4){
+
+                let elem_1 = activeEdgeTable.entries[i];
+                let elem_2 = activeEdgeTable.entries[i+1];
+                let elem_3 = activeEdgeTable.entries[i+2];
+                let elem_4 = activeEdgeTable.entries[i+3];
+
+                console.log("x_intersects : %i %i %i %i", elem_1.x_intersect, elem_2.x_intersect, elem_3.x_intersect, elem_4.x_intersect )
+
+                if(elem_1.x_intersect == elem_2.x_intersect){
+                    console.log("Match");
+                }
+
+                if(elem_3.x_intersect == elem_4.x_intersect){
+                    console.log("Match");
+                }
+            }
+
+        }*/
+
+
+
+
 
         //console.log("Now the table has %i entries", activeEdgeTable.nEntries);
 
