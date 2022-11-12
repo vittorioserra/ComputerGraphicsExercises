@@ -118,7 +118,7 @@ function scanline(image, polygon) {
         //copy all edges from old active edge table
         for(let i = 0; i < activeEdgeTable.nEntries; i++){
             let cp_elem = activeEdgeTable.entries[i];
-            if(cp_elem.y_upper > y_scanline){
+            if((cp_elem.y_upper > y_scanline)&(Math.abs(cp_elem.invSlope) != Infinity)){
                 //console.log("Keeping element");
                 curr_ET.entries.push(cp_elem);
                 curr_ET.nEntries++;
@@ -134,7 +134,7 @@ function scanline(image, polygon) {
         //check all entries in ET
         for(let i = 0; i < edgeTable.nEntries ; i++){
             let curr_elem = edgeTable.entries[i];
-            if (curr_elem.y_lower == y_scanline){ //with this check there is no need to pop elements from the EdgeTable
+            if ((curr_elem.y_lower == y_scanline)&(Math.abs(curr_elem.invSlope) != Infinity)){ //with this check there is no need to pop elements from the EdgeTable
                 //console.log("Found Element");
                 //console.log("Element information");
                 //console.log(curr_elem.x_lower);
@@ -150,16 +150,16 @@ function scanline(image, polygon) {
         }
 
 
+
+
         activeEdgeTable.entries.sort(compareActiveEdgeTableEntries);
 
         //console.log("Now the table has %i entries", activeEdgeTable.nEntries);
 
-        if(activeEdgeTable.nEntries > 0){
-            let x_start_test = activeEdgeTable.entries[0].x_intersect;
-            let x_end_test   = activeEdgeTable.entries[1].x_intersect;
-
-            //console.log("Test values : %i, %i", x_start_test, x_end_test);
-        }
+        //if(activeEdgeTable.nEntries > 0){
+        //    let x_start_test = activeEdgeTable.entries[0].x_intersect;
+        //    let x_end_test   = activeEdgeTable.entries[1].x_intersect;
+        //}
 
         //console.log("Entries in list : %i", activeEdgeTable.nEntries);
 
@@ -170,17 +170,14 @@ function scanline(image, polygon) {
 
         for(let i = 0; i < activeEdgeTable.nEntries ; i=i+2){
 
-            //if((activeEdgeTable.entries[i+0].x_intersect == Infinity ) |(activeEdgeTable.entries[i+0].x_intersect == -Infinity )){
-            //    console.log("Edge Case");
-            //}
-
+            /*
             if(activeEdgeTable.nEntries==4){
 
                 if((Math.abs(activeEdgeTable.entries[1].invSlope) == Infinity)&(Math.abs(activeEdgeTable.entries[2].invSlope) == Infinity)){
 
                     console.log("Edge Case");
-                    let x_start = activeEdgeTable.entries[i+0].x_intersect;
-                    let x_end   = activeEdgeTable.entries[i+3].x_intersect;
+                    let x_start = Math.floor(activeEdgeTable.entries[i+0].x_intersect);
+                    let x_end   = Math.ceil(activeEdgeTable.entries[i+3].x_intersect);
 
                     console.log("Inv slope is : %f", activeEdgeTable.entries[0].invSlope);
                     console.log("Inv slope is : %f", activeEdgeTable.entries[1].invSlope);
@@ -195,22 +192,20 @@ function scanline(image, polygon) {
 
                     //set the pixels
                     for(let px_cnt = 0; px_cnt <= px_diff; px_cnt++){
-                        let px_elem_local = new Point(x_start+px_cnt, y_scanline);
-                        setPixel(image, px_elem_local, new Color(255,0,0));
+                        let px_elem_local = new Point(Math.round(x_start+px_cnt), y_scanline);
+                        setPixel(image, px_elem_local, polygon.color);
                         //console.log("setting pixel")
                     }
 
                     break;
 
-
                 }
-
                
             }
+            */
 
-
-            let x_start = activeEdgeTable.entries[i+0].x_intersect;
-            let x_end   = activeEdgeTable.entries[i+1].x_intersect;
+            let x_start = Math.floor(activeEdgeTable.entries[i+0].x_intersect);
+            let x_end   = Math.ceil(activeEdgeTable.entries[i+1].x_intersect);
 
             //console.log("Entries in active table");
             //console.log(x_start);
@@ -224,11 +219,16 @@ function scanline(image, polygon) {
 
             console.log("Line %i, starting at %i, ending at %i", y_scanline, x_start, x_end)
 
+            //if(px_diff == 0){
+            //    let px_elem_local = new Point(Math.round(x_start), y_scanline);
+            //    setPixel(image, px_elem_local, polygon.color);
+            //}
+
             //set the pixels
             if(px_diff > 0){
                 for(let px_cnt = 0; px_cnt <= px_diff; px_cnt++){
-                    let px_elem_local = new Point(Math.round(x_start+px_cnt), y_scanline);
-                    setPixel(image, px_elem_local, new Color(255,0,0));
+                    let px_elem_local = new Point(x_start+px_cnt, y_scanline);
+                    setPixel(image, px_elem_local, polygon.color);
                     //console.log("setting pixel")
                 }
             }
@@ -237,11 +237,9 @@ function scanline(image, polygon) {
 
         // [mandatory]
         // update the x_intersect of the active edge table entries
-        for(let i = 0; i < activeEdgeTable.nEntries ; i=i+1){
+        for(let i = 0; i < activeEdgeTable.nEntries ; i++){
             activeEdgeTable.entries[i].x_intersect = activeEdgeTable.entries[i].x_intersect + activeEdgeTable.entries[i].invSlope;
         }
-
-
     }
 }
 
