@@ -108,7 +108,6 @@ function scanline(image, polygon) {
         // note that the edge table is sorted by y_lower!
 
 
-
         // [mandatory]
         // as we cannot delete entries from the active edge table:
         // - build a new active edge table
@@ -135,65 +134,13 @@ function scanline(image, polygon) {
         for(let i = 0; i < edgeTable.nEntries ; i++){
             let curr_elem = edgeTable.entries[i];
             if ((curr_elem.y_lower == y_scanline)&(Math.abs(curr_elem.invSlope) != Infinity)){ //with this check there is no need to pop elements from the EdgeTable
-                //console.log("Found Element");
-                //console.log("Element information");
-                //console.log(curr_elem.x_lower);
-                //console.log(curr_elem.y_lower);
                 let new_edgeEntry = new ActiveEdgeTableEntry(curr_elem); // insert element in active edge table
-                //console.log("New Edge Entry");
-                //console.log(new_edgeEntry.x_intersect)
-                //console.log(new_edgeEntry.y_upper)
-                //console.log(new_edgeEntry.invSlope)
                 activeEdgeTable.entries.push(new_edgeEntry); // push on table
                 activeEdgeTable.nEntries++;
             }
         }
 
-        //catch two edges with the same x_intercept --> must go in pair, also same line !
-
-
-        //TODO : LOOK INTO THIS SOLUTION; IMHO THE OTHER OPTION IS GOOD
-        /*
-         * SOLUTION ONGOING
-         */
         activeEdgeTable.entries.sort(compareActiveEdgeTableEntries);
-        /*
-        if(activeEdgeTable.nEntries%4 == 0){
-
-            console.log("Edge case detected");
-
-            for(let i = 0; i < activeEdgeTable.nEntries; i=i+4){
-
-                let elem_1 = activeEdgeTable.entries[i];
-                let elem_2 = activeEdgeTable.entries[i+1];
-                let elem_3 = activeEdgeTable.entries[i+2];
-                let elem_4 = activeEdgeTable.entries[i+3];
-
-                console.log("x_intersects : %i %i %i %i", elem_1.x_intersect, elem_2.x_intersect, elem_3.x_intersect, elem_4.x_intersect )
-
-                if(elem_1.x_intersect == elem_2.x_intersect){
-                    console.log("Match");
-                }
-
-                if(elem_3.x_intersect == elem_4.x_intersect){
-                    console.log("Match");
-                }
-            }
-
-        }*/
-
-
-
-
-
-        //console.log("Now the table has %i entries", activeEdgeTable.nEntries);
-
-        //if(activeEdgeTable.nEntries > 0){
-        //    let x_start_test = activeEdgeTable.entries[0].x_intersect;
-        //    let x_end_test   = activeEdgeTable.entries[1].x_intersect;
-        //}
-
-        //console.log("Entries in list : %i", activeEdgeTable.nEntries);
 
         // [mandatory]
         // rasterize the line:
@@ -202,59 +149,10 @@ function scanline(image, polygon) {
 
         for(let i = 0; i < activeEdgeTable.nEntries ; i=i+2){
 
-            /*
-            if(activeEdgeTable.nEntries==4){
-
-                if((Math.abs(activeEdgeTable.entries[1].invSlope) == Infinity)&(Math.abs(activeEdgeTable.entries[2].invSlope) == Infinity)){
-
-                    console.log("Edge Case");
-                    let x_start = Math.floor(activeEdgeTable.entries[i+0].x_intersect);
-                    let x_end   = Math.ceil(activeEdgeTable.entries[i+3].x_intersect);
-
-                    console.log("Inv slope is : %f", activeEdgeTable.entries[0].invSlope);
-                    console.log("Inv slope is : %f", activeEdgeTable.entries[1].invSlope);
-                    console.log("Inv slope is : %f", activeEdgeTable.entries[2].invSlope);
-                    console.log("Inv slope is : %f", activeEdgeTable.entries[3].invSlope);
-
-                    let px_diff = Math.abs(x_end - x_start);
-
-                    //console.log("px diff : %i", px_diff);
-
-                    console.log("Line %i, starting at %i, ending at %i", y_scanline, x_start, x_end)
-
-                    //set the pixels
-                    for(let px_cnt = 0; px_cnt <= px_diff; px_cnt++){
-                        let px_elem_local = new Point(Math.round(x_start+px_cnt), y_scanline);
-                        setPixel(image, px_elem_local, polygon.color);
-                        //console.log("setting pixel")
-                    }
-
-                    break;
-
-                }
-               
-            }
-            */
-
             let x_start = Math.floor(activeEdgeTable.entries[i+0].x_intersect);
             let x_end   = Math.ceil(activeEdgeTable.entries[i+1].x_intersect);
 
-            //console.log("Entries in active table");
-            //console.log(x_start);
-            //console.log(x_end);
-
-            //console.log("Gonna set some pixels")
-
             let px_diff = Math.abs(x_end - x_start);
-
-            //console.log("px diff : %i", px_diff);
-
-            console.log("Line %i, starting at %i, ending at %i", y_scanline, x_start, x_end)
-
-            //if(px_diff == 0){
-            //    let px_elem_local = new Point(Math.round(x_start), y_scanline);
-            //    setPixel(image, px_elem_local, polygon.color);
-            //}
 
             //set the pixels
             if(px_diff > 0){
