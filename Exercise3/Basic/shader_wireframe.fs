@@ -22,6 +22,29 @@ void main(void)
 	//				and discard all pixels not considered 
 	//				edges (farther away from an edge than 
 	//				epsilon). Use the GLSL mechanism 'discard'.
+	if(((gl_FragColor[0]<=0.0-epsilon)||(gl_FragColor[0]>=0.0+epsilon)&&
+	   (gl_FragColor[1]>0.0-epsilon)||(gl_FragColor[1]<0.0+epsilon) &&
+	   (gl_FragColor[2]>0.0-epsilon)||(gl_FragColor[2]<0.0+epsilon))){
 
+		discard;
 
+	}
+
+	//if((gl_FragColor[1]<=0.0-epsilon)||(gl_FragColor[1]>=0.0+epsilon)&&
+	//   (gl_FragColor[0]>0.0-epsilon)||(gl_FragColor[0]<0.0+epsilon) &&
+	//   (gl_FragColor[2]>0.0-epsilon)||(gl_FragColor[2]<0.0+epsilon)){
+
+	//	discard;
+
+	//}
+	//if((gl_FragColor[1]<0.0-epsilon)||(gl_FragColor[1]>0.0+epsilon)){
+
+	//	discard;
+
+	//}
+	//if((gl_FragColor[2]<0.0-epsilon)||(gl_FragColor[2]>0.0+epsilon)){
+
+	//	discard;
+
+	//}
 }
