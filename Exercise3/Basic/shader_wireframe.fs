@@ -6,6 +6,7 @@ precision mediump float;
 //				communication between vertex and
 //				fragment shader.
 
+varying vec4 color_rgb;
 
 void main(void)
 {
@@ -14,7 +15,7 @@ void main(void)
 
 	// TODO 3.2a)	Give each pixel the interpolated
 	//				triangle color.
-	gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
+	gl_FragColor = color_rgb;
 	
 
 	// TODO 3.2b)	Use the color as barycentric coordinates

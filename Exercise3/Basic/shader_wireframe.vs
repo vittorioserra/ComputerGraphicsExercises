@@ -4,12 +4,13 @@ attribute vec2 vVertex;
 
 // TODO 3.2a)	Create an attribute describing the
 //				color of a vertex.
+attribute vec4 vColor;
 
 
 // TODO 3.2a)	Create an varying variable to 
 //				pass the interpolated color to
 //				the fragment shader.
-
+varying vec4 color_rgb;
 
 
 void main(void)
@@ -18,6 +19,6 @@ void main(void)
 
 	// TODO 3.2a)	Assign the color of the vertex
 	//				to the varying variable.
-
+	color_rgb = vec4(vColor);
 
 }
