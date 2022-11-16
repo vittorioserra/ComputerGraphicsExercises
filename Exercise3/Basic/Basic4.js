@@ -224,7 +224,7 @@ function Basic4_3(canvas) {
                          affineTransf2.A[2]*affineTransf1.A[0]+affineTransf2.A[3]*affineTransf1.A[2],
                          affineTransf2.A[2]*affineTransf1.A[1]+affineTransf2.A[3]*affineTransf1.A[3]];
 
-        let translation_vector = [affineTransf2.t[0]+affineTransf1.t[0], affineTransf2.t[1]+affineTransf1.t[1]];
+        let translation_vector = [affineTransf2.A[0]*affineTransf1.t[0] + affineTransf2.A[1]*affineTransf1.t[1] + affineTransf2.t[0],                                                                               affineTransf2.A[2]*affineTransf1.t[0] + affineTransf2.A[3]*affineTransf1.t[1] + affineTransf2.t[1]];
 
         return new AffineTransformation(affine_matrix, translation_vector);
 
