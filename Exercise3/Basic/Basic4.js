@@ -72,7 +72,10 @@ function Basic4_1(canvas) {
         //			    performing a rotation by the angle 
         //			    alpha and replace the following line
         //			    by the appropriate code.
-        return new LinearTransformation([1, 0, 0, 1]);
+
+        let r_m = [Math.cos(alpha), -Math.sin(alpha), Math.sin(alpha), Math.cos(alpha)];
+
+        return new LinearTransformation(r_m);
     }
 
     function Scaling(scale) {
@@ -81,7 +84,10 @@ function Basic4_1(canvas) {
         //			    the scaling factor scale and replace
         //			    the following line by the appropriate 
         //			    code.
-        return new LinearTransformation([1, 0, 0, 1]);
+
+        let s_m = [scale, 0, 0, scale];
+
+        return new LinearTransformation(s_m);
     }
 
     function ShearingX(shearX) {
@@ -89,7 +95,10 @@ function Basic4_1(canvas) {
         //			    performing a shear along the x axis. 
         //			    Replace the following line by the
         //			    appropriate code.
-        return new LinearTransformation([1, 0, 0, 1]);
+
+        let sh_m = [1, Math.tan(shearX), 0, 1];
+
+        return new LinearTransformation(sh_m);
     }
 
     let context = canvas.getContext("2d");
@@ -133,14 +142,18 @@ function Basic4_2(canvas) {
         // TODO 3.4b)	Implement a linear transformation 
         //			    performing a shear along the x axis. 
         //              Replace the following code.
-        return new LinearTransformation([1, 0, 0, 1]);
+
+        let sh_m = [1, Math.tan(shearX), 0, 1];
+
+        return new LinearTransformation(sh_m);
     }
 
     function ShearingY(shearY) {
         // TODO 3.4b)	Implement a linear transformation 
         //			    performing a shear along the y axis. 
         //              Replace the following code.
-        return new LinearTransformation([1, 0, 0, 1]);
+        let sh_m = [1, 0, Math.sin(shearY), 1];
+        return new LinearTransformation(sh_m);
     }
 
     let context = canvas.getContext("2d");
@@ -158,7 +171,11 @@ function Basic4_2(canvas) {
     //			    of triangle, call shearingX with the 
     //			    corresponding parameters!
     //              Use ApplyLinearTransformation() to transform the corner points.
-    let triangle1 = new Triangle(triangle.a, triangle.b, triangle.c);
+    //let triangle1 = new Triangle(triangle.a, triangle.b, triangle.c);
+    let shearing_x = ShearingX(-alpha/2);
+    let triangle1= new Triangle(ApplyLinearTransformation(shearing_x, triangle.a),
+                                        ApplyLinearTransformation(shearing_x, triangle.b),
+                                        ApplyLinearTransformation(shearing_x, triangle.c));
 
     RenderTriangle(context, new Viewport(150, 150, 150, 0), triangle1);
 
@@ -167,7 +184,11 @@ function Basic4_2(canvas) {
     //			    of triangle1, call shearingY with the 
     //			    corresponding parameters!
     //              Use ApplyLinearTransformation() to transform the corner points.
-    let triangle2 = new Triangle(triangle1.a, triangle1.b, triangle1.c);
+    //let triangle2 = new Triangle(triangle1.a, triangle1.b, triangle1.c);
+    let shearing_y = ShearingY(alpha);
+    let triangle2 = new Triangle(ApplyLinearTransformation(shearing_y, triangle1.a),
+                                        ApplyLinearTransformation(shearing_y, triangle1.b),
+                                        ApplyLinearTransformation(shearing_y, triangle1.c));
 
     RenderTriangle(context, new Viewport(150, 150, 300, 0), triangle2);
 
@@ -176,7 +197,11 @@ function Basic4_2(canvas) {
     //			    of triangle2, call shearingX with the 
     //			    corresponding parameters!
     //              Use ApplyLinearTransformation() to transform the corner points.
-    let triangle3 = new Triangle(triangle2.a, triangle2.b, triangle2.c);
+    //let triangle3 = new Triangle(triangle2.a, triangle2.b, triangle2.c);
+    let shearing_x_2 = ShearingX(-alpha/2);
+    let triangle3= new Triangle(ApplyLinearTransformation(shearing_x_2, triangle2.a),
+                                        ApplyLinearTransformation(shearing_x_2, triangle2.b),
+                                        ApplyLinearTransformation(shearing_x_2, triangle2.c));
 
     RenderTriangle(context, new Viewport(150, 150, 450, 0), triangle3);
 }
@@ -193,7 +218,15 @@ function Basic4_3(canvas) {
         //			    of the affine transformation equivalent
         //			    to the composition of affineTransf1 and
         //			    affineTransf2.
-        return new AffineTransformation([1, 0, 0, 1], [0, 0]);
+
+        let affine_matrix = [affineTransf2.A[0]*affineTransf1.A[0]+affineTransf2.A[1]*affineTransf1.A[2],
+                         affineTransf2.A[0]*affineTransf1.A[1]+affineTransf2.A[1]*affineTransf1.A[3],
+                         affineTransf2.A[2]*affineTransf1.A[0]+affineTransf2.A[3]*affineTransf1.A[2],
+                         affineTransf2.A[2]*affineTransf1.A[1]+affineTransf2.A[3]*affineTransf1.A[3]];
+
+        let translation_vector = [affineTransf2.t[0]+affineTransf1.t[0], affineTransf2.t[1]+affineTransf1.t[1]];
+
+        return new AffineTransformation(affine_matrix, translation_vector);
 
     }
 

@@ -6,7 +6,7 @@ uniform vec2 canvasSize;
 
 void main(void)
 { 
-	float smoothMargin = 0.01;  
+	float smoothMargin = 0.01;
 	float r = 0.8;         
 
 	// TODO 3.3)	Map the fragment's coordinate (gl_FragCoord.xy) into 
@@ -28,10 +28,9 @@ void main(void)
 		float alpha_max = 1.0;
 		float t = abs((r) - length(uv));
 
-		alpha_val = alpha_max - t * abs(alpha_max-base_val);
+		alpha_val = t*50.0;
 
-
-		gl_FragColor = vec4(0.0, 1.0, 0.0, alpha_val);
+		gl_FragColor = vec4(1.0, 0.0, 0.0, alpha_val);
 
 	} if (length(uv)<(r-smoothMargin)){
 
