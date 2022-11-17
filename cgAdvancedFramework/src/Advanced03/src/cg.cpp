@@ -155,14 +155,17 @@ void CG::update(float dt)
                           -sin(moonOrbitalInclination), 0, cos(moonOrbitalInclination), 0,
                           0, 0, 0, 1);
 
-    moon = moon * earth_revolution_translation * moon_offset *moon_revolution_translation *  moon_scale_matrix * moon_obl_matrix * moon_rot_matrix;
+    //moon = moon * earth_revolution_translation * moon_offset *moon_revolution_translation *  moon_scale_matrix * moon_obl_matrix * moon_rot_matrix;
+
+    moon = moon * earth_revolution_translation* moon_offset  *moon_revolution_translation *  moon_scale_matrix * inverse(moon_offset)*moon_obl_matrix* moon_rot_matrix;
+
 
 
     // d) Orbit Rings
     earthOrbit = glm::scale(vec3(earthOrbitRadius));
     //moonOrbit = glm::translate(vec3(earthOrbitRadius + moonOrbitRadius,0,0)); // <- Change this line
 
-    moonOrbit = mat4(1) * earth_revolution_translation * moon_offset;
+    moonOrbit = earth_revolution_translation * moon_offset * glm::scale(vec3(moonOrbitRadius));
 
 }
 
