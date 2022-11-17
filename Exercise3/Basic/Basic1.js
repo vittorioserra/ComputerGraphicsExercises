@@ -7,22 +7,6 @@ function webGLStart(canvas) {
 
     gl.viewport(0, 0, canvas.width, canvas.height);
 
-    let c = [0.3, 0.2];
-    let r = 0.7;
-    let slices = 100;
-    
-    let vertices = [];
-    let indices = [];
-
-    "use strict";
-
-function webGLStart(canvas) {
-
-    let gl = canvas.getContext("experimental-webgl");
-    if (!gl) throw new Error("Could not initialise WebGL, sorry :-(\nTo enable WebGL support in your browser, go to about:config and skip the warning.\nSearch for webgl.disabled and set its value to false.");
-
-    gl.viewport(0, 0, canvas.width, canvas.height);
-
     let c = [0, 0];
     let r = 0.7;
     let slices = 100;
@@ -48,7 +32,17 @@ function webGLStart(canvas) {
         indices.push(2*i+1);
         indices.push(2*(i+1));
     }
+    /*vertices.push(-.5);
+    vertices.push(-.5);
+    vertices.push(.5);
+    vertices.push(-.5);
+    vertices.push(0);
+    vertices.push(0.5);
 
+    indices.push(0);
+    indices.push(1);
+    indices.push(2);
+*/
     
 
     let vbo = gl.createBuffer();
