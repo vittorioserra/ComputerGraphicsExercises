@@ -123,7 +123,10 @@ void CG::update(float dt)
 
     //earth = earth * earth_scale_matrix * earth_obl_matrix * earth_rot_matrix;
 
-    glm::mat4 earth_revolution_translation = glm::translate(vec3(earthOrbitRadius*cos(-time*2*M_PI/earthRevolutionTime),earthOrbitRadius*sin(-time*2*M_PI/earthRevolutionTime),0));
+    glm::mat4 earth_revolution_translation = glm::translate(
+        vec3(earthOrbitRadius*cos(-time*2*M_PI/earthRevolutionTime),
+             earthOrbitRadius*sin(-time*2*M_PI/earthRevolutionTime),0)
+                                                            );
 
     earth = earth  * earth_revolution_translation * earth_scale_matrix * earth_obl_matrix * earth_rot_matrix;
 
