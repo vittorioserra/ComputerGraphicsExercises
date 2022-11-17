@@ -31,11 +31,11 @@ void main(void)
 		alpha_val = 0.5*canvasSize[0]*t;//*50.0;
 		alpha_val = clamp(alpha_val, base_val, alpha_max);
 
-		gl_FragColor = vec4(1.0, 0.0, 0.0, alpha_val);
+		gl_FragColor = vec4(1.0, 85.0 / 255.0, 0.0, alpha_val);
 
 	} if (length(uv)<(r-smoothMargin)){
 
-		gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);//vec4(1.0, 85.0 / 255.0, 0.0, 1.0);
+		gl_FragColor = vec4(1.0, 85.0 / 255.0, 0.0, 1.0);//vec4(1.0, 85.0 / 255.0, 0.0, 1.0);
 
 	}
 
