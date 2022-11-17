@@ -22,8 +22,8 @@ void main(void)
 	if((length(uv))>r){
 		discard;
 	}else if(length(uv)>(r-smoothMargin)){
-		float alpha = 0.0 + ((r) - length(uv))*1.0;
-
+		float alpha = 0.0 + ((r) - length(uv))*0.5*(canvasSize[0]-0.0);
+		alpha = clamp(alpha,0.0,1.0);
 		gl_FragColor = vec4(1.0, 85.0 / 255.0, 0.0, alpha);
 
 	} else{
