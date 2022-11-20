@@ -294,9 +294,12 @@ class Camera {
         //              You can use gl-matrix.js where necessary. Use column-major order!
         //              It can be handy to compute the inverted matrix first.
 
-        let w = -negViewDir; // already normalized, already in the right direction
-        let u = vec2.create();
+        let w = vec2.create();//-negViewDir);
+        w[0] = -1.0*negViewDir[0];
+        w[1] = -1.0*negViewDir[1];
 
+        //let w = -negViewDir; // already normalized, already in the right direction
+        let u = vec2.create();
 
         let t = vec2.create();
         t[0] = 1.0;
@@ -333,11 +336,7 @@ class Camera {
         // TODO 4.1c)   Set up the projection matrix using mat3.perspective(...), 
         //              which has to be implemented!
 
-        //let out = mat3.create();
-
         mat3.perspective(this.projectionMatrix, this.fovy, this.near, this.far);
-
-        //this.projectionMatrix = out;
 
     }
 
@@ -355,7 +354,7 @@ class Camera {
         //              before returning it! You can use gl-matrix.js where
         //              necessary.
 
-        let point = vec3.create(point2D[0], point2D[1], 1.0);
+        let point = vec3.create(point2D[0], point2D[1], point2D[0]/point2D[1]);
 
         let projected_point = this.projectionMatrix * this.cameraMatrix * point;
 
