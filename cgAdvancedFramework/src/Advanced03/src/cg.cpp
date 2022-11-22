@@ -90,7 +90,6 @@ void CG::update(float dt)
     // a) Sun
     sun = mat4(1); // <- Change this line
 
-    //glm::mat4 sun_rot_matrix(1.0f,1.0f,1.0f,1.0f,1.0f,1.0f,1.0f,1.0f,1.0f,1.0f,1.0f,1.0f,1.0f,1.0f,1.0f,1.0f);
     glm::mat4 sun_rot_matrix((float) cos(time*2*M_PI/sunRotationTime), (float) -sin(time*2*M_PI/sunRotationTime), 0.0f, 0.0f,(float) sin(time*2*M_PI/sunRotationTime),(float) cos(time*2*M_PI/sunRotationTime), 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f,0.0f, 0.0f, 0.0f, 1.0f);
 
     glm::mat4 sun_scale_matrix(sunRadius, 0, 0, 0,
@@ -107,7 +106,7 @@ void CG::update(float dt)
 
 
     // b) Earth
-    earth = mat4(1);//glm::translate(vec3(earthOrbitRadius,0,0)); // <- Change this line
+    earth = mat4(1);
     glm::mat4 earth_scale_matrix(earthRadius, 0, 0, 0,
                                  0, earthRadius, 0, 0,
                                  0, 0, earthRadius, 0,
@@ -121,7 +120,6 @@ void CG::update(float dt)
                                0.0f, 0.0f, 1.0f, 0.0f,
                                0.0f, 0.0f, 0.0f, 1.0f);
 
-    //earth = earth * earth_scale_matrix * earth_obl_matrix * earth_rot_matrix;
 
     glm::mat4 earth_revolution_translation = glm::translate(
         vec3(earthOrbitRadius*cos(-time*2*M_PI/earthRevolutionTime),
@@ -131,7 +129,7 @@ void CG::update(float dt)
     earth = earth  * earth_revolution_translation * earth_scale_matrix * earth_obl_matrix * earth_rot_matrix;
 
     // c) Moon
-    moon =  mat4(1);//glm::translate(vec3(earthOrbitRadius + moonOrbitRadius,0,0)); // <- Change this line
+    moon =  mat4(1);
 
     glm::mat4 moon_scale_matrix(moonRadius, 0, 0, 0,
                                  0, moonRadius, 0, 0,
@@ -146,7 +144,6 @@ void CG::update(float dt)
                                0.0f, 0.0f, 1.0f, 0.0f,
                                0.0f, 0.0f, 0.0f, 1.0f);
 
-    //earth = earth * earth_scale_matrix * earth_obl_matrix * earth_rot_matrix;
 
     glm::mat4 moon_revolution_translation = glm::translate(vec3(moonOrbitRadius*cos(-time*2*M_PI/moonRevolutionTime),moonOrbitRadius*sin(-time*2*M_PI/moonRevolutionTime),0));
 
@@ -155,7 +152,6 @@ void CG::update(float dt)
                           -sin(moonOrbitalInclination), 0, cos(moonOrbitalInclination), 0,
                           0, 0, 0, 1);
 
-    //moon = moon * earth_revolution_translation * moon_offset *moon_revolution_translation *  moon_scale_matrix * moon_obl_matrix * moon_rot_matrix;
 
     moon = moon * earth_revolution_translation* moon_offset  *moon_revolution_translation *  moon_scale_matrix * inverse(moon_offset)*moon_obl_matrix* moon_rot_matrix;
 
@@ -163,7 +159,6 @@ void CG::update(float dt)
 
     // d) Orbit Rings
     earthOrbit = glm::scale(vec3(earthOrbitRadius));
-    //moonOrbit = glm::translate(vec3(earthOrbitRadius + moonOrbitRadius,0,0)); // <- Change this line
 
     moonOrbit = earth_revolution_translation * moon_offset * glm::scale(vec3(moonOrbitRadius));
 
