@@ -7,7 +7,7 @@ function webGLStart(canvas) {
 
     gl.viewport(0, 0, canvas.width, canvas.height);
 
-    let c = [0, 0];
+    let c = [0.3, 0.2];
     let r = 0.7;
     let slices = 10;
 
@@ -20,28 +20,41 @@ function webGLStart(canvas) {
     //              c with radius r. Use triangles to describe
     //              the circle's geometry. The number of
     //              triangles is stored in the variable slices.
-    vertices.push(c[0])
-    vertices.push(c[1])
-    for(var i=0; i<slices; i++){
 
-        vertices.push((r*Math.cos((2*Math.PI*i)/slices))+c[0]);
-        vertices.push((r*Math.sin((2*Math.PI*i)/slices))+c[1]);
-        vertices.push((r*Math.cos((2*Math.PI*(i+1))/slices))+c[0]);
-        vertices.push((r*Math.sin((2*Math.PI*(i+1))/slices))+c[1]);
-        indices.push(0);
-        indices.push(2*i+1);
-        indices.push(2*(i+1));
-    }
-    /*vertices.push(-.5);
-    vertices.push(-.5);
-    vertices.push(.5);
-    vertices.push(-.5);
+
+    //base_vertex = center ;
+    c = [0,0]; // let's put this in the middle for now
+    let vertex_left_x = 0.7;
+    let vertex_left_y = 0.0;
+    let vertex_right_x = 0.0;
+    let vertex_right_y = 1.0;
+
+    vertices.push(0);//push center point
     vertices.push(0);
-    vertices.push(0.5);
+
+    vertices.push(vertex_left_x);
+    vertices.push(vertex_left_y);
+
+
+    for(let i = 2; i < slices; i++){
+        vertex_right_x = c[0]+r*Math.cos(2*Math.PI*i/slices);
+        vertex_right_y = c[1]+r*Math.sin(2*Math.PI*i/slices);
+
+        vertices.push(vertex_right_x);
+        vertices.push(vertex_right_y);
+
+        indices.push(0);
+        indices.push(i-1);
+        indices.push(i);
+
+        console.log("Current point is x : %f , y : %f \n", vertex_right_x, vertex_right_y);
+
+    }
+
+    //stitch first and last vertices together
     indices.push(0);
     indices.push(1);
-    indices.push(2);
-*/
+    indices.push(slices-1);
 
 
     let vbo = gl.createBuffer();

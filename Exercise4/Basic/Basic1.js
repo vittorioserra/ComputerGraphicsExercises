@@ -223,23 +223,25 @@ mat3.perspective = function (out, fovy, near, far) {
     //              into the negative view direction.
     //              Use column-major order!
 
+    near = near;///300.0; /// 600.0;
+    far = far;///300.0;// / 600.0;
+
     let r = near * Math.tan(fovy/2.0);
     let l = -r;
-
     let t = near * Math.tan(fovy/2.0);
     let b = -t;
 
-    out[0] = (2*near)/(r-l);
-    out[1] = 0;
-    out[2] = 0;
+    out[0] = (2.0*near)/(r-l);
+    out[1] = 0.0;
+    out[2] = 0.0;
 
-    out[3] = (l+r)/(l-r);
+    out[3] = (l+r)/(r-l);
     out[4] = -(far+near)/(far-near);
-    out[5] = -1;
+    out[5] = -1.0;
 
-    out[6] = 0;
-    out[7] = -(2*far*near)/(far-near);
-    out[8] = 0;
+    out[6] = 0.0;
+    out[7] = -(2.0*far*near)/(far-near);
+    out[8] = 0.0;
 
     return out;
     
@@ -288,6 +290,8 @@ class Camera {
         negViewDir[1] = this.eye[1] - this.lookAtPoint[1];
         vec2.normalize(negViewDir, negViewDir);
 
+        //console.log("neg view dir : %f, %f", negViewDir[0], negViewDir[1]);
+
         // TODO 4.1c)   Set up the camera matrix and the inverse camera matrix.
         //              The cameraMatrix transforms from world space to camera space.
         //              The cameraMatrixInverse transforms from camera space to world space.
@@ -295,18 +299,41 @@ class Camera {
         //              It can be handy to compute the inverted matrix first.
 
         let w = vec2.create();//-negViewDir);
-        w[0] = -1.0*negViewDir[0];
-        w[1] = -1.0*negViewDir[1];
+        w[0] = 1.0*negViewDir[0];
+        w[1] = 1.0*negViewDir[1];
+
+        console.log("neg view dir : %f, %f", w[0], w[1]);
+        console.log("eye : %f %f, look_at_point %f, %f", this.eye[0], this.eye[1], this.lookAtPoint[0], this.lookAtPoint[1]);
 
         //let w = -negViewDir; // already normalized, already in the right direction
         let u = vec2.create();
 
         let t = vec2.create();
-        t[0] = 1.0;
-        t[1] = 0.0;
+        /*t[0] = 1.0;
+        t[1] = 0.0;*/
 
-        u[0] = t[1];
-        u[1] = t[0];
+
+        t[0] = 0.0;
+        t[1] = 1.0;
+
+
+        //this is only perpendiculart for vec2(0,1), or similar
+        //u[0] = t[1];
+        //u[1] = t[0];
+
+        u[0] = negViewDir[1];
+        u[1] = -negViewDir[0];
+
+        /*
+        let alpha = Math.atan2(negViewDir[1]-w[1], negViewDir[0] - w[0]);
+        let rm = mat2.create();
+        rm[0] = Math.cos(alpha);
+        rm[1] = Math.sin(alpha);
+        rm[2] = -Math.sin(alpha);
+        rm[3] = Math.cos(alpha);
+        u[0] = rm[0]*t[0] + rm[2]*t[1];
+        u[1] = rm[1]*t[0] + rm[3]*t[1];
+        */
 
         let R = mat2.create();
         R[0]=u[0];
@@ -316,8 +343,14 @@ class Camera {
 
         let M_v = mat3.create();
 
-        let u_te = u[0]*this.eye[0] + u[1]*this.eye[1];
-        let w_te = w[0]*this.eye[0] + w[1]*this.eye[1];
+        let e = vec2.create();
+        //vec2.normalize(e, this.eye);
+        e[0] = this.eye[0];
+        e[1] = this.eye[1];
+
+        let u_te = u[0]*e[0] + u[1]*e[1];//u[0]*this.eye[0] + u[1]*this.eye[1];
+        let w_te = w[0]*e[0] + w[1]*e[1];//w[0]*this.eye[0] + w[1]*this.eye[1];
+
 
         M_v[0] = R[0];
         M_v[1] = R[2];
@@ -329,6 +362,18 @@ class Camera {
         M_v[7] = -w_te;
         M_v[8] = 1.0;
 
+/*
+        M_v[0] = u[0];
+        M_v[1] = w[0];
+        M_v[2] = 0.0;
+        M_v[3] = u[1];
+        M_v[4] = w[1];
+        M_v[5] = 0.0;
+        M_v[6] = -u_te;
+        M_v[7] = -w_te;
+        M_v[8] = 1.0;
+*/
+
         this.cameraMatrix = M_v;
 
         mat3.invert(this.cameraMatrixInverse, M_v);
@@ -337,6 +382,19 @@ class Camera {
         //              which has to be implemented!
 
         mat3.perspective(this.projectionMatrix, this.fovy, this.near, this.far);
+
+    }
+
+
+    matMulVec3(m, v){
+
+        let ret = vec3.create();
+
+        ret[0] = m[0] * v[0] + m[3] * v[1] + m[6] * v[2];
+        ret[1] = m[1] * v[0] + m[4] * v[1] + m[7] * v[2];
+        ret[2] = m[2] * v[0] + m[5] * v[1] + m[8] * v[2];
+
+        return ret
 
     }
 
@@ -354,11 +412,21 @@ class Camera {
         //              before returning it! You can use gl-matrix.js where
         //              necessary.
 
-        let point = vec3.create(point2D[0], point2D[1], point2D[0]/point2D[1]);
+        let point = vec3.create()
+        point[0] = point2D[0];//600.0;///600.0;
+        point[1] = point2D[1];//300.0;///600.0;
+        point[2] = 1.0;
 
-        let projected_point = this.projectionMatrix * this.cameraMatrix * point;
+        vec3.normalize(point, point);
 
-        let ret = vec2.create(projected_point[0], projected_point[1]);
+        let x = this.matMulVec3(this.cameraMatrix, point);
+        let projected_point = this.matMulVec3(this.projectionMatrix, x);
+        //let projected_point = x;
+        let ret = vec2.create();
+        ret[0] = projected_point[0] ;
+        ret[1] = projected_point[1] ;
+
+        console.log("I am the returned point,  look at me : %f %f \n Input : %f %f", ret[0], ret[1], point2D[0], point2D[1]);
 
         return ret;
     }
