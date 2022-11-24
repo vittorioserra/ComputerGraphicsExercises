@@ -302,8 +302,8 @@ class Camera {
         w[0] = 1.0*negViewDir[0];
         w[1] = 1.0*negViewDir[1];
 
-        console.log("neg view dir : %f, %f", w[0], w[1]);
-        console.log("eye : %f %f, look_at_point %f, %f", this.eye[0], this.eye[1], this.lookAtPoint[0], this.lookAtPoint[1]);
+        //console.log("neg view dir : %f, %f", w[0], w[1]);
+        //console.log("eye : %f %f, look_at_point %f, %f", this.eye[0], this.eye[1], this.lookAtPoint[0], this.lookAtPoint[1]);
 
         //let w = -negViewDir; // already normalized, already in the right direction
         let u = vec2.create();
@@ -419,14 +419,19 @@ class Camera {
 
         vec3.normalize(point, point);
 
+        //console.log("Point after : %f, %f, %f", point[0], point[1], point[2]);
+
         let x = this.matMulVec3(this.cameraMatrix, point);
         let projected_point = this.matMulVec3(this.projectionMatrix, x);
+
+        //console.log("Projected point : %f %f %f", projected_point[0], projected_point[1], projected_point[2]);
+
         //let projected_point = x;
         let ret = vec2.create();
-        ret[0] = projected_point[0] ;
-        ret[1] = projected_point[1] ;
+        ret[0] = projected_point[0]/projected_point[2] ;
+        ret[1] = projected_point[1]/projected_point[2] ;
 
-        console.log("I am the returned point,  look at me : %f %f \n Input : %f %f", ret[0], ret[1], point2D[0], point2D[1]);
+        //console.log("I am the returned point,  look at me : %f %f \n Input : %f %f", ret[0], ret[1], point2D[0], point2D[1]);
 
         return ret;
     }
