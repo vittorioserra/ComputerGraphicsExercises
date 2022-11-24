@@ -214,12 +214,23 @@ function doAlphaBlending(index, images, alphas) {
 
     //count number of non-zero elements
 
+
+    /*for(let alpha_iter = 0; alpha_iter < 4; alpha_iter++){
+
+        if(alphas[alpha_iter]== 0.0){
+
+            alphas[alpha_iter] = 1.0;
+
+        }
+
+    }*/
+
     let n_non_zero = 0;
     let already_set = 0;
 
     for(let i = 0; i < 4; i++){
 
-        if(((images[i][index+0]!=0)|(images[i][index+1]!=0)|(images[i][index+2]!=0))&(alphas[i]!=0)){
+        if((((images[i][index+0]!=0)|(images[i][index+1]!=0)|(images[i][index+2]!=0))&(alphas[i]!=0.0))){
 
             n_non_zero++;
 
@@ -242,7 +253,9 @@ function doAlphaBlending(index, images, alphas) {
 
                     if(images[i][index+color_iter]==0){
 
-                        rgba_c[color_iter] = alphas[i]*255 + images[i][index+color_iter];
+                        rgba_c[color_iter] = (1-alphas[i])*255 + images[i][index+color_iter];
+
+                        //console.log("%i", alphas[i]*255);
 
                     }else{
 
@@ -257,23 +270,23 @@ function doAlphaBlending(index, images, alphas) {
  *               //rgba_c[2] = images[i][index+2];
  *               //rgba_c[3] = (alphas[i])*255;
 */
+                //rgba_c[3] = Math.floor(255);
                 already_set = 1;
             }
-
         }else if((n_non_zero > 1)){
 
             //update only if current element is not zero, already set plays no role
             if(((images[i][index+0]!=0)|(images[i][index+1]!=0)|(images[i][index+2]!=0))&(alphas[i]!=0)){
 
 
-                rgba_c[0] = rgba_c[0]*(alphas[i]);
-                rgba_c[1] = rgba_c[1]*(alphas[i]);
-                rgba_c[2] = rgba_c[2]*(alphas[i]);
+                rgba_c[0] = rgba_c[0]*(1-alphas[i]);
+                rgba_c[1] = rgba_c[1]*(1-alphas[i]);
+                rgba_c[2] = rgba_c[2]*(1-alphas[i]);
                 //rgba_c[3] = rgba_c[3]*(1-(rgba_c[3]/255.0));
 
-                rgba_c[0] = rgba_c[0] + images[i][index+0] * (1-alphas[i]);
-                rgba_c[1] = rgba_c[1] + images[i][index+2] * (1-alphas[i]);
-                rgba_c[2] = rgba_c[2] + images[i][index+2] * (1-alphas[i]);
+                rgba_c[0] = rgba_c[0] + images[i][index+0] * (alphas[i]);
+                rgba_c[1] = rgba_c[1] + images[i][index+2] * (alphas[i]);
+                rgba_c[2] = rgba_c[2] + images[i][index+2] * (alphas[i]);
                 //rgba_c[3] = 255*alphas[i];
 
 
