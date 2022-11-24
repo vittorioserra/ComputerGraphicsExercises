@@ -88,8 +88,9 @@
 }
 */
 
-
+/*
  function doAlphaBlending(index, images, alphas) {
+
     // TODO 4.3:    Compute the blended color (as an array of 3 values
     //              in the interval [0, 255]) for one pixel
     //              of the resulting image. "images" is the array
@@ -139,22 +140,15 @@
             //(curr_color[0]!=0) | (curr_color[1]!=0) | (curr_color[2]!=0)
             if(curr_color[3]!=0){
 
-                if(n_non_zero > 1){
+                rgba_c[0] = rgba_c[0]*((rgba_c[3]/255.0));
+                rgba_c[1] = rgba_c[1]*((rgba_c[3]/255.0));
+                rgba_c[2] = rgba_c[2]*((rgba_c[3]/255.0));
+                //rgba_c[3] = rgba_c[3]*(1-(rgba_c[3]/255.0));
 
-                    //update color
-                    rgba_c[0] = rgba_c[0]*((rgba_c[3]/255.0));
-                    rgba_c[1] = rgba_c[1]*((rgba_c[3]/255.0));
-                    rgba_c[2] = rgba_c[2]*((rgba_c[3]/255.0));
-                    //rgba_c[3] = rgba_c[3]*(1-(rgba_c[3]/255.0));
-
-                    rgba_c[0] = rgba_c[0] + curr_color[1] * (1-alphas[i]);
-                    rgba_c[1] = rgba_c[1] + curr_color[2] * (1-alphas[i]);
-                    rgba_c[2] = rgba_c[2] + curr_color[3] * (1-alphas[i]);
-                    rgba_c[3] = 255*alphas[i];
-
-                }else{
-                    //do nothig, keep current color value, which is either a real color or zero
-                }
+                rgba_c[0] = rgba_c[0] + curr_color[1] * (1-alphas[i]);
+                rgba_c[1] = rgba_c[1] + curr_color[2] * (1-alphas[i]);
+                rgba_c[2] = rgba_c[2] + curr_color[3] * (1-alphas[i]);
+                rgba_c[3] = 255*alphas[i];
 
             }else{
 
@@ -198,6 +192,87 @@
 
     // 4. Compute the resulting color using alpha blending in all
     //    three color channels.
+
+    return rgba_c;
+}
+*/
+
+function doAlphaBlending(index, images, alphas) {
+    // TODO 4.3:    Compute the blended color (as an array of 3 values
+    //              in the interval [0, 255]) for one pixel
+    //              of the resulting image. "images" is the array
+    //              of circle images from left to right, "alphas"
+    //              contains the respective alpha values. "index"
+    //              is the linearized index for the images, so for
+    //              example with images[2][index + 1] you can address
+    //              the green color channel of the current pixel
+    //              in the third image.
+
+    let rgba_c = [255, 255, 255, 0];
+
+    let curr_color = [0, 0, 0, 0];
+
+    //count number of non-zero elements
+
+    let n_non_zero = 0;
+    let already_set = 0;
+
+    for(let i = 0; i < 4; i++){
+
+        if((images[i][index+0]!=0)|(images[i][index+1]!=0)|(images[i][index+2]!=0)){
+
+            n_non_zero++;
+
+        }
+
+    }
+
+    //console.log("%i circles on pixel", n_non_zero);
+
+    for(let i = 0; i < 4; i++){
+
+        //if just one element, set solid color, there will be only one element there anyway!
+        if((n_non_zero == 1)){
+
+            //set only if elements are ok and not zero
+
+            if((images[i][index+0]!=0)|(images[i][index+1]!=0)|(images[i][index+2]!=0)){
+
+                rgba_c[0] = images[i][index+0];
+                rgba_c[1] = images[i][index+1];
+                rgba_c[2] = images[i][index+2];
+                rgba_c[3] = (alphas[i])*255;
+
+                already_set = 1;
+            }
+
+        }else if((n_non_zero > 1)){
+
+            //update only if current element is not zero, already set plays no role
+            if((images[i][index+0]!=0)|(images[i][index+1]!=0)|(images[i][index+2]!=0)){
+
+                rgba_c[0] = rgba_c[0]*((rgba_c[3]/255.0));
+                rgba_c[1] = rgba_c[1]*((rgba_c[3]/255.0));
+                rgba_c[2] = rgba_c[2]*((rgba_c[3]/255.0));
+                //rgba_c[3] = rgba_c[3]*(1-(rgba_c[3]/255.0));
+
+                rgba_c[0] = rgba_c[0] + images[i][index+0] * (1-alphas[i]);
+                rgba_c[1] = rgba_c[1] + images[i][index+2] * (1-alphas[i]);
+                rgba_c[2] = rgba_c[2] + images[i][index+2] * (1-alphas[i]);
+                rgba_c[3] = 255*alphas[i];
+
+            }
+
+
+        }else if(n_non_zero == 0){
+
+            //then we have a backgorund color
+
+            rgba_c = [255,255,255,0];
+
+        }
+
+    }
 
     return rgba_c;
 }
