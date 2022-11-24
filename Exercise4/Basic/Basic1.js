@@ -1,4 +1,5 @@
 
+
 function arrow(context, fromx, fromy, tox, toy) {
     // http://stuff.titus-c.ch/arrow.html
     let headlen = 10;   // length of head in pixels
@@ -223,20 +224,21 @@ mat3.perspective = function (out, fovy, near, far) {
     //              Use column-major order!
 
 
+
     var t = near * Math.tan(fovy/2.0);
     var b = -t;
 
-    out[0] = (2*near)/(t-b);
-    out[1] = 0;
-    out[2] = 0;
+    out[0] = (2.0*near)/(t-b);
+    out[1] = 0.0;
+    out[2] = 0.0;
 
     out[3] = (b+t)/(t-b);
     out[4] = -(far+near)/(far-near);
-    out[5] = -1;
+    out[5] = -1.0;
 
-    out[6] = 0;
-    out[7] = -(2*far*near)/(far-near);
-    out[8] = 0;
+    out[6] = 0.0;
+    out[7] = -(2.0*far*near)/(far-near);
+    out[8] = 0.0;
 
     return out;
     
@@ -291,21 +293,21 @@ class Camera {
         //              You can use gl-matrix.js where necessary. Use column-major order!
         //              It can be handy to compute the inverted matrix first.
 
-        this.w = -negViewDir;
+        this.w = negViewDir;
         this.v = vec2.create();
 
         let t = vec2.create();
         t[0] = 1.0;
         t[1] = 0.0;
 
-        let alpha = Math.atan2(negViewDir[1]-this.w[1], negViewDir[0] - this.w[0]);
+        let alpha = (Math.PI/2);
         let rm = mat2.create();
         rm[0] = Math.cos(alpha);
         rm[1] = Math.sin(alpha);
         rm[2] = -Math.sin(alpha);
         rm[3] = Math.cos(alpha);
-        this.v[0] = rm[0]*t[0] + rm[2]*t[1];
-        this.v[1] = rm[1]*t[0] + rm[3]*t[1];
+        this.v[0] = rm[0]*this.w[0] + rm[2]*this.w[1];
+        this.v[1] = rm[1]*this.w[0] + rm[3]*this.w[1];
 
 
         let R = mat2.create();
@@ -357,12 +359,16 @@ class Camera {
         //              Don't forget to dehomogenize the projected point 
         //              before returning it! You can use gl-matrix.js where
         //              necessary.
+        let point = vec3.create();
+        point[0] = point2D[0];
+        point[1] = point2D[1];
+        point[2] = 1.0;
 
-        let point = vec3.create(point2D[0], point2D[1], 1.0);
-
-        let projection = this.projectionMatrix * this.cameraMatrix * point;
-
-        let out = vec2.create(projection[0], projection[1]);
+        let p_cam = vec3.create();
+        let projection = vec3.create();
+        vec3.transformMat3(p_cam, point, this.cameraMatrix);
+        vec3.transformMat3(projection,p_cam,this.projectionMatrix);
+        return [projection[0]/projection[2], projection[1]/projection[2]];
 
         return out;
     }
