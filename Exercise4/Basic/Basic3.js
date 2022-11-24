@@ -208,9 +208,9 @@ function doAlphaBlending(index, images, alphas) {
     //              the green color channel of the current pixel
     //              in the third image.
 
-    let rgba_c = [255, 255, 255, 0];
+    let rgba_c = [255, 255, 255];
 
-    let curr_color = [0, 0, 0, 0];
+    let curr_color = [0, 0, 0];
 
     //count number of non-zero elements
 
@@ -219,7 +219,7 @@ function doAlphaBlending(index, images, alphas) {
 
     for(let i = 0; i < 4; i++){
 
-        if((images[i][index+0]!=0)|(images[i][index+1]!=0)|(images[i][index+2]!=0)){
+        if(((images[i][index+0]!=0)|(images[i][index+1]!=0)|(images[i][index+2]!=0))&(alphas[i]!=0)){
 
             n_non_zero++;
 
@@ -236,31 +236,62 @@ function doAlphaBlending(index, images, alphas) {
 
             //set only if elements are ok and not zero
 
-            if((images[i][index+0]!=0)|(images[i][index+1]!=0)|(images[i][index+2]!=0)){
+            if(((images[i][index+0]!=0)|(images[i][index+1]!=0)|(images[i][index+2]!=0))&(alphas[i]!=0)){
 
-                rgba_c[0] = images[i][index+0];
-                rgba_c[1] = images[i][index+1];
-                rgba_c[2] = images[i][index+2];
-                rgba_c[3] = (alphas[i])*255;
+                for(let color_iter = 0; color_iter < 3; color_iter++){
 
+                    if(images[i][index+color_iter]==0){
+
+                        rgba_c[color_iter] = alphas[i]*255 + images[i][index+color_iter];
+
+                    }else{
+
+                        rgba_c[color_iter] = images[i][index+color_iter];
+
+                    }
+
+                }
+/*
+ *               //rgba_c[0] = (alphas[i])*255 + images[i][index+0];
+ *               //rgba_c[1] = (alphas[i])*255 + images[i][index+1];
+ *               //rgba_c[2] = images[i][index+2];
+ *               //rgba_c[3] = (alphas[i])*255;
+*/
                 already_set = 1;
             }
 
         }else if((n_non_zero > 1)){
 
             //update only if current element is not zero, already set plays no role
-            if((images[i][index+0]!=0)|(images[i][index+1]!=0)|(images[i][index+2]!=0)){
+            if(((images[i][index+0]!=0)|(images[i][index+1]!=0)|(images[i][index+2]!=0))&(alphas[i]!=0)){
 
-                rgba_c[0] = rgba_c[0]*((rgba_c[3]/255.0));
-                rgba_c[1] = rgba_c[1]*((rgba_c[3]/255.0));
-                rgba_c[2] = rgba_c[2]*((rgba_c[3]/255.0));
+
+                rgba_c[0] = rgba_c[0]*(alphas[i]);
+                rgba_c[1] = rgba_c[1]*(alphas[i]);
+                rgba_c[2] = rgba_c[2]*(alphas[i]);
                 //rgba_c[3] = rgba_c[3]*(1-(rgba_c[3]/255.0));
 
                 rgba_c[0] = rgba_c[0] + images[i][index+0] * (1-alphas[i]);
                 rgba_c[1] = rgba_c[1] + images[i][index+2] * (1-alphas[i]);
                 rgba_c[2] = rgba_c[2] + images[i][index+2] * (1-alphas[i]);
-                rgba_c[3] = 255*alphas[i];
+                //rgba_c[3] = 255*alphas[i];
 
+
+                /*
+                for(let color_iter = 0; color_iter < 3; color_iter++){
+
+                    if(images[i][index+color_iter]==0){
+
+                        rgba_c[color_iter] = alphas[i]*255 + images[i][index+color_iter];
+
+                    }else{
+
+                        rgba_c[color_iter] = images[i][index+color_iter];
+
+                    }
+
+                }
+                */
             }
 
 
@@ -268,7 +299,7 @@ function doAlphaBlending(index, images, alphas) {
 
             //then we have a backgorund color
 
-            rgba_c = [255,255,255,0];
+            rgba_c = [255,255,255];//,0];
 
         }
 
