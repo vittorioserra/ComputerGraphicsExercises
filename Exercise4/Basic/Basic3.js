@@ -321,7 +321,7 @@ function doAlphaBlending(index, images, alphas) {
             }
 
 
-            if((cnt_solid_color > 0) & (pos_last_solid_color == (n_non_zero-1))){
+            if((cnt_solid_color > 0) & (pos_last_solid_color == n_non_zero)){
 
                 rgba_c[0] = images[pos_last_solid_color][index+0];
                 rgba_c[1] = images[pos_last_solid_color][index+1];
