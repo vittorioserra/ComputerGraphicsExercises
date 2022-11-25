@@ -250,7 +250,7 @@ function doAlphaBlending(index, images, alphas) {
 
     for(let i = 0; i < 4; i++){
 
-        if((((images[i][index+0]!=0)|(images[i][index+1]!=0)|(images[i][index+2]!=0))&(alphas[i]!=0.0))){
+        if((((images[i][index+0]!=0)|(images[i][index+1]!=0)|(images[i][index+2]!=0))&(alphas[i]>0.0))){
 
             n_non_zero++;
             pos_last_color = i;
@@ -332,23 +332,25 @@ function doAlphaBlending(index, images, alphas) {
                     break;
                 }
                 */
-                if((solid_on_top==true)){
+            if((solid_on_top==true)){
 
 
-                if((images[i][index+0]!=0)|(images[i][index+1]!=0)|(images[i][index+2]!=0)){
+                if((alphas[i]!=0)&(images[i][index+0]!=0)|(images[i][index+1]!=0)|(images[i][index+2]!=0)&(already_set==false)){
 
-                    rgba_c[0] = images[i][index+0];
-                    rgba_c[1] = images[i][index+1];
-                    rgba_c[2] = images[i][index+2];
+                    rgba_c[0] = images[pos_last_solid_color][index+0];
+                    rgba_c[1] = images[pos_last_solid_color][index+1];
+                    rgba_c[2] = images[pos_last_solid_color][index+2];
 
                     //console.log("I : %i is one", i);
+
+                    //console.log("Last solid layer : %i", pos_last_solid_color);
 
                     already_set = true;
 
                 }
 
 
-            }else if(((images[i][index+0]!=0)|(images[i][index+1]!=0)|(images[i][index+2]!=0))&(alphas[i]!=0)){
+            }else if(((images[i][index+0]!=0)|(images[i][index+1]!=0)|(images[i][index+2]!=0))&(alphas[i]!=0)&(solid_on_top==false)){
 
                 //update only if current element is not zero, already set plays no role
 
