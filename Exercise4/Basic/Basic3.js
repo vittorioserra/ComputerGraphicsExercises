@@ -197,6 +197,8 @@
 }
 */
 
+
+
 function doAlphaBlending(index, images, alphas) {
     // TODO 4.3:    Compute the blended color (as an array of 3 values
     //              in the interval [0, 255]) for one pixel
@@ -228,11 +230,21 @@ function doAlphaBlending(index, images, alphas) {
     let n_non_zero = 0;
     let already_set = 0;
 
+    let cnt_solid_color = 0;
+    let pos_last_solid_color = 0;
+
     for(let i = 0; i < 4; i++){
 
         if((((images[i][index+0]!=0)|(images[i][index+1]!=0)|(images[i][index+2]!=0))&(alphas[i]!=0.0))){
 
             n_non_zero++;
+
+        }
+
+        if(alphas[i]==1.0){
+
+            cnt_solid_color ++;
+            pos_last_solid_color = i;
 
         }
 
@@ -275,6 +287,7 @@ function doAlphaBlending(index, images, alphas) {
             }
         }else if((n_non_zero > 1)){
 
+
             //update only if current element is not zero, already set plays no role
             if(((images[i][index+0]!=0)|(images[i][index+1]!=0)|(images[i][index+2]!=0))&(alphas[i]!=0)){
 
@@ -285,7 +298,7 @@ function doAlphaBlending(index, images, alphas) {
                 //rgba_c[3] = rgba_c[3]*(1-(rgba_c[3]/255.0));
 
                 rgba_c[0] = rgba_c[0] + images[i][index+0] * (alphas[i]);
-                rgba_c[1] = rgba_c[1] + images[i][index+2] * (alphas[i]);
+                rgba_c[1] = rgba_c[1] + images[i][index+1] * (alphas[i]);
                 rgba_c[2] = rgba_c[2] + images[i][index+2] * (alphas[i]);
                 //rgba_c[3] = 255*alphas[i];
 
@@ -308,6 +321,25 @@ function doAlphaBlending(index, images, alphas) {
             }
 
 
+            if((cnt_solid_color > 0) & (pos_last_solid_color == (n_non_zero-1))){
+
+                rgba_c[0] = images[pos_last_solid_color][index+0];
+                rgba_c[1] = images[pos_last_solid_color][index+1];
+                rgba_c[2] = images[pos_last_solid_color][index+2];
+
+                console.log("Pos last solid color : %i\n", pos_last_solid_color);
+                console.log("Non-Zero elem : %i , Pos-Last-Solid-Color %i\n", n_non_zero, pos_last_solid_color);
+
+                break;
+
+            }
+
+
+            //but if the color is solid, simply overlap
+            //steps neded for this :
+            //1) understand what is on top
+
+
         }else if(n_non_zero == 0){
 
             //then we have a backgorund color
@@ -321,6 +353,57 @@ function doAlphaBlending(index, images, alphas) {
     return rgba_c;
 }
 
+
+// function doAlphaBlending(index, images, alphas) {
+//     // TODO 4.3:    Compute the blended color (as an array of 3 values
+//     //              in the interval [0, 255]) for one pixel
+//     //              of the resulting image. "images" is the array
+//     //              of circle images from left to right, "alphas"
+//     //              contains the respective alpha values. "index"
+//     //              is the linearized index for the images, so for
+//     //              example with images[2][index + 1] you can address
+//     //              the green color channel of the current pixel
+//     //              in the third image.
+//
+//     //understand if solid color is on top
+//     //we are already working on the pixel level, so it should be fine in the end
+//
+//     rgba_c = [255,255,255];
+//
+//     let n_non_zero = 0;
+//
+//     for(let i = 0; i < 4; i++){
+//
+//         //check if element is non-zero
+//
+//         if((images[i][index+0]==0)|(images[i][index+0]==0)|(images[i][index+0]==0)|(alphas[i]!=0)){
+//
+//
+//             n_non_zero ++;
+//
+//
+//         }
+//
+//     }
+//
+//     for(let i = 0; i < 4; i++){
+//
+//
+//         if((alphas[i]==1)&(i == (n_non_zero - 1))){
+//
+//
+//             rgba_c[0] = images[pos_last_solid_color][index+0];
+//             rgba_c[1] = images[pos_last_solid_color][index+2];
+//             rgba_c[2] = images[pos_last_solid_color][index+2];
+//
+//         }
+//
+//
+//     }
+//
+//
+//     return rgba_c;
+// }
 
 function Basic3(canvas) {
     let alphas = [0.5, 0.5, 0.5, 0.5];
