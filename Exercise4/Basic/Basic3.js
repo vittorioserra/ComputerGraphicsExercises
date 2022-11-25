@@ -210,35 +210,50 @@ function doAlphaBlending(index, images, alphas) {
     //              the green color channel of the current pixel
     //              in the third image.
 
-    let rgba_c = [255, 255, 255];
+//     let rgba_c = [255, 255, 255];
+//
+//     let curr_color = [0, 0, 0];
+//
+//     let n_non_zero = 0;
+//     let already_set = 0;
+//
+//     let cnt_solid_color = 0;
+//     let pos_last_solid_color = 0;
+//
+//
+//
+//
+//     for(let i = 0; i < 4; i++){
+//
+//         if((((images[i][index+0]!=0)|(images[i][index+1]!=0)|(images[i][index+2]!=0))&(alphas[i]!=0.0))){
+//
+//             n_non_zero++;
+//
+//         }
+//
+//         if(alphas[i]==1.0){
+//
+//             cnt_solid_color ++;
+//             pos_last_solid_color = i;
+//
+//         }
+//
+//     }
 
-    let curr_color = [0, 0, 0];
 
-    //count number of non-zero elements
-
-
-    /*for(let alpha_iter = 0; alpha_iter < 4; alpha_iter++){
-
-        if(alphas[alpha_iter]== 0.0){
-
-            alphas[alpha_iter] = 1.0;
-
-        }
-
-    }*/
+    let already_set = false;
 
     let n_non_zero = 0;
-    let already_set = 0;
-
     let cnt_solid_color = 0;
-    let pos_last_solid_color = 0;
+    let pos_last_solid_color = 1000;
+    let pos_last_color = 1001;
 
     for(let i = 0; i < 4; i++){
 
         if((((images[i][index+0]!=0)|(images[i][index+1]!=0)|(images[i][index+2]!=0))&(alphas[i]!=0.0))){
 
             n_non_zero++;
-
+            pos_last_color = i;
         }
 
         if(alphas[i]==1.0){
@@ -250,7 +265,14 @@ function doAlphaBlending(index, images, alphas) {
 
     }
 
-    //console.log("%i circles on pixel", n_non_zero);
+    let solid_on_top = false;
+
+    if(pos_last_solid_color==pos_last_color){
+
+        solid_on_top = true;
+
+    }
+
 
     for(let i = 0; i < 4; i++){
 
@@ -276,61 +298,67 @@ function doAlphaBlending(index, images, alphas) {
                     }
 
                 }
-/*
- *               //rgba_c[0] = (alphas[i])*255 + images[i][index+0];
- *               //rgba_c[1] = (alphas[i])*255 + images[i][index+1];
- *               //rgba_c[2] = images[i][index+2];
- *               //rgba_c[3] = (alphas[i])*255;
-*/
-                //rgba_c[3] = Math.floor(255);
                 already_set = 1;
             }
         }else if((n_non_zero > 1)){
 
 
-            //update only if current element is not zero, already set plays no role
-            if(((images[i][index+0]!=0)|(images[i][index+1]!=0)|(images[i][index+2]!=0))&(alphas[i]!=0)){
+            /*
+            if((cnt_solid_color > 0) & (pos_last_solid_color+1 == n_non_zero)){
 
+                //check if there is a solid color after
 
-                rgba_c[0] = rgba_c[0]*(1-alphas[i]);
-                rgba_c[1] = rgba_c[1]*(1-alphas[i]);
-                rgba_c[2] = rgba_c[2]*(1-alphas[i]);
-                //rgba_c[3] = rgba_c[3]*(1-(rgba_c[3]/255.0));
+                let solid_color_after = 0;
 
-                rgba_c[0] = rgba_c[0] + images[i][index+0] * (alphas[i]);
-                rgba_c[1] = rgba_c[1] + images[i][index+1] * (alphas[i]);
-                rgba_c[2] = rgba_c[2] + images[i][index+2] * (alphas[i]);
-                //rgba_c[3] = 255*alphas[i];
+                for(let a = pos_last_solid_color; i < 4; ++i){
 
+                    if(alphas[a]==1.0){
 
-                /*
-                for(let color_iter = 0; color_iter < 3; color_iter++){
-
-                    if(images[i][index+color_iter]==0){
-
-                        rgba_c[color_iter] = alphas[i]*255 + images[i][index+color_iter];
-
-                    }else{
-
-                        rgba_c[color_iter] = images[i][index+color_iter];
+                        solid_color_after = 1;
 
                     }
 
                 }
+
+                if(solid_color_after==0){
+
+                    rgba_c[0] = images[pos_last_solid_color][index+0];
+                    rgba_c[1] = images[pos_last_solid_color][index+1];
+                    rgba_c[2] = images[pos_last_solid_color][index+2];
+
+                    console.log("Pos last solid color : %i\n", pos_last_solid_color);
+                    console.log("Non-Zero elem : %i , Pos-Last-Solid-Color %i\n", n_non_zero, pos_last_solid_color);
+
+                    break;
+                }
                 */
-            }
+                if((solid_on_top==true)){
 
 
-            if((cnt_solid_color > 0) & (pos_last_solid_color == n_non_zero)){
+                if((images[i][index+0]!=0)|(images[i][index+1]!=0)|(images[i][index+2]!=0)){
 
-                rgba_c[0] = images[pos_last_solid_color][index+0];
-                rgba_c[1] = images[pos_last_solid_color][index+1];
-                rgba_c[2] = images[pos_last_solid_color][index+2];
+                    rgba_c[0] = images[i][index+0];
+                    rgba_c[1] = images[i][index+1];
+                    rgba_c[2] = images[i][index+2];
 
-                console.log("Pos last solid color : %i\n", pos_last_solid_color);
-                console.log("Non-Zero elem : %i , Pos-Last-Solid-Color %i\n", n_non_zero, pos_last_solid_color);
+                    //console.log("I : %i is one", i);
 
-                break;
+                    already_set = true;
+
+                }
+
+
+            }else if(((images[i][index+0]!=0)|(images[i][index+1]!=0)|(images[i][index+2]!=0))&(alphas[i]!=0)){
+
+                //update only if current element is not zero, already set plays no role
+
+                rgba_c[0] = rgba_c[0]*(1-alphas[i]);
+                rgba_c[1] = rgba_c[1]*(1-alphas[i]);
+                rgba_c[2] = rgba_c[2]*(1-alphas[i]);
+
+                rgba_c[0] = rgba_c[0] + images[i][index+0] * (alphas[i]);
+                rgba_c[1] = rgba_c[1] + images[i][index+1] * (alphas[i]);
+                rgba_c[2] = rgba_c[2] + images[i][index+2] * (alphas[i]);
 
             }
 
@@ -370,35 +398,67 @@ function doAlphaBlending(index, images, alphas) {
 //
 //     rgba_c = [255,255,255];
 //
+//     let already_set = false;
+//
 //     let n_non_zero = 0;
+//     let cnt_solid_color = 0;
+//     let pos_last_solid_color = 1000;
+//     let pos_last_color = 1001;
 //
 //     for(let i = 0; i < 4; i++){
 //
-//         //check if element is non-zero
+//         if((((images[i][index+0]!=0)|(images[i][index+1]!=0)|(images[i][index+2]!=0))&(alphas[i]!=0.0))){
 //
-//         if((images[i][index+0]==0)|(images[i][index+0]==0)|(images[i][index+0]==0)|(alphas[i]!=0)){
+//             n_non_zero++;
+//             pos_last_color = i;
+//         }
 //
+//         if(alphas[i]==1.0){
 //
-//             n_non_zero ++;
-//
+//             cnt_solid_color ++;
+//             pos_last_solid_color = i;
 //
 //         }
 //
 //     }
 //
+//     let solid_on_top = false;
+//
+//     if(pos_last_solid_color==pos_last_color){
+//
+//         solid_on_top = true;
+//
+//     }
+//
+//
+//     //solid color blending
 //     for(let i = 0; i < 4; i++){
 //
+//             //if((alphas[i]==1.0)&((images[i][index+0]!=0)|(images[i][index+1]!=0)|(images[i][index+2]!=0))){
+//             if((solid_on_top==true)){
 //
-//         if((alphas[i]==1)&(i == (n_non_zero - 1))){
 //
+//                 if((images[i][index+0]!=0)|(images[i][index+1]!=0)|(images[i][index+2]!=0)){
 //
-//             rgba_c[0] = images[pos_last_solid_color][index+0];
-//             rgba_c[1] = images[pos_last_solid_color][index+2];
-//             rgba_c[2] = images[pos_last_solid_color][index+2];
+//                     rgba_c[0] = images[i][index+0];
+//                     rgba_c[1] = images[i][index+1];
+//                     rgba_c[2] = images[i][index+2];
+//
+//                     //console.log("I : %i is one", i);
+//
+//                     already_set = true;
+//
+//                 }
+//
+//             else{
+//
+//                 if(already_set == false){
+//                     rgba_c = [255,255,255];
+//                     already_set == true;
+//                 }
+//             }
 //
 //         }
-//
-//
 //     }
 //
 //
