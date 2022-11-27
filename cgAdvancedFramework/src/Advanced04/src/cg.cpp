@@ -92,10 +92,13 @@ void CG::update(float dt)
             p.lifeTime = glm::linearRand(0.0, 5.0);
             p.timeOffset = glm::linearRand(0.0, 2.0);
 
-            float scaleParticlePos = glm::linearRand(0.0, 0.05);
+            float scaleParticlePos = glm::linearRand(0.0, 0.5);
 
-            glm::vec3 coneOffsetMax(0.5, 0.5, 0.5);
-            glm::vec3 coneOffsetMin(0.1, 0.1, 0.1);
+            float max_val = 0.3;
+            float min_val = 0.1;
+
+            glm::vec3 coneOffsetMax(max_val, max_val, max_val);
+            glm::vec3 coneOffsetMin(min_val, min_val, min_val);
 
             vec3 offsetParticlePosCone = glm::linearRand(coneOffsetMin, coneOffsetMax);
 
@@ -195,6 +198,8 @@ void CG::renderParticles()
                                   0, cos(M_PI/2), -sin(M_PI/2), 0,
                                   0, sin(M_PI/2), cos(M_PI/2), 0,
                                   0, 0, 0, 1);
+
+        //rotateTowardsXY = transpose(rotateTowardsXY);
 
         mat4 particleTransformation =  translationMatrix * invUniformRotViewMat * rotateTowardsXY; // <- Change this line
 

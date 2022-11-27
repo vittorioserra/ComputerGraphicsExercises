@@ -36,8 +36,8 @@ mat4.perspective = function (out, fovy, near, far) {
     out[6] = 0.0;
     out[7] = 0.0;
 
-    out[8] = 0;//(l+r)/(r-l);
-    out[9] = 0;//(b+t)/(t-b);
+    out[8] = (l+r)/(r-l);
+    out[9] = (b+t)/(t-b);
     out[10] = -1.0*(far+near)/(far-near);
     out[11] = -1.0;
 
@@ -186,22 +186,6 @@ class Camera3D {
         R[7] = this.w[1];
         R[8] = this.w[2];
 
-/*
-        R[0] = 1;
-        R[1] = 0;
-        R[2] = 0;
-
-
-        R[3] = 0;
-        R[4] = 1;
-        R[5] = 0;
-
-
-        R[6] = 0;
-        R[7] = 0;
-        R[8] = 1;
-*/
-
 
         let e = vec3.create()
         e[0] = this.eye[0];
@@ -233,25 +217,25 @@ class Camera3D {
 
         let Rt_e = this.matMulVec3(R_t, e);
 
-        M_v[12] = 0.0;
-        M_v[13] = 0.0;
-        M_v[14] = 0.0;
+        M_v[12] = -Rt_e[0];
+        M_v[13] = -Rt_e[1];
+        M_v[14] = -Rt_e[2];
         M_v[15] = 1.0;
         // this.cameraMatrix = ?
 
-        let first_matrix = mat4.fromValues(this.u[0], this.v[0], this.w[0], 0,
-                                           this.u[1], this.v[1], this.w[1], 0,
-                                           this.u[2], this.v[2], this.w[2], 0,
-                                           0,0,0, 1);
+        //let first_matrix = mat4.fromValues(this.u[0], this.v[0], this.w[0], 0,
+        //                                    this.u[1], this.v[1], this.w[1], 0,
+        //                                    this.u[2], this.v[2], this.w[2], 0,
+        //                                    0,0,0, 1);
 
-        let second_matrix  = mat4.fromValues(1,0,0,0,
-                                             0,1,0,0,
-                                             0,0,1,0,
-                                             -e[0], -e[1], -e[2], 1);
+        // let second_matrix  = mat4.fromValues(1,0,0,0,
+        //                                      0,1,0,0,
+        //                                      0,0,1,0,
+        //                                      -e[0], -e[1], -e[2], 1);
 
-        mat4.multiply(this.cameraMatrix, first_matrix, second_matrix);
+        //mat4.multiply(this.cameraMatrix, first_matrix, second_matrix);
 
-        /*
+
         this.cameraMatrix[0] = M_v[0];
         this.cameraMatrix[1] = M_v[1];
         this.cameraMatrix[2] = M_v[2];
@@ -268,7 +252,7 @@ class Camera3D {
         this.cameraMatrix[13] = M_v[13];
         this.cameraMatrix[14] = M_v[14];
         this.cameraMatrix[15] = M_v[15];
-        */
+
 
         this.projectionMatrix = mat4.create();
 
