@@ -92,7 +92,7 @@ void CG::update(float dt)
             p.lifeTime = glm::linearRand(0.0, 5.0);
             p.timeOffset = glm::linearRand(0.0, 2.0);
 
-            float scaleParticlePos = glm::linearRand(0.0, 0.5);
+            float scaleParticlePos = glm::linearRand(0.0, 0.1);
 
             float max_val = 0.3;
             float min_val = 0.1;
