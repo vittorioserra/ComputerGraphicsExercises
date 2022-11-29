@@ -156,6 +156,31 @@ vec3 quantize_three(vec3 c){
 }
 
 
+vec3 quantize_brightness_hsv(vec3 c){
+
+    vec3 retvec = vec3(0);
+
+    if(c[2]<0.33){
+
+        retvec[2] = 0.0;
+
+    }else if((c[2]>=0.33)&&(c[2]<0.67)){
+
+        retvec[2] = 0.5;
+
+    }else{
+        retvec[2] = 1.0;
+
+    }
+
+    retvec[0] = c[0];
+    retvec[1] = c[1];
+
+    return retvec;
+
+}
+
+
 void main()
 {
     //Is the same for every light type!
@@ -252,20 +277,23 @@ void main()
         vec3 colorSpot_hsv = rgb2hsv(colorSpot);
         vec3 colorPoint_hsv = rgb2hsv(colorPoint);
 
-        colorDirectional_q = quantize_three(colorDirectional_hsv);
-        colorSpot_q = quantize_three(colorSpot_hsv);
-        colorPoint_q = quantize_three(colorPoint_hsv);
+//         colorDirectional_q = quantize_three(colorDirectional_hsv);
+//         colorSpot_q = quantize_three(colorSpot_hsv);
+//         colorPoint_q = quantize_three(colorPoint_hsv);
 
-        colorDirectional_q = hsv2rgb(colorDirectional_q);
-        colorSpot_q = hsv2rgb(colorSpot_q);
-        //colorPoint_q = hvs2rgb(colorPoint_q); // fix this
+        vec3 colorDirectional_q_hsv = quantize_brightness_hsv(colorDirectional_hsv);
+        vec3 colorSpot_q_hsv = quantize_brightness_hsv(colorSpot_hsv);
+        vec3 colorPoint_q_hsv = quantize_brightness_hsv(colorPoint_hsv);
+
+        colorDirectional_q = hsv2rgb(colorDirectional_q_hsv);
+        colorSpot_q = hsv2rgb(colorSpot_q_hsv);
+        colorPoint_q = hsv2rgb(colorPoint_q_hsv);
 
 
         out_color = colorDirectional_q + colorSpot_q + colorPoint_q;
 
 
-    }else
-    {
+    }else{
         out_color = colorDirectional + colorSpot + colorPoint;
     }
 }
