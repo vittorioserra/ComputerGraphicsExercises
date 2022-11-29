@@ -1,4 +1,4 @@
-
+i
 --vertex
 layout(location = 0) in vec3 in_position;
 layout(location = 1) in vec3 in_normal;
@@ -88,13 +88,25 @@ vec3 phong(
     //  light.ambientIntensity
 	//as well as the other function parameters.
 
-    vec3 color_ambient  = vec3(0);
-	vec3 color_diffuse  = vec3(0);
-    vec3 color_specular = vec3(0);
+
+    float cos_phi = dot(n, l);
+
+    if(cos_phi < 0.0){
+
+       cos_phi = 0.0;
+
+    }
+
+    vec3 color_ambient  = light.color*light.ambientIntensity;
+	vec3 color_diffuse  = light.color*light.diffuseIntensity*cos_phi;
+    vec3 color_specular = light.color*light.specularIntensity*pow(cos_phi, light.shiny);
+
+
+    //vec3 color_ambient  = vec3(0);
+	//vec3 color_diffuse  = vec3(0);
+    //vec3 color_specular = vec3(0);
     return color_ambient + color_diffuse + color_specular;
 }
-
-
 
 
 vec3 rgb2hsv(vec3 c)
@@ -116,6 +128,32 @@ vec3 hsv2rgb(vec3 c)
 }
 
 
+vec3 quantize_three(vec3 c){
+
+    vec3 retvec = vec3(0);
+
+
+    for(int i = 0; i < 3; i++){
+
+        if((c[i]>=0.00)&&(c[i]<0.33)){
+
+            retvec[i] = 0.0;
+
+        }else if((c[i]>=0.33)&&(c[i]<0.66)){
+
+            retvec[i] = 0.5;
+
+        }else{
+
+            retvec[i] = 1.0;
+
+        }
+
+    }
+
+    return retvec;
+
+}
 
 
 void main()
@@ -131,29 +169,100 @@ void main()
     if(directionalLight.enable)
     {
         // TODO 5.4 b)
-        // Use the uniforms "directionalLight" and "objectColor" to compute "colorDirectional". 
-        colorDirectional = vec3(0); //<- change this line
+        // Use the uniforms "directionalLight" and "objectColor" to compute "colorDirectional".
+        colorDirectional = phong(directionalLight, objectColor, n, directionalLight.direction, v); //<- change this line
     }
 
     if(pointLight.enable)
     {
         //TODO 5.4 c)
         //Use the uniforms "pointLight" and "objectColor" to compute "colorPoint".
-        colorPoint = vec3(0); //<- change this line
+
+        vec3 I_0 = phong(pointLight, objectColor, n, pointLight.direction, v);
+
+        float r = length(pointLight.position - positionWorldSpace);
+
+        float denum = pointLight.attenuation[0] + pointLight.attenuation[1] * r + pointLight.attenuation[2] * r * r ;
+
+        colorPoint = I_0/denum; //<- change this line
     }
 
     if(spotLight.enable)
     {
         //TODO 5.4 d)
         //Use the uniforms "spotLight" and "objectColor" to compute "colorSpot".
-        colorSpot = vec3(0); //<- change this line
+
+        vec3 I_0 = phong(spotLight, objectColor, n, spotLight.direction, v);
+
+        float r = length(spotLight.position-positionWorldSpace);
+
+        float denum = spotLight.attenuation[0] + spotLight.attenuation[1] * r + spotLight.attenuation[2] * r * r ;
+
+        float spot_angle = acos(dot(normalize(spotLight.direction), normalize(positionWorldSpace-spotLight.position)));
+
+        //printf("Spot angle %f, light angle %f", spot_angle, spotLight.angle);
+
+        /*
+        if(spot_angle > spotLight.angle){
+
+            colorSpot = vec3(0);
+
+        }else if((spot_angle < spotLight.angle)&&(spot_angle>spotLight.angle*spotLight.sharpness)){
+
+            colorSpot = smoothstep(spotLight.angle*spotLight.sharpness, spotLight.angle, I_0/denum);//I_0/denum; //<- change this line
+
+        }else{
+
+            colorSpot = I_0/denum;
+
+        }
+        */
+
+        float scale_max = 1.0;
+        float intensity_scale = 0.0;
+
+
+        if(spot_angle < spotLight.angle*spotLight.sharpness){
+
+            colorSpot = I_0/denum;
+
+        }else if((spot_angle<spotLight.angle)&&(spot_angle>=spotLight.angle*spotLight.sharpness)){
+
+            intensity_scale = 1 - smoothstep(spotLight.angle*spotLight.sharpness, spotLight.angle, spot_angle);
+            colorSpot = intensity_scale * I_0/denum;
+
+        }else{
+
+            colorSpot = vec3(0);
+
+        }
+
     }
-
-
 
     if(cellShading)
     {
         //TODO 5.4 e)
+
+
+        vec3 colorDirectional_q = vec3(0);
+        vec3 colorSpot_q = vec3(0);
+        vec3 colorPoint_q = vec3(0);
+
+        vec3 colorDirectional_hsv = rgb2hsv(colorDirectional);
+        vec3 colorSpot_hsv = rgb2hsv(colorSpot);
+        vec3 colorPoint_hsv = rgb2hsv(colorPoint);
+
+        colorDirectional_q = quantize_three(colorDirectional_hsv);
+        colorSpot_q = quantize_three(colorSpot_hsv);
+        colorPoint_q = quantize_three(colorPoint_hsv);
+
+        colorDirectional_q = hsv2rgb(colorDirectional_q);
+        colorSpot_q = hsv2rgb(colorSpot_q);
+        //colorPoint_q = hvs2rgb(colorPoint_q); // fix this
+
+
+        out_color = colorDirectional_q + colorSpot_q + colorPoint_q;
+
 
     }else
     {

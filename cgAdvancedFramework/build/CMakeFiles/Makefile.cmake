@@ -14,6 +14,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/vserra/cg/cgAdvancedFramework/cmake/FindSDL2.cmake"
   "/home/vserra/cg/cgAdvancedFramework/src/Advanced03/CMakeLists.txt"
   "/home/vserra/cg/cgAdvancedFramework/src/Advanced04/CMakeLists.txt"
+  "/home/vserra/cg/cgAdvancedFramework/src/Advanced05/CMakeLists.txt"
   "/home/vserra/cg/cgAdvancedFramework/src/CMakeLists.txt"
   "/var/lib/snapd/snap/cmake/1204/share/cmake-3.25/Modules/CMakeCXXInformation.cmake"
   "/var/lib/snapd/snap/cmake/1204/share/cmake-3.25/Modules/CMakeCommonLanguageInclude.cmake"
@@ -55,6 +56,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "src/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/Advanced03/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/Advanced04/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/Advanced05/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
@@ -62,4 +64,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "src/CMakeFiles/CG_Framework.dir/DependInfo.cmake"
   "src/Advanced03/CMakeFiles/Advanced03.dir/DependInfo.cmake"
   "src/Advanced04/CMakeFiles/Advanced04.dir/DependInfo.cmake"
+  "src/Advanced05/CMakeFiles/Advanced05.dir/DependInfo.cmake"
   )

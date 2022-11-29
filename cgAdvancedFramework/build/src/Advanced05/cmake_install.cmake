@@ -1,4 +1,4 @@
-# Install script for directory: /home/vserra/cg/cgAdvancedFramework/src
+# Install script for directory: /home/vserra/cg/cgAdvancedFramework/src/Advanced05
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,20 +40,5 @@ endif()
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
   set(CMAKE_OBJDUMP "/usr/bin/objdump")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("/home/vserra/cg/cgAdvancedFramework/build/src/Advanced03/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("/home/vserra/cg/cgAdvancedFramework/build/src/Advanced04/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("/home/vserra/cg/cgAdvancedFramework/build/src/Advanced05/cmake_install.cmake")
 endif()
 
