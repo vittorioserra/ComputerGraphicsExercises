@@ -79,28 +79,59 @@ void main(void)
 	//				using the inverse camera matrix given as a 
 	//				uniform.
 
-	vec3 d = lightPosition - world_pos_frag;
+	vec3 d = world_pos_frag-lightPosition;
 
-	vec3 reflection = normalize(d - 2.0 * dot(d, normal)*normal);
+	vec3 reflection = normalize(d - 2.0*dot(d, normal)*normal);
 
-	vec4 camera_pos_camera_space_homogeneous = vec4(0.0);
-	camera_pos_camera_space_homogeneous[3] = 1.0;
-
-	vec4 camera_pos_world_space_homogeneous = camera_pos_camera_space_homogeneous * cameraMatrixInverse;
-
-	vec3 view = normalize(vec3(camera_pos_world_space_homogeneous)/camera_pos_world_space_homogeneous[3]);
-
-	float theta = dot(vec3(0.5), view);
+	//vec4 camera_pos_camera_space_homogeneous = vec4(0.0);
+	//camera_pos_camera_space_homogeneous[3] = 1.0;
 
 
-	if(theta < 0.0){
+	//vec4 camera_pos_world_space_homogeneous = camera_pos_camera_space_homogeneous * cameraMatrixInverse;
+	//vec3 view = normalize(vec3(camera_pos_world_space_homogeneous));///camera_pos_world_space_homogeneous[3]
+
+
+	vec4 c_pos_c_s = vec4(0.0);
+	c_pos_c_s[3] = 1.0;
+
+	vec4 c_pos_w_s = cameraMatrixInverse * c_pos_c_s;
+
+	vec3 view_v  = vec3(c_pos_w_s);
+
+	view_v = normalize(view_v);
+
+	//view_v = vec3(0.0);
+	//view_v[0] = 1.0;
+
+	float theta = dot(reflection, view_v);
+
+	//if((theta<-1.0)||(theta>1.0)){
+
+	//	theta=1.0;
+
+	//}
+
+
+	if(theta<0.0){
 
 		theta = 0.0;
 
 	}
 
+	color_specular = k_spec * pow(theta, shiny);
 
-	color_specular = k_spec * theta;
+	//if((theta>=-1.0)&&(theta<=1.0)){
+	//	color_specular = k_spec * pow(theta, shiny);
+	//}else{
+
+	//	color_specular=vec3(0.0);
+	//	color_specular[0] = 1.0;
+
+	//}
+
+
+
+
 
 
 	///////////////////////////////////

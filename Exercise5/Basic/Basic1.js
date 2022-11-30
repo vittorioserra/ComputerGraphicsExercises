@@ -352,14 +352,12 @@ function Basic1_2(canvas) {
         let albedo = [0, 1, 0];
 
         // draw surface (line segments) using flat shading
-        for (let i = 0; i < nLineSegments; ++i) {
+        for (let i = 0; i < nLineSegments; i++) {
             // TODO 5.1b) Implement Flat Shading of the line segments - follow the stepwise instructions below:
 
             // 1. Compute representor of the primitive (-> midpoint on the line segment).
-            let _alpha = i / (nLineSegments);
-            let start = [270 - amplitude * Math.sin(_alpha * Math.PI), Math.floor((1.0 - _alpha) * p0 + _alpha * p1)];
-            _alpha = (i + 1.0) / (nLineSegments);
-            let end = [270 - amplitude * Math.sin(_alpha * Math.PI), Math.ceil((1.0 - _alpha) * p0 + _alpha * p1)];
+            let start = lineSegments[i][0];
+            let end = lineSegments[i][1];
 
             let midpoint = [start[0] + (end[0]-start[0])/2, start[1] + (end[1]-start[1])/2];
 
@@ -370,6 +368,11 @@ function Basic1_2(canvas) {
 
             let normal = [-seg_vec[1], seg_vec[0]];
 
+            let normal_length = Math.sqrt(Math.pow(normal[0], 2) + Math.pow(normal[1], 2));
+
+            normal[0] = normal[0] / normal_length;
+            normal[1] = normal[1] / normal_length;
+
             // 3. Use the function PhongLighting that you implemented in the previous assignment to evaluate the color.
 
             let color = PhongLighting(context, midpoint, normal, eye, pointLight, albedo, false);
@@ -378,6 +381,7 @@ function Basic1_2(canvas) {
 
             // draw the line segment
             context.beginPath();
+            setStrokeStyle(context, color);//[0, 0, 0]);
             context.lineWidth = 8;
             context.moveTo(lineSegments[i][0][1], lineSegments[i][0][0]);
             context.lineTo(lineSegments[i][1][1], lineSegments[i][1][0]);
