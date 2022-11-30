@@ -89,6 +89,10 @@ vec3 phong(
 	//as well as the other function parameters.
 
 
+    l = normalize(l);
+    n = normalize(n);
+    v = normalize(v);
+
     float cos_phi = dot(n, l);
 
     if(cos_phi < 0.0){
@@ -97,9 +101,21 @@ vec3 phong(
 
     }
 
+    vec3 d = -l;
+    vec3 r = normalize(d - n*2.0*dot(d, n));
+
+    float cos_theta = dot(r, v);
+
+    if(cos_theta < 0.0){
+
+        cos_theta = 0.0;
+
+    }
+
+
     vec3 color_ambient  = light.color*light.ambientIntensity;
 	vec3 color_diffuse  = light.color*light.diffuseIntensity*cos_phi;
-    vec3 color_specular = light.color*light.specularIntensity*pow(cos_phi, light.shiny);
+    vec3 color_specular = light.color*light.specularIntensity*pow(cos_theta, light.shiny);
 
 
     //vec3 color_ambient  = vec3(0);
@@ -194,7 +210,10 @@ void main()
     {
         // TODO 5.4 b)
         // Use the uniforms "directionalLight" and "objectColor" to compute "colorDirectional".
-        colorDirectional = phong(directionalLight, objectColor, n, directionalLight.direction, v); //<- change this line
+
+        vec3 vec_to_directional = directionalLight.position - positionWorldSpace;
+
+        colorDirectional = phong(directionalLight, objectColor, n, vec_to_directional, v); //<- change this line
     }
 
     if(pointLight.enable)
@@ -202,7 +221,9 @@ void main()
         //TODO 5.4 c)
         //Use the uniforms "pointLight" and "objectColor" to compute "colorPoint".
 
-        vec3 I_0 = phong(pointLight, objectColor, n, pointLight.direction, v);
+        vec3 vec_to_point = pointLight.position - positionWorldSpace;
+
+        vec3 I_0 = phong(pointLight, objectColor, n, vec_to_point, v);
 
         float r = length(pointLight.position - positionWorldSpace);
 
@@ -216,7 +237,9 @@ void main()
         //TODO 5.4 d)
         //Use the uniforms "spotLight" and "objectColor" to compute "colorSpot".
 
-        vec3 I_0 = phong(spotLight, objectColor, n, spotLight.direction, v);
+        vec3 vec_to_spot = spotLight.position - positionWorldSpace;
+
+        vec3 I_0 = phong(spotLight, objectColor, n, vec_to_spot, v);
 
         float r = length(spotLight.position-positionWorldSpace);
 
