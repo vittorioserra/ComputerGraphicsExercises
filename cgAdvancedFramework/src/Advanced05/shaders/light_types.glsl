@@ -155,7 +155,6 @@ vec3 quantize_three(vec3 c){
 
 }
 
-
 vec3 quantize_brightness_hsv(vec3 c){
 
     vec3 retvec = vec3(0);
