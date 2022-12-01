@@ -783,7 +783,7 @@ function Basic1_3(canvas) {
         //compute vertices normals
 
 
-        let normals_vertex = new Array(nLineSegments);
+        let normals_vertex = new Array(nLineSegments+1);
 
         for(let i = 1; i < nLineSegments; i++){
 
@@ -796,8 +796,10 @@ function Basic1_3(canvas) {
 
         }
 
-        normals_vertex[0] = normals_vertex[1];
-        //normals_vertex[nLineSegments-1] = normals_vertex[nLineSegments-2];
+        normals_vertex[0] = normals_seg[0];
+        vec2.normalize(normals_vertex[0], normals_vertex[0]);
+        normals_vertex[nLineSegments] = normals_seg[nLineSegments-1];
+        vec2.normalize(normals_vertex[nLineSegments], normals_vertex[nLineSegments]);
 
 
         for (let i = 0; i < nLineSegments; i++){
@@ -814,6 +816,7 @@ function Basic1_3(canvas) {
             let normal_s = [0.0,0.0];
             let normal_e = [0.0,0.0];
 
+   /*
             if(i == 0){
 
                 start = [lineSegments[i][0][0], lineSegments[i][0][1]];
@@ -823,7 +826,7 @@ function Basic1_3(canvas) {
                 console.log("End %i, %i", end[0], end[1]);
 
                 normal_s = normals_vertex[i];
-                normal_e = normals_vertex[i];
+                normal_e = normals_vertex[i+1];
 
             }else{
 
@@ -833,14 +836,25 @@ function Basic1_3(canvas) {
                 console.log("Start %i, %i", start[0], start[1]);
                 console.log("End %i, %i", end[0], end[1]);
 
-                normal_s = normals_vertex[i-1];
-                normal_e = normals_vertex[i];
+                normal_s = normals_vertex[i];
+                normal_e = normals_vertex[i+1-];
 
 
             }
+            */
+
+            start = [lineSegments[i][0][0], lineSegments[i][0][1]];
+            end =   [lineSegments[i][1][0], lineSegments[i][1][1]];
+
+            console.log("Start %i, %i", start[0], start[1]);
+            console.log("End %i, %i", end[0], end[1]);
+
+            normal_s = normals_vertex[i];
+            normal_e = normals_vertex[i+1];
+
             // 2. Evaluate the color at the vertices using the PhongLighting function.
-            let color_1 = PhongLighting(context, start, normal_s, eye, pointLight, albedo, false);
-            let color_2 = PhongLighting(context, end, normal_e, eye, pointLight, albedo, false);
+            let color_1 = PhongLighting(context, start, normal_s, eye, pointLight, albedo, true);
+            let color_2 = PhongLighting(context, end, normal_e, eye, pointLight, albedo, true);
 
             // 3. Use the linear gradient stroke style of the context to linearly interpolate the vertex colors over the primitive (https://www.w3schools.com/TAgs/canvas_createlineargradient.asp).
             //    The color triples can be scaled from [0,1] to [0,255] using the function floatToColor().
