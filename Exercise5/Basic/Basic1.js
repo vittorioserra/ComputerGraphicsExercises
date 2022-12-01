@@ -127,7 +127,7 @@ function PhongLighting(context, point, normal, eye, pointLight, albedo, showVect
 
     let L_amb = vec3.fromValues(0.1*albedo[0],
                                 0.1*albedo[1],
-                                0.2*albedo[2]);
+                                0.1*albedo[2]);
 
     //console.log(L_amb);
 
@@ -356,8 +356,14 @@ function Basic1_2(canvas) {
             // TODO 5.1b) Implement Flat Shading of the line segments - follow the stepwise instructions below:
 
             // 1. Compute representor of the primitive (-> midpoint on the line segment).
-            let start = lineSegments[i][0];
-            let end = lineSegments[i][1];
+            //let start = lineSegments[i][0];
+            //let end = lineSegments[i][1];
+            let start = [lineSegments[i][0][0], lineSegments[i][0][1]];
+            let end =   [lineSegments[i][1][0], lineSegments[i][1][1]];
+
+            console.log(" b Start %i, %i", start[0], start[1]);
+            console.log(" b End %i, %i", end[0], end[1]);
+
 
             let midpoint = [start[0] + (end[0]-start[0])/2, start[1] + (end[1]-start[1])/2];
 
@@ -402,7 +408,7 @@ function Basic1_2(canvas) {
     }
 }
 
-
+/*
 
 ///////////////////////////
 ////////   5.1c)   ////////
@@ -474,25 +480,98 @@ function Basic1_3(canvas) {
         }
         let albedo = [0, 1, 0];
 
-        // draw surface (line segments) using flat shading
-        for (let i = 0; i < nLineSegments; ++i) {
+
+        //first loop : compute normal
+        //second loop : shading
+
+        //compute segments normals
+        normals_seg = new Array(nLineSegments);
+
+        for(let i = 0; i < nLineSegments ; i++){
+
+            let start = [lineSegments[i][0][0], lineSegments[i][0][1]];
+            let end =   [lineSegments[i][1][0], lineSegments[i][1][1]];
+
+            let seg_vec = [end[0]-start[0], end[1]-start[1]];
+
+            // 2. Compute the normal of the line segment.
+            let normal = [-seg_vec[1], seg_vec[0]];
+            //NOT NORMALIZE = WEIGHT BY LINE LENGTH
+
+            normals_seg[i] = normal;
+
+        }
+
+        //compute vertices normals
+
+        let nLineVertices = nLineSegments + 2;
+
+        let normals_vertex = new Array(nLineSegments);
+
+        for(let i = 1; i < nLineSegments-1; i++){
+
+            let normal_1 = normals_seg[i-1];
+            let normal_2 = normals_seg[i];
+
+            let normal = [(normal_1[0]+normal_2[0])/2.0, (normal_1[1]+normal_2[1])/2.0];
+            let normal_length = Math.sqrt(Math.pow(normal[0], 2) + Math.pow(normal[1], 2));
+
+            normals_vertex[i] = normal/normal_length;
+
+        }
+
+        normals_vertex[0] = normals_vertex[1];
+        normals_vertex[nLineSegments-1] = normals_vertex[nLineSegments-2];
+
+
+        for (let i = 1; i < nLineSegments-1; i++){
 
             // TODO 5.1c) Implement Gouraud Shading of the line segments - follow the stepwise instructions below:
 
             // 1. Compute vertex normals by interpolating between normals of adjacent line segments (weighted by line segment length!). Take care of border cases.
 
+            // 2. Compute the normal of the line segment.
+
+            let start = [lineSegments[i][0][0], lineSegments[i][0][1]];
+            let end =   [lineSegments[i][1][0], lineSegments[i][1][1]];
+
+            console.log("Start %i, %i", start[0], start[1]);
+            console.log("End %i, %i", end[0], end[1]);
+
+            let normal_s = normals_vertex[i-1];
+            let normal_e = normals_vertex[i];
 
             // 2. Evaluate the color at the vertices using the PhongLighting function.
-
+            let color_1 = PhongLighting(context, start, normal_s, eye, pointLight, albedo, false);
+            let color_2 = PhongLighting(context, end, normal_e, eye, pointLight, albedo, false);
 
             // 3. Use the linear gradient stroke style of the context to linearly interpolate the vertex colors over the primitive (https://www.w3schools.com/TAgs/canvas_createlineargradient.asp).
             //    The color triples can be scaled from [0,1] to [0,255] using the function floatToColor().
+            let grd = context.createLinearGradient(start[1],start[0],end[1],
+                                                   end[0]);
+
+            let color_1_scaled = floatToColor(color_1);
+            let color_2_scaled = floatToColor(color_2);
+
+            let color_1_r = color_1_scaled[0].toString();
+            let color_1_g = color_1_scaled[1].toString();
+            let color_1_b = color_1_scaled[2].toString();
+
+            let color_2_r = color_2_scaled[0].toString();
+            let color_2_g = color_2_scaled[1].toString();
+            let color_2_b = color_2_scaled[2].toString();
+
+            let color_1_string_scaled = "rgb("+color_1_r+","+color_1_g+","+color_1_b+")";
+            let color_2_string_scaled = "rgb("+color_2_r+","+color_2_g+","+color_2_b+")";
+
+            grd.addColorStop(0, color_1_string_scaled);//"rgb(255,255,0)");
+            grd.addColorStop(1, color_2_string_scaled);//"rgb(255,0,255)");
+
             //    The start and end points of the line segments are stored in [y,x] order concerning the canvas, remember when using createLinearGradient()!
-
-
 
             // draw line segment
             context.beginPath();
+            context.strokeStyle = grd;//[0, 0, 0]);
             context.lineWidth = 8;
             context.moveTo(lineSegments[i][0][1], lineSegments[i][0][0]);
             context.lineTo(lineSegments[i][1][1], lineSegments[i][1][0]);
@@ -508,6 +587,305 @@ function Basic1_3(canvas) {
                 context.stroke();
             }
         }
+
+
+        /*
+        for (let i = 0; i < nLineSegments-2; ++i) {
+
+            // TODO 5.1c) Implement Gouraud Shading of the line segments - follow the stepwise instructions below:
+
+            // 1. Compute vertex normals by interpolating between normals of adjacent line segments (weighted by line segment length!). Take care of border cases.
+            let start_1 = lineSegments[i][0];
+            let end_1 = lineSegments[i][1];
+
+            let midpoint_1 = [start_1[0] + (end_1[0]-start_1[0])/2, start_1[1] + (end_1[1]-start_1[1])/2];
+            let seg_vec_1 = [end_1[0]-start_1[0], end_1[1]-start_1[1]];
+
+            let length_seg_1 = Math.sqrt(Math.pow(seg_vec_1[0], 2) + Math.pow(seg_vec_1[1], 2))
+
+            // 2. Compute the normal of the line segment.
+            let normal_1 = [-seg_vec_1[1], seg_vec_1[0]];
+            let normal_length_1 = Math.sqrt(Math.pow(normal_1[0], 2) + Math.pow(normal_1[1], 2));
+            normal_1[0] = normal_1[0];
+            normal_1[1] = normal_1[1];
+
+            //second line
+            let start_2 = lineSegments[i+2][0];length_seg_1
+            let end_2 = lineSegments[i+2][1];
+
+            let midpoint_2 = [start_2[0] + (end_2[0]-start_2[0])/2, start_2[1] + (end_2[1]-start_2[1])/2];
+            let seg_vec_2 = [end_2[0]-start_2[0], end_2[1]-start_2[1]];
+
+            let length_seg_2 = Math.sqrt(Math.pow(seg_vec_2[0], 2) + Math.pow(seg_vec_2[1], 2))
+
+            // 2. Compute the normal of the line segment.
+            let normal_2 = [-seg_vec_2[1], seg_vec_2[0]];
+            let normal_length_2 = Math.sqrt(Math.pow(normal_2[0], 2) + Math.pow(normal_2[1], 2));
+            normal_2[0] = normal_2[0];
+            normal_2[1] = normal_2[1];
+
+            let normal = [(normal_1[0]+normal_2[0])/2.0, (normal_1[1]+normal_2[1])/2.0];
+            let normal_length = Math.sqrt(Math.pow(normal[0], 2) + Math.pow(normal[1], 2));
+
+            normal[0] = (normal[0] / normal_length);
+            normal[1] = (normal[1] / normal_length);
+
+            // 2. Evaluate the color at the vertices using the PhongLighting function.
+            let color_1 = PhongLighting(context, seg_vec_1, normal_1, eye, pointLight, albedo, false);
+            let color_2 = PhongLighting(context, seg_vec_2, normal_2, eye, pointLight, albedo, false);
+
+            // 3. Use the linear gradient stroke style of the context to linearly interpolate the vertex colors over the primitive (https://www.w3schools.com/TAgs/canvas_createlineargradient.asp).
+            //    The color triples can be scaled from [0,1] to [0,255] using the function floatToColor().
+            let grd = context.createLinearGradient(start_1[1],start_1[0],start_2[1],
+                                                   start_2[0]);
+
+            let color_1_scaled = floatToColor(color_1);
+            let color_2_scaled = floatToColor(color_2);
+
+            let color_1_r = color_1_scaled[0].toString();
+            let color_1_g = color_1_scaled[1].toString();
+            let color_1_b = color_1_scaled[2].toString();
+
+            let color_2_r = color_2_scaled[0].toString();
+            let color_2_g = color_2_scaled[1].toString();
+            let color_2_b = color_2_scaled[2].toString();
+
+            let color_1_string_scaled = "rgb("+color_1_r+","+color_1_g+","+color_1_b+")";
+            let color_2_string_scaled = "rgb("+color_2_r+","+color_2_g+","+color_2_b+")";
+
+            grd.addColorStop(0, color_1_string_scaled);//"rgb(255,255,0)");
+            grd.addColorStop(1, color_2_string_scaled);//"rgb(255,0,255)");
+
+            //    The start and end points of the line segments are stored in [y,x] order concerning the canvas, remember when using createLinearGradient()!
+
+
+
+            // draw line segment
+            context.beginPath();
+            context.strokeStyle = grd;//[0, 0, 0]);
+            context.lineWidth = 8;
+            context.moveTo(lineSegments[i+1][0][1], lineSegments[i+1][0][0]);
+            context.lineTo(lineSegments[i+1][1][1], lineSegments[i+1][1][0]);
+            context.stroke();
+
+            if (i < nLineSegments - 1) {
+                // draw auxiliary line between this and the next line segment
+                context.beginPath();
+                setStrokeStyle(context, [0, 0, 0]);
+                context.lineWidth = 1;
+                context.moveTo(lineSegments[i][1][1], lineSegments[i][1][0] + 4);
+                context.lineTo(lineSegments[i][1][1], lineSegments[i][1][0] + 14);
+                context.stroke();
+            }
+        }
+        *//*
+        context.fillText("surface", p0[1] + 50, p0[0] + 20);
+        context.lineWidth = 1;
+    }
+}
+*/
+
+///////////////////////////
+////////   5.1c)   ////////
+///////////////////////////
+
+function Basic1_3(canvas) {
+    let nLineSegments = 5;
+    let amplitude = 50;
+
+    // reset the slider and the checkboxes
+    let slider1 = document.getElementById('nLineSegments2_3');
+    slider1.addEventListener('change',onChangeNLineSegments);
+    slider1.value = 5;
+    let slider2 = document.getElementById('amplitude2_3');
+    slider2.addEventListener('change',onChangeAmplitude);
+    slider2.value = 50;
+
+    Render();
+
+    // Interaction
+
+    function onChangeNLineSegments() {
+        nLineSegments = this.value;
+        Render();
+    }
+    function onChangeAmplitude() {
+        amplitude = this.value;
+        Render();
+    }
+
+    // Rendering
+
+    function Render() {
+        let context = canvas.getContext("2d");
+        context.clearRect(0, 0, 600, 300);
+        context.font = "italic 12px Georgia";
+        context.textAlign = "center";
+
+        // light source
+        let eye = [40, 20];
+
+        // draw eye
+        context.fillStyle = 'rgb(0,0,0)';
+        context.beginPath();
+        context.fillText("eye", eye[1], eye[0] + 20);
+        context.arc(eye[1], eye[0], 4, 0, 2 * Math.PI);
+        context.fill();
+
+        // light source
+        let pointLight = [20, 580];
+
+        // draw light source
+        context.fillStyle = 'rgb(0,0,0)';
+        context.beginPath();
+        context.fillText("light", pointLight[1], pointLight[0] + 20);
+        context.arc(pointLight[1], pointLight[0], 4, 0, 2 * Math.PI);
+        context.fill();
+
+        // line segments
+        let p0 = 0;
+        let p1 = 600;
+        let lineSegments = new Array(nLineSegments);
+        for (let i = 0; i < nLineSegments; ++i) {
+            let _alpha = i / (nLineSegments);
+            let start = [270 - amplitude * Math.sin(_alpha * Math.PI), Math.floor((1.0 - _alpha) * p0 + _alpha * p1)];
+            _alpha = (i + 1.0) / (nLineSegments);
+            let end = [270 - amplitude * Math.sin(_alpha * Math.PI), Math.ceil((1.0 - _alpha) * p0 + _alpha * p1)];
+            lineSegments[i] = [[start[0], start[1]], [end[0], end[1]]];
+        }
+        let albedo = [0, 1, 0];
+
+
+        //first loop : compute normal
+        //second loop : shading
+
+        //compute segments normals
+        normals_seg = new Array(nLineSegments);
+
+        for(let i = 0; i < nLineSegments ; i++){
+
+           /* let start = lineSegments[i][0];
+            let end = lineSegments[i][1];
+
+            let seg_vec = [end[0]-start[0], end[1]-start[1]];
+
+            // 2. Compute the normal of the line segment.
+            let normal = [-seg_vec[1], seg_vec[0]];
+            //NOT NORMALIZE = WEIGHT BY LINE LENGTH
+ */
+            let normal = vec2.create();
+            normal[1] = lineSegments[i][1][0]-lineSegments[i][0][0];
+            normal[0] = -(lineSegments[i][1][1]-lineSegments[i][0][1]);
+            normals_seg[i] = normal;
+
+        }
+
+        //compute vertices normals
+
+
+        let normals_vertex = new Array(nLineSegments);
+
+        for(let i = 1; i < nLineSegments; i++){
+
+            let normal_1 = normals_seg[i-1];
+            let normal_2 = normals_seg[i];
+
+            let normal = [(normal_1[0]+normal_2[0])/2.0, (normal_1[1]+normal_2[1])/2.0];
+            vec2.normalize(normal, normal);
+            normals_vertex[i] = normal;
+
+        }
+
+        normals_vertex[0] = normals_vertex[1];
+        //normals_vertex[nLineSegments-1] = normals_vertex[nLineSegments-2];
+
+
+        for (let i = 0; i < nLineSegments; i++){
+
+            // TODO 5.1c) Implement Gouraud Shading of the line segments - follow the stepwise instructions below:
+
+            // 1. Compute vertex normals by interpolating between normals of adjacent line segments (weighted by line segment length!). Take care of border cases.
+
+            // 2. Compute the normal of the line segment.
+
+            let start = [0.0,0.0];
+            let end = [0.0,0.0];
+
+            let normal_s = [0.0,0.0];
+            let normal_e = [0.0,0.0];
+
+            if(i == 0){
+
+                start = [lineSegments[i][0][0], lineSegments[i][0][1]];
+                end =   [lineSegments[i][1][0], lineSegments[i][1][1]];
+
+                console.log("Start %i, %i", start[0], start[1]);
+                console.log("End %i, %i", end[0], end[1]);
+
+                normal_s = normals_vertex[i];
+                normal_e = normals_vertex[i];
+
+            }else{
+
+                start = [lineSegments[i][0][0], lineSegments[i][0][1]];
+                end =   [lineSegments[i][1][0], lineSegments[i][1][1]];
+
+                console.log("Start %i, %i", start[0], start[1]);
+                console.log("End %i, %i", end[0], end[1]);
+
+                normal_s = normals_vertex[i-1];
+                normal_e = normals_vertex[i];
+
+
+            }
+            // 2. Evaluate the color at the vertices using the PhongLighting function.
+            let color_1 = PhongLighting(context, start, normal_s, eye, pointLight, albedo, false);
+            let color_2 = PhongLighting(context, end, normal_e, eye, pointLight, albedo, false);
+
+            // 3. Use the linear gradient stroke style of the context to linearly interpolate the vertex colors over the primitive (https://www.w3schools.com/TAgs/canvas_createlineargradient.asp).
+            //    The color triples can be scaled from [0,1] to [0,255] using the function floatToColor().
+            let grd = context.createLinearGradient(start[1],start[0],end[1],
+                                                   end[0]);
+
+            let color_1_scaled = floatToColor(color_1);
+            let color_2_scaled = floatToColor(color_2);
+
+            let color_1_r = color_1_scaled[0].toString();
+            let color_1_g = color_1_scaled[1].toString();
+            let color_1_b = color_1_scaled[2].toString();
+
+            let color_2_r = color_2_scaled[0].toString();
+            let color_2_g = color_2_scaled[1].toString();
+            let color_2_b = color_2_scaled[2].toString();
+
+            let color_1_string_scaled = "rgb("+color_1_r+","+color_1_g+","+color_1_b+")";
+            let color_2_string_scaled = "rgb("+color_2_r+","+color_2_g+","+color_2_b+")";
+
+            grd.addColorStop(0, color_1_string_scaled);//"rgb(255,255,0)");
+            grd.addColorStop(1, color_2_string_scaled);//"rgb(255,0,255)");
+
+            //    The start and end points of the line segments are stored in [y,x] order concerning the canvas, remember when using createLinearGradient()!
+
+            // draw line segment
+            context.beginPath();
+            context.strokeStyle = grd;//[0, 0, 0]);
+            context.lineWidth = 8;
+            context.moveTo(lineSegments[i][0][1], lineSegments[i][0][0]);
+            context.lineTo(lineSegments[i][1][1], lineSegments[i][1][0]);
+            context.stroke();
+
+            if (i < nLineSegments - 1) {
+                // draw auxiliary line between this and the next line segment
+                context.beginPath();
+                setStrokeStyle(context, [0, 0, 0]);
+                context.lineWidth = 1;
+                context.moveTo(lineSegments[i][1][1], lineSegments[i][1][0] + 4);
+                context.lineTo(lineSegments[i][1][1], lineSegments[i][1][0] + 14);
+                context.stroke();
+            }
+        }
+
+
         context.fillText("surface", p0[1] + 50, p0[0] + 20);
         context.lineWidth = 1;
     }

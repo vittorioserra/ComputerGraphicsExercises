@@ -33,7 +33,7 @@ void main(void)
 	//				matrix. Do not forget to normalize the normal
 	//				afterwards.
 
-	vec4 normal_homogeneous = vec4(vNormal, 1.0)*modelMatrix;
+	vec4 normal_homogeneous = normalMatrix*vec4(vNormal, 1.0);
 
 	normal = normalize(vec3(normal_homogeneous)/normal_homogeneous[3]);
 
@@ -45,7 +45,7 @@ void main(void)
 
 	vec4 vertex_homogeneous = vec4(vVertex, 1.0);
 
-	vertex_homogeneous = vertex_homogeneous * modelMatrix;
+	vertex_homogeneous = modelMatrix * vertex_homogeneous;
 
 	world_pos_frag = vec3(vertex_homogeneous)/vertex_homogeneous[3];
 }

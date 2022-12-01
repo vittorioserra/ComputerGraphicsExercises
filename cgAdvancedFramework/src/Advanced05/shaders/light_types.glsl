@@ -213,7 +213,7 @@ void main()
 
         vec3 vec_to_directional = directionalLight.position - positionWorldSpace;
 
-        colorDirectional = phong(directionalLight, objectColor, n, vec_to_directional, v); //<- change this line
+        colorDirectional = phong(directionalLight, objectColor, n, -directionalLight.direction, v); //<- change this line
     }
 
     if(pointLight.enable)

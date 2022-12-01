@@ -53,7 +53,7 @@ void main(void)
 	//				normalized in the vertex shader do not have
 	//				to be still normalized in the fragment shader.
 
-	vec3 frag_light = normalize(world_pos_frag - lightPosition);
+	vec3 frag_light = normalize(lightPosition - world_pos_frag);
 
 	float cos_phi = dot(normal, frag_light);
 
@@ -79,7 +79,7 @@ void main(void)
 	//				using the inverse camera matrix given as a 
 	//				uniform.
 
-	vec3 d = world_pos_frag-lightPosition;
+	vec3 d = -frag_light;
 
 	vec3 reflection = normalize(d - 2.0*dot(d, normal)*normal);
 
