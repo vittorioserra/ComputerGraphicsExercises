@@ -1,0 +1,631 @@
+Performing C SOURCE FILE Test HAVE_GCC_PREFERRED_STACK_BOUNDARY failed with the following output:
+Change Dir: /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_b9d3f/fast && /usr/bin/make  -f CMakeFiles/cmTC_b9d3f.dir/build.make CMakeFiles/cmTC_b9d3f.dir/build
+make[1]: Entering directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b9d3f.dir/src.c.o
+/usr/bin/cc -DHAVE_GCC_PREFERRED_STACK_BOUNDARY  -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -mpreferred-stack-boundary=2 -o CMakeFiles/cmTC_b9d3f.dir/src.c.o -c /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp/src.c
+cc1: error: ‘-mpreferred-stack-boundary=2’ is not between 3 and 12
+make[1]: *** [CMakeFiles/cmTC_b9d3f.dir/build.make:78: CMakeFiles/cmTC_b9d3f.dir/src.c.o] Error 1
+make[1]: Leaving directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_b9d3f/fast] Error 2
+
+
+Source file was:
+int x = 0; int main(int argc, char **argv) {}
+Performing C SOURCE FILE Test HAVE_ALTIVEC_H_HDR failed with the following output:
+Change Dir: /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_ce7e9/fast && /usr/bin/make  -f CMakeFiles/cmTC_ce7e9.dir/build.make CMakeFiles/cmTC_ce7e9.dir/build
+make[1]: Entering directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ce7e9.dir/src.c.o
+/usr/bin/cc -DHAVE_ALTIVEC_H_HDR  -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -maltivec -o CMakeFiles/cmTC_ce7e9.dir/src.c.o -c /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp/src.c
+cc: error: unrecognized command-line option ‘-maltivec’
+make[1]: *** [CMakeFiles/cmTC_ce7e9.dir/build.make:78: CMakeFiles/cmTC_ce7e9.dir/src.c.o] Error 1
+make[1]: Leaving directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_ce7e9/fast] Error 2
+
+
+Source file was:
+
+          #include <altivec.h>
+          vector unsigned int vzero() {
+              return vec_splat_u32(0);
+          }
+          int main(int argc, char **argv) { }
+Performing C SOURCE FILE Test HAVE_ALTIVEC failed with the following output:
+Change Dir: /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_1db6d/fast && /usr/bin/make  -f CMakeFiles/cmTC_1db6d.dir/build.make CMakeFiles/cmTC_1db6d.dir/build
+make[1]: Entering directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_1db6d.dir/src.c.o
+/usr/bin/cc -DHAVE_ALTIVEC  -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -maltivec -o CMakeFiles/cmTC_1db6d.dir/src.c.o -c /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp/src.c
+cc: error: unrecognized command-line option ‘-maltivec’
+make[1]: *** [CMakeFiles/cmTC_1db6d.dir/build.make:78: CMakeFiles/cmTC_1db6d.dir/src.c.o] Error 1
+make[1]: Leaving directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_1db6d/fast] Error 2
+
+
+Source file was:
+
+          vector unsigned int vzero() {
+              return vec_splat_u32(0);
+          }
+          int main(int argc, char **argv) { }
+Performing C SOURCE FILE Test ARMSIMD_FOUND failed with the following output:
+Change Dir: /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_aad96/fast && /usr/bin/make  -f CMakeFiles/cmTC_aad96.dir/build.make CMakeFiles/cmTC_aad96.dir/build
+make[1]: Entering directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_aad96.dir/src.c.o
+/usr/bin/cc -DARMSIMD_FOUND  -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos  -x assembler-with-cpp -o CMakeFiles/cmTC_aad96.dir/src.c.o -c /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp/src.c
+/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp/src.c:8:10: error: #error EABI is required (to be sure that calling conventions are compatible)
+    8 |         #error EABI is required (to be sure that calling conventions are compatible)
+      |          ^~~~~
+make[1]: *** [CMakeFiles/cmTC_aad96.dir/build.make:78: CMakeFiles/cmTC_aad96.dir/src.c.o] Error 1
+make[1]: Leaving directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_aad96/fast] Error 2
+
+
+Source file was:
+
+        .text
+        .arch armv6
+        .object_arch armv4
+        .arm
+        .altmacro
+        #ifndef __ARM_EABI__
+        #error EABI is required (to be sure that calling conventions are compatible)
+        #endif
+        pld [r0]
+        uqadd8 r0, r0, r0
+      
+Performing C SOURCE FILE Test ARMNEON_FOUND failed with the following output:
+Change Dir: /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_ad0e3/fast && /usr/bin/make  -f CMakeFiles/cmTC_ad0e3.dir/build.make CMakeFiles/cmTC_ad0e3.dir/build
+make[1]: Entering directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ad0e3.dir/src.c.o
+/usr/bin/cc -DARMNEON_FOUND  -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos  -x assembler-with-cpp -o CMakeFiles/cmTC_ad0e3.dir/src.c.o -c /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp/src.c
+/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp/src.c:10:10: error: #error EABI is required (to be sure that calling conventions are compatible)
+   10 |         #error EABI is required (to be sure that calling conventions are compatible)
+      |          ^~~~~
+make[1]: *** [CMakeFiles/cmTC_ad0e3.dir/build.make:78: CMakeFiles/cmTC_ad0e3.dir/src.c.o] Error 1
+make[1]: Leaving directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_ad0e3/fast] Error 2
+
+
+Source file was:
+
+        .text
+        .fpu neon
+        .arch armv7a
+        .object_arch armv4
+        .eabi_attribute 10, 0
+        .arm
+        .altmacro
+        #ifndef __ARM_EABI__
+        #error EABI is required (to be sure that calling conventions are compatible)
+        #endif
+        pld [r0]
+        vmovn.u16 d0, q0
+      
+Determining if the function strlcpy exists failed with the following output:
+Change Dir: /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_b1923/fast && /usr/bin/make  -f CMakeFiles/cmTC_b1923.dir/build.make CMakeFiles/cmTC_b1923.dir/build
+make[1]: Entering directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b1923.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -DCHECK_FUNCTION_EXISTS=strlcpy -o CMakeFiles/cmTC_b1923.dir/CheckFunctionExists.c.o -c /var/lib/snapd/snap/cmake/1186/share/cmake-3.24/Modules/CheckFunctionExists.c
+Linking C executable cmTC_b1923
+/var/lib/snapd/snap/cmake/1186/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b1923.dir/link.txt --verbose=1
+/usr/bin/cc -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -DCHECK_FUNCTION_EXISTS=strlcpy -rdynamic CMakeFiles/cmTC_b1923.dir/CheckFunctionExists.c.o -o cmTC_b1923 
+/usr/bin/ld: CMakeFiles/cmTC_b1923.dir/CheckFunctionExists.c.o: in function `main':
+/var/lib/snapd/snap/cmake/1186/share/cmake-3.24/Modules/CheckFunctionExists.c:17: undefined reference to `strlcpy'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_b1923.dir/build.make:99: cmTC_b1923] Error 1
+make[1]: Leaving directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_b1923/fast] Error 2
+
+
+
+Determining if the function strlcat exists failed with the following output:
+Change Dir: /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_9a8a1/fast && /usr/bin/make  -f CMakeFiles/cmTC_9a8a1.dir/build.make CMakeFiles/cmTC_9a8a1.dir/build
+make[1]: Entering directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9a8a1.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -DCHECK_FUNCTION_EXISTS=strlcat -o CMakeFiles/cmTC_9a8a1.dir/CheckFunctionExists.c.o -c /var/lib/snapd/snap/cmake/1186/share/cmake-3.24/Modules/CheckFunctionExists.c
+Linking C executable cmTC_9a8a1
+/var/lib/snapd/snap/cmake/1186/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9a8a1.dir/link.txt --verbose=1
+/usr/bin/cc -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -DCHECK_FUNCTION_EXISTS=strlcat -rdynamic CMakeFiles/cmTC_9a8a1.dir/CheckFunctionExists.c.o -o cmTC_9a8a1 
+/usr/bin/ld: CMakeFiles/cmTC_9a8a1.dir/CheckFunctionExists.c.o: in function `main':
+/var/lib/snapd/snap/cmake/1186/share/cmake-3.24/Modules/CheckFunctionExists.c:17: undefined reference to `strlcat'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_9a8a1.dir/build.make:99: cmTC_9a8a1] Error 1
+make[1]: Leaving directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_9a8a1/fast] Error 2
+
+
+
+Determining if the function _strrev exists failed with the following output:
+Change Dir: /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_b5e23/fast && /usr/bin/make  -f CMakeFiles/cmTC_b5e23.dir/build.make CMakeFiles/cmTC_b5e23.dir/build
+make[1]: Entering directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b5e23.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -DCHECK_FUNCTION_EXISTS=_strrev -o CMakeFiles/cmTC_b5e23.dir/CheckFunctionExists.c.o -c /var/lib/snapd/snap/cmake/1186/share/cmake-3.24/Modules/CheckFunctionExists.c
+Linking C executable cmTC_b5e23
+/var/lib/snapd/snap/cmake/1186/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b5e23.dir/link.txt --verbose=1
+/usr/bin/cc -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -DCHECK_FUNCTION_EXISTS=_strrev -rdynamic CMakeFiles/cmTC_b5e23.dir/CheckFunctionExists.c.o -o cmTC_b5e23 
+/usr/bin/ld: CMakeFiles/cmTC_b5e23.dir/CheckFunctionExists.c.o: in function `main':
+/var/lib/snapd/snap/cmake/1186/share/cmake-3.24/Modules/CheckFunctionExists.c:17: undefined reference to `_strrev'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_b5e23.dir/build.make:99: cmTC_b5e23] Error 1
+make[1]: Leaving directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_b5e23/fast] Error 2
+
+
+
+Determining if the function _strupr exists failed with the following output:
+Change Dir: /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_bea82/fast && /usr/bin/make  -f CMakeFiles/cmTC_bea82.dir/build.make CMakeFiles/cmTC_bea82.dir/build
+make[1]: Entering directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_bea82.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -DCHECK_FUNCTION_EXISTS=_strupr -o CMakeFiles/cmTC_bea82.dir/CheckFunctionExists.c.o -c /var/lib/snapd/snap/cmake/1186/share/cmake-3.24/Modules/CheckFunctionExists.c
+Linking C executable cmTC_bea82
+/var/lib/snapd/snap/cmake/1186/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bea82.dir/link.txt --verbose=1
+/usr/bin/cc -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -DCHECK_FUNCTION_EXISTS=_strupr -rdynamic CMakeFiles/cmTC_bea82.dir/CheckFunctionExists.c.o -o cmTC_bea82 
+/usr/bin/ld: CMakeFiles/cmTC_bea82.dir/CheckFunctionExists.c.o: in function `main':
+/var/lib/snapd/snap/cmake/1186/share/cmake-3.24/Modules/CheckFunctionExists.c:17: undefined reference to `_strupr'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_bea82.dir/build.make:99: cmTC_bea82] Error 1
+make[1]: Leaving directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_bea82/fast] Error 2
+
+
+
+Determining if the function _strlwr exists failed with the following output:
+Change Dir: /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_137c2/fast && /usr/bin/make  -f CMakeFiles/cmTC_137c2.dir/build.make CMakeFiles/cmTC_137c2.dir/build
+make[1]: Entering directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_137c2.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -DCHECK_FUNCTION_EXISTS=_strlwr -o CMakeFiles/cmTC_137c2.dir/CheckFunctionExists.c.o -c /var/lib/snapd/snap/cmake/1186/share/cmake-3.24/Modules/CheckFunctionExists.c
+Linking C executable cmTC_137c2
+/var/lib/snapd/snap/cmake/1186/bin/cmake -E cmake_link_script CMakeFiles/cmTC_137c2.dir/link.txt --verbose=1
+/usr/bin/cc -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -DCHECK_FUNCTION_EXISTS=_strlwr -rdynamic CMakeFiles/cmTC_137c2.dir/CheckFunctionExists.c.o -o cmTC_137c2 
+/usr/bin/ld: CMakeFiles/cmTC_137c2.dir/CheckFunctionExists.c.o: in function `main':
+/var/lib/snapd/snap/cmake/1186/share/cmake-3.24/Modules/CheckFunctionExists.c:17: undefined reference to `_strlwr'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_137c2.dir/build.make:99: cmTC_137c2] Error 1
+make[1]: Leaving directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_137c2/fast] Error 2
+
+
+
+Determining if the function itoa exists failed with the following output:
+Change Dir: /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_f6c83/fast && /usr/bin/make  -f CMakeFiles/cmTC_f6c83.dir/build.make CMakeFiles/cmTC_f6c83.dir/build
+make[1]: Entering directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f6c83.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -DCHECK_FUNCTION_EXISTS=itoa -o CMakeFiles/cmTC_f6c83.dir/CheckFunctionExists.c.o -c /var/lib/snapd/snap/cmake/1186/share/cmake-3.24/Modules/CheckFunctionExists.c
+Linking C executable cmTC_f6c83
+/var/lib/snapd/snap/cmake/1186/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f6c83.dir/link.txt --verbose=1
+/usr/bin/cc -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -DCHECK_FUNCTION_EXISTS=itoa -rdynamic CMakeFiles/cmTC_f6c83.dir/CheckFunctionExists.c.o -o cmTC_f6c83 
+/usr/bin/ld: CMakeFiles/cmTC_f6c83.dir/CheckFunctionExists.c.o: in function `main':
+/var/lib/snapd/snap/cmake/1186/share/cmake-3.24/Modules/CheckFunctionExists.c:17: undefined reference to `itoa'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_f6c83.dir/build.make:99: cmTC_f6c83] Error 1
+make[1]: Leaving directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_f6c83/fast] Error 2
+
+
+
+Determining if the function _ltoa exists failed with the following output:
+Change Dir: /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_74ade/fast && /usr/bin/make  -f CMakeFiles/cmTC_74ade.dir/build.make CMakeFiles/cmTC_74ade.dir/build
+make[1]: Entering directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_74ade.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -DCHECK_FUNCTION_EXISTS=_ltoa -o CMakeFiles/cmTC_74ade.dir/CheckFunctionExists.c.o -c /var/lib/snapd/snap/cmake/1186/share/cmake-3.24/Modules/CheckFunctionExists.c
+Linking C executable cmTC_74ade
+/var/lib/snapd/snap/cmake/1186/bin/cmake -E cmake_link_script CMakeFiles/cmTC_74ade.dir/link.txt --verbose=1
+/usr/bin/cc -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -DCHECK_FUNCTION_EXISTS=_ltoa -rdynamic CMakeFiles/cmTC_74ade.dir/CheckFunctionExists.c.o -o cmTC_74ade 
+/usr/bin/ld: CMakeFiles/cmTC_74ade.dir/CheckFunctionExists.c.o: in function `main':
+/var/lib/snapd/snap/cmake/1186/share/cmake-3.24/Modules/CheckFunctionExists.c:17: undefined reference to `_ltoa'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_74ade.dir/build.make:99: cmTC_74ade] Error 1
+make[1]: Leaving directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_74ade/fast] Error 2
+
+
+
+Determining if the function _uitoa exists failed with the following output:
+Change Dir: /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_68206/fast && /usr/bin/make  -f CMakeFiles/cmTC_68206.dir/build.make CMakeFiles/cmTC_68206.dir/build
+make[1]: Entering directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_68206.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -DCHECK_FUNCTION_EXISTS=_uitoa -o CMakeFiles/cmTC_68206.dir/CheckFunctionExists.c.o -c /var/lib/snapd/snap/cmake/1186/share/cmake-3.24/Modules/CheckFunctionExists.c
+Linking C executable cmTC_68206
+/var/lib/snapd/snap/cmake/1186/bin/cmake -E cmake_link_script CMakeFiles/cmTC_68206.dir/link.txt --verbose=1
+/usr/bin/cc -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -DCHECK_FUNCTION_EXISTS=_uitoa -rdynamic CMakeFiles/cmTC_68206.dir/CheckFunctionExists.c.o -o cmTC_68206 
+/usr/bin/ld: CMakeFiles/cmTC_68206.dir/CheckFunctionExists.c.o: in function `main':
+/var/lib/snapd/snap/cmake/1186/share/cmake-3.24/Modules/CheckFunctionExists.c:17: undefined reference to `_uitoa'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_68206.dir/build.make:99: cmTC_68206] Error 1
+make[1]: Leaving directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_68206/fast] Error 2
+
+
+
+Determining if the function _ultoa exists failed with the following output:
+Change Dir: /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_c564b/fast && /usr/bin/make  -f CMakeFiles/cmTC_c564b.dir/build.make CMakeFiles/cmTC_c564b.dir/build
+make[1]: Entering directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c564b.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -DCHECK_FUNCTION_EXISTS=_ultoa -o CMakeFiles/cmTC_c564b.dir/CheckFunctionExists.c.o -c /var/lib/snapd/snap/cmake/1186/share/cmake-3.24/Modules/CheckFunctionExists.c
+Linking C executable cmTC_c564b
+/var/lib/snapd/snap/cmake/1186/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c564b.dir/link.txt --verbose=1
+/usr/bin/cc -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -DCHECK_FUNCTION_EXISTS=_ultoa -rdynamic CMakeFiles/cmTC_c564b.dir/CheckFunctionExists.c.o -o cmTC_c564b 
+/usr/bin/ld: CMakeFiles/cmTC_c564b.dir/CheckFunctionExists.c.o: in function `main':
+/var/lib/snapd/snap/cmake/1186/share/cmake-3.24/Modules/CheckFunctionExists.c:17: undefined reference to `_ultoa'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_c564b.dir/build.make:99: cmTC_c564b] Error 1
+make[1]: Leaving directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_c564b/fast] Error 2
+
+
+
+Determining if the function _i64toa exists failed with the following output:
+Change Dir: /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_30982/fast && /usr/bin/make  -f CMakeFiles/cmTC_30982.dir/build.make CMakeFiles/cmTC_30982.dir/build
+make[1]: Entering directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_30982.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -DCHECK_FUNCTION_EXISTS=_i64toa -o CMakeFiles/cmTC_30982.dir/CheckFunctionExists.c.o -c /var/lib/snapd/snap/cmake/1186/share/cmake-3.24/Modules/CheckFunctionExists.c
+Linking C executable cmTC_30982
+/var/lib/snapd/snap/cmake/1186/bin/cmake -E cmake_link_script CMakeFiles/cmTC_30982.dir/link.txt --verbose=1
+/usr/bin/cc -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -DCHECK_FUNCTION_EXISTS=_i64toa -rdynamic CMakeFiles/cmTC_30982.dir/CheckFunctionExists.c.o -o cmTC_30982 
+/usr/bin/ld: CMakeFiles/cmTC_30982.dir/CheckFunctionExists.c.o: in function `main':
+/var/lib/snapd/snap/cmake/1186/share/cmake-3.24/Modules/CheckFunctionExists.c:17: undefined reference to `_i64toa'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_30982.dir/build.make:99: cmTC_30982] Error 1
+make[1]: Leaving directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_30982/fast] Error 2
+
+
+
+Determining if the function _ui64toa exists failed with the following output:
+Change Dir: /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_ff3f4/fast && /usr/bin/make  -f CMakeFiles/cmTC_ff3f4.dir/build.make CMakeFiles/cmTC_ff3f4.dir/build
+make[1]: Entering directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ff3f4.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -DCHECK_FUNCTION_EXISTS=_ui64toa -o CMakeFiles/cmTC_ff3f4.dir/CheckFunctionExists.c.o -c /var/lib/snapd/snap/cmake/1186/share/cmake-3.24/Modules/CheckFunctionExists.c
+Linking C executable cmTC_ff3f4
+/var/lib/snapd/snap/cmake/1186/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ff3f4.dir/link.txt --verbose=1
+/usr/bin/cc -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -DCHECK_FUNCTION_EXISTS=_ui64toa -rdynamic CMakeFiles/cmTC_ff3f4.dir/CheckFunctionExists.c.o -o cmTC_ff3f4 
+/usr/bin/ld: CMakeFiles/cmTC_ff3f4.dir/CheckFunctionExists.c.o: in function `main':
+/var/lib/snapd/snap/cmake/1186/share/cmake-3.24/Modules/CheckFunctionExists.c:17: undefined reference to `_ui64toa'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_ff3f4.dir/build.make:99: cmTC_ff3f4] Error 1
+make[1]: Leaving directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_ff3f4/fast] Error 2
+
+
+
+Determining if the function _stricmp exists failed with the following output:
+Change Dir: /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_0bbdd/fast && /usr/bin/make  -f CMakeFiles/cmTC_0bbdd.dir/build.make CMakeFiles/cmTC_0bbdd.dir/build
+make[1]: Entering directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_0bbdd.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -DCHECK_FUNCTION_EXISTS=_stricmp -o CMakeFiles/cmTC_0bbdd.dir/CheckFunctionExists.c.o -c /var/lib/snapd/snap/cmake/1186/share/cmake-3.24/Modules/CheckFunctionExists.c
+Linking C executable cmTC_0bbdd
+/var/lib/snapd/snap/cmake/1186/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0bbdd.dir/link.txt --verbose=1
+/usr/bin/cc -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -DCHECK_FUNCTION_EXISTS=_stricmp -rdynamic CMakeFiles/cmTC_0bbdd.dir/CheckFunctionExists.c.o -o cmTC_0bbdd 
+/usr/bin/ld: CMakeFiles/cmTC_0bbdd.dir/CheckFunctionExists.c.o: in function `main':
+/var/lib/snapd/snap/cmake/1186/share/cmake-3.24/Modules/CheckFunctionExists.c:17: undefined reference to `_stricmp'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_0bbdd.dir/build.make:99: cmTC_0bbdd] Error 1
+make[1]: Leaving directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_0bbdd/fast] Error 2
+
+
+
+Determining if the function _strnicmp exists failed with the following output:
+Change Dir: /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_8a2d7/fast && /usr/bin/make  -f CMakeFiles/cmTC_8a2d7.dir/build.make CMakeFiles/cmTC_8a2d7.dir/build
+make[1]: Entering directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8a2d7.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -DCHECK_FUNCTION_EXISTS=_strnicmp -o CMakeFiles/cmTC_8a2d7.dir/CheckFunctionExists.c.o -c /var/lib/snapd/snap/cmake/1186/share/cmake-3.24/Modules/CheckFunctionExists.c
+Linking C executable cmTC_8a2d7
+/var/lib/snapd/snap/cmake/1186/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8a2d7.dir/link.txt --verbose=1
+/usr/bin/cc -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -DCHECK_FUNCTION_EXISTS=_strnicmp -rdynamic CMakeFiles/cmTC_8a2d7.dir/CheckFunctionExists.c.o -o cmTC_8a2d7 
+/usr/bin/ld: CMakeFiles/cmTC_8a2d7.dir/CheckFunctionExists.c.o: in function `main':
+/var/lib/snapd/snap/cmake/1186/share/cmake-3.24/Modules/CheckFunctionExists.c:17: undefined reference to `_strnicmp'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_8a2d7.dir/build.make:99: cmTC_8a2d7] Error 1
+make[1]: Leaving directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_8a2d7/fast] Error 2
+
+
+
+Determining if the function wcslcat exists failed with the following output:
+Change Dir: /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_5bcde/fast && /usr/bin/make  -f CMakeFiles/cmTC_5bcde.dir/build.make CMakeFiles/cmTC_5bcde.dir/build
+make[1]: Entering directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5bcde.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -DCHECK_FUNCTION_EXISTS=wcslcat -o CMakeFiles/cmTC_5bcde.dir/CheckFunctionExists.c.o -c /var/lib/snapd/snap/cmake/1186/share/cmake-3.24/Modules/CheckFunctionExists.c
+Linking C executable cmTC_5bcde
+/var/lib/snapd/snap/cmake/1186/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5bcde.dir/link.txt --verbose=1
+/usr/bin/cc -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -DCHECK_FUNCTION_EXISTS=wcslcat -rdynamic CMakeFiles/cmTC_5bcde.dir/CheckFunctionExists.c.o -o cmTC_5bcde 
+/usr/bin/ld: CMakeFiles/cmTC_5bcde.dir/CheckFunctionExists.c.o: in function `main':
+/var/lib/snapd/snap/cmake/1186/share/cmake-3.24/Modules/CheckFunctionExists.c:17: undefined reference to `wcslcat'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_5bcde.dir/build.make:99: cmTC_5bcde] Error 1
+make[1]: Leaving directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_5bcde/fast] Error 2
+
+
+
+Determining if the function wcslcpy exists failed with the following output:
+Change Dir: /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_1d3b1/fast && /usr/bin/make  -f CMakeFiles/cmTC_1d3b1.dir/build.make CMakeFiles/cmTC_1d3b1.dir/build
+make[1]: Entering directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_1d3b1.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -DCHECK_FUNCTION_EXISTS=wcslcpy -o CMakeFiles/cmTC_1d3b1.dir/CheckFunctionExists.c.o -c /var/lib/snapd/snap/cmake/1186/share/cmake-3.24/Modules/CheckFunctionExists.c
+Linking C executable cmTC_1d3b1
+/var/lib/snapd/snap/cmake/1186/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1d3b1.dir/link.txt --verbose=1
+/usr/bin/cc -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -DCHECK_FUNCTION_EXISTS=wcslcpy -rdynamic CMakeFiles/cmTC_1d3b1.dir/CheckFunctionExists.c.o -o cmTC_1d3b1 
+/usr/bin/ld: CMakeFiles/cmTC_1d3b1.dir/CheckFunctionExists.c.o: in function `main':
+/var/lib/snapd/snap/cmake/1186/share/cmake-3.24/Modules/CheckFunctionExists.c:17: undefined reference to `wcslcpy'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_1d3b1.dir/build.make:99: cmTC_1d3b1] Error 1
+make[1]: Leaving directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_1d3b1/fast] Error 2
+
+
+
+Determining if the function sysctlbyname exists failed with the following output:
+Change Dir: /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_87186/fast && /usr/bin/make  -f CMakeFiles/cmTC_87186.dir/build.make CMakeFiles/cmTC_87186.dir/build
+make[1]: Entering directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_87186.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -DCHECK_FUNCTION_EXISTS=sysctlbyname -o CMakeFiles/cmTC_87186.dir/CheckFunctionExists.c.o -c /var/lib/snapd/snap/cmake/1186/share/cmake-3.24/Modules/CheckFunctionExists.c
+Linking C executable cmTC_87186
+/var/lib/snapd/snap/cmake/1186/bin/cmake -E cmake_link_script CMakeFiles/cmTC_87186.dir/link.txt --verbose=1
+/usr/bin/cc -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -DCHECK_FUNCTION_EXISTS=sysctlbyname -rdynamic CMakeFiles/cmTC_87186.dir/CheckFunctionExists.c.o -o cmTC_87186 
+/usr/bin/ld: CMakeFiles/cmTC_87186.dir/CheckFunctionExists.c.o: in function `main':
+/var/lib/snapd/snap/cmake/1186/share/cmake-3.24/Modules/CheckFunctionExists.c:17: undefined reference to `sysctlbyname'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_87186.dir/build.make:99: cmTC_87186] Error 1
+make[1]: Leaving directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_87186/fast] Error 2
+
+
+
+Determining if the function iconv_open exists in the iconv failed with the following output:
+Change Dir: /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_8bdd5/fast && /usr/bin/make  -f CMakeFiles/cmTC_8bdd5.dir/build.make CMakeFiles/cmTC_8bdd5.dir/build
+make[1]: Entering directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8bdd5.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -DCHECK_FUNCTION_EXISTS=iconv_open -o CMakeFiles/cmTC_8bdd5.dir/CheckFunctionExists.c.o -c /var/lib/snapd/snap/cmake/1186/share/cmake-3.24/Modules/CheckFunctionExists.c
+Linking C executable cmTC_8bdd5
+/var/lib/snapd/snap/cmake/1186/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8bdd5.dir/link.txt --verbose=1
+/usr/bin/cc -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -DCHECK_FUNCTION_EXISTS=iconv_open -rdynamic CMakeFiles/cmTC_8bdd5.dir/CheckFunctionExists.c.o -o cmTC_8bdd5  -liconv 
+/usr/bin/ld: cannot find -liconv: No such file or directory
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_8bdd5.dir/build.make:99: cmTC_8bdd5] Error 1
+make[1]: Leaving directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_8bdd5/fast] Error 2
+
+
+
+Determining if the function alloca exists failed with the following output:
+Change Dir: /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_eba5b/fast && /usr/bin/make  -f CMakeFiles/cmTC_eba5b.dir/build.make CMakeFiles/cmTC_eba5b.dir/build
+make[1]: Entering directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_eba5b.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -DCHECK_FUNCTION_EXISTS=alloca -o CMakeFiles/cmTC_eba5b.dir/CheckFunctionExists.c.o -c /var/lib/snapd/snap/cmake/1186/share/cmake-3.24/Modules/CheckFunctionExists.c
+<command-line>: warning: conflicting types for built-in function ‘alloca’; expected ‘void *(long unsigned int)’ [-Wbuiltin-declaration-mismatch]
+/var/lib/snapd/snap/cmake/1186/share/cmake-3.24/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro ‘CHECK_FUNCTION_EXISTS’
+    7 |   CHECK_FUNCTION_EXISTS(void);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_eba5b
+/var/lib/snapd/snap/cmake/1186/bin/cmake -E cmake_link_script CMakeFiles/cmTC_eba5b.dir/link.txt --verbose=1
+/usr/bin/cc -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -DCHECK_FUNCTION_EXISTS=alloca -rdynamic CMakeFiles/cmTC_eba5b.dir/CheckFunctionExists.c.o -o cmTC_eba5b 
+/usr/bin/ld: CMakeFiles/cmTC_eba5b.dir/CheckFunctionExists.c.o: in function `main':
+/var/lib/snapd/snap/cmake/1186/share/cmake-3.24/Modules/CheckFunctionExists.c:17: undefined reference to `alloca'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_eba5b.dir/build.make:99: cmTC_eba5b] Error 1
+make[1]: Leaving directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_eba5b/fast] Error 2
+
+
+
+Determining if the include file audio/audiolib.h exists failed with the following output:
+Change Dir: /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_52dcb/fast && /usr/bin/make  -f CMakeFiles/cmTC_52dcb.dir/build.make CMakeFiles/cmTC_52dcb.dir/build
+make[1]: Entering directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_52dcb.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos  -o CMakeFiles/cmTC_52dcb.dir/CheckIncludeFile.c.o -c /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:10: fatal error: audio/audiolib.h: No such file or directory
+    1 | #include <audio/audiolib.h>
+      |          ^~~~~~~~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [CMakeFiles/cmTC_52dcb.dir/build.make:78: CMakeFiles/cmTC_52dcb.dir/CheckIncludeFile.c.o] Error 1
+make[1]: Leaving directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_52dcb/fast] Error 2
+
+
+
+Determining if the include file sndio.h exists failed with the following output:
+Change Dir: /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_3bc96/fast && /usr/bin/make  -f CMakeFiles/cmTC_3bc96.dir/build.make CMakeFiles/cmTC_3bc96.dir/build
+make[1]: Entering directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_3bc96.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos  -o CMakeFiles/cmTC_3bc96.dir/CheckIncludeFile.c.o -c /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:10: fatal error: sndio.h: No such file or directory
+    1 | #include <sndio.h>
+      |          ^~~~~~~~~
+compilation terminated.
+make[1]: *** [CMakeFiles/cmTC_3bc96.dir/build.make:78: CMakeFiles/cmTC_3bc96.dir/CheckIncludeFile.c.o] Error 1
+make[1]: Leaving directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_3bc96/fast] Error 2
+
+
+
+Performing C SOURCE FILE Test HAVE_VIDEO_RPI failed with the following output:
+Change Dir: /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_acc66/fast && /usr/bin/make  -f CMakeFiles/cmTC_acc66.dir/build.make CMakeFiles/cmTC_acc66.dir/build
+make[1]: Entering directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_acc66.dir/src.c.o
+/usr/bin/cc -DHAVE_VIDEO_RPI  -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos  -I/opt/vc/include/interface/vmcs_host/linux/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include  -L/opt/vc/lib -o CMakeFiles/cmTC_acc66.dir/src.c.o -c /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp/src.c
+/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp/src.c:2:18: fatal error: bcm_host.h: No such file or directory
+    2 |         #include <bcm_host.h>
+      |                  ^~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [CMakeFiles/cmTC_acc66.dir/build.make:78: CMakeFiles/cmTC_acc66.dir/src.c.o] Error 1
+make[1]: Leaving directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_acc66/fast] Error 2
+
+
+Source file was:
+
+        #include <bcm_host.h>
+        int main(int argc, char **argv) {}
+Performing C SOURCE FILE Test HAVE_VIDEO_OPENGLES_V1 failed with the following output:
+Change Dir: /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_a7093/fast && /usr/bin/make  -f CMakeFiles/cmTC_a7093.dir/build.make CMakeFiles/cmTC_a7093.dir/build
+make[1]: Entering directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a7093.dir/src.c.o
+/usr/bin/cc -DHAVE_VIDEO_OPENGLES_V1  -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos   -o CMakeFiles/cmTC_a7093.dir/src.c.o -c /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp/src.c
+/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp/src.c:2:16: fatal error: GLES/gl.h: No such file or directory
+    2 |       #include <GLES/gl.h>
+      |                ^~~~~~~~~~~
+compilation terminated.
+make[1]: *** [CMakeFiles/cmTC_a7093.dir/build.make:78: CMakeFiles/cmTC_a7093.dir/src.c.o] Error 1
+make[1]: Leaving directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_a7093/fast] Error 2
+
+
+Source file was:
+
+      #include <GLES/gl.h>
+      #include <GLES/glext.h>
+      int main (int argc, char** argv) {}
+Performing C SOURCE FILE Test HAVE_VIDEO_VIVANTE_VDK failed with the following output:
+Change Dir: /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_63a64/fast && /usr/bin/make  -f CMakeFiles/cmTC_63a64.dir/build.make CMakeFiles/cmTC_63a64.dir/build
+make[1]: Entering directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_63a64.dir/src.c.o
+/usr/bin/cc -DHAVE_VIDEO_VIVANTE_VDK  -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos   -o CMakeFiles/cmTC_63a64.dir/src.c.o -c /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp/src.c
+/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp/src.c:2:18: fatal error: gc_vdk.h: No such file or directory
+    2 |         #include <gc_vdk.h>
+      |                  ^~~~~~~~~~
+compilation terminated.
+make[1]: *** [CMakeFiles/cmTC_63a64.dir/build.make:78: CMakeFiles/cmTC_63a64.dir/src.c.o] Error 1
+make[1]: Leaving directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_63a64/fast] Error 2
+
+
+Source file was:
+
+        #include <gc_vdk.h>
+        int main(int argc, char** argv) {}
+Performing C SOURCE FILE Test HAVE_VIDEO_VIVANTE_EGL_FB failed with the following output:
+Change Dir: /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_7c29c/fast && /usr/bin/make  -f CMakeFiles/cmTC_7c29c.dir/build.make CMakeFiles/cmTC_7c29c.dir/build
+make[1]: Entering directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_7c29c.dir/src.c.o
+/usr/bin/cc -DHAVE_VIDEO_VIVANTE_EGL_FB  -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos   -o CMakeFiles/cmTC_7c29c.dir/src.c.o -c /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp/src.c
+/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp/src.c:4:18: fatal error: EGL/eglvivante.h: No such file or directory
+    4 |         #include <EGL/eglvivante.h>
+      |                  ^~~~~~~~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [CMakeFiles/cmTC_7c29c.dir/build.make:78: CMakeFiles/cmTC_7c29c.dir/src.c.o] Error 1
+make[1]: Leaving directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_7c29c/fast] Error 2
+
+
+Source file was:
+
+        #define LINUX
+        #define EGL_API_FB
+        #include <EGL/eglvivante.h>
+        int main(int argc, char** argv) {}
+Determining if the include file fcitx/frontend.h exists failed with the following output:
+Change Dir: /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_43d1e/fast && /usr/bin/make  -f CMakeFiles/cmTC_43d1e.dir/build.make CMakeFiles/cmTC_43d1e.dir/build
+make[1]: Entering directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_43d1e.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos   -o CMakeFiles/cmTC_43d1e.dir/CheckIncludeFile.c.o -c /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:10: fatal error: fcitx/frontend.h: No such file or directory
+    1 | #include <fcitx/frontend.h>
+      |          ^~~~~~~~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [CMakeFiles/cmTC_43d1e.dir/build.make:78: CMakeFiles/cmTC_43d1e.dir/CheckIncludeFile.c.o] Error 1
+make[1]: Leaving directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_43d1e/fast] Error 2
+
+
+
+Performing C SOURCE FILE Test HAVE_PTHREAD_NP_H failed with the following output:
+Change Dir: /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_52f4f/fast && /usr/bin/make  -f CMakeFiles/cmTC_52f4f.dir/build.make CMakeFiles/cmTC_52f4f.dir/build
+make[1]: Entering directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_52f4f.dir/src.c.o
+/usr/bin/cc -DHAVE_PTHREAD_NP_H  -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos   -D_REENTRANT -pthread -o CMakeFiles/cmTC_52f4f.dir/src.c.o -c /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp/src.c
+/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp/src.c:3:20: fatal error: pthread_np.h: No such file or directory
+    3 |           #include <pthread_np.h>
+      |                    ^~~~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [CMakeFiles/cmTC_52f4f.dir/build.make:78: CMakeFiles/cmTC_52f4f.dir/src.c.o] Error 1
+make[1]: Leaving directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_52f4f/fast] Error 2
+
+
+Source file was:
+
+          #include <pthread.h>
+          #include <pthread_np.h>
+          int main(int argc, char** argv) { return 0; }
+Determining if the function pthread_set_name_np exists failed with the following output:
+Change Dir: /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_26791/fast && /usr/bin/make  -f CMakeFiles/cmTC_26791.dir/build.make CMakeFiles/cmTC_26791.dir/build
+make[1]: Entering directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_26791.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -DCHECK_FUNCTION_EXISTS=pthread_set_name_np   -D_REENTRANT -pthread -o CMakeFiles/cmTC_26791.dir/CheckFunctionExists.c.o -c /var/lib/snapd/snap/cmake/1186/share/cmake-3.24/Modules/CheckFunctionExists.c
+Linking C executable cmTC_26791
+/var/lib/snapd/snap/cmake/1186/bin/cmake -E cmake_link_script CMakeFiles/cmTC_26791.dir/link.txt --verbose=1
+/usr/bin/cc -g -O3 -idirafter /home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/src/video/khronos -DCHECK_FUNCTION_EXISTS=pthread_set_name_np   -D_REENTRANT -pthread -rdynamic CMakeFiles/cmTC_26791.dir/CheckFunctionExists.c.o -o cmTC_26791 
+/usr/bin/ld: CMakeFiles/cmTC_26791.dir/CheckFunctionExists.c.o: in function `main':
+/var/lib/snapd/snap/cmake/1186/share/cmake-3.24/Modules/CheckFunctionExists.c:17: undefined reference to `pthread_set_name_np'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_26791.dir/build.make:99: cmTC_26791] Error 1
+make[1]: Leaving directory '/home/vserra/cg/cgAdvancedFramework/deps/SDL2-2.0.12/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_26791/fast] Error 2
+
+
+
