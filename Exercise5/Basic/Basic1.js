@@ -381,7 +381,7 @@ function Basic1_2(canvas) {
  
             // 3. Use the function PhongLighting that you implemented in the previous assignment to evaluate the color.
  
-            let color = PhongLighting(context, midpoint, normal, eye, pointLight, albedo, false);
+            let color = PhongLighting(context, midpoint, normal, eye, pointLight, albedo, true);
  
             // 4. Set the stroke color (use setStrokeStyle() defined in this .js-file).
  
