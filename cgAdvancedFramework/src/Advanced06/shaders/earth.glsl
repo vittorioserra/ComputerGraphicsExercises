@@ -214,18 +214,29 @@ void main() {
 		    // cloud value of 0, the dayColor should not 
 		    // be diminished at all. For all values in between,
 		    // you should interpolate!
-            float clouds = 0.5;
-            dayColor *=  clouds;
+
+            float clouds = out_color[3];
+            float epsilon = 0.001;
+            float clouds_light = 1 - clouds * 0.2;
+
+            if(clouds < epsilon){
+
+                clouds_light = 0.0;
+
+            }
+
+
+            dayColor *=  clouds_light;
+
 		}
 
         vec3 color_diffuse = sunColor * mix(nightColor, dayColor, max(0, dot(n, l)));//dayColor * max(0, dot(n, l));//mix(dayColor, nightColor, max(0, dot(n, l))); // <- change this line for 6.5a)
-
-
 
         // TODO 6.5 b)
         // Read and use the specular intensity value stored in the 'earthSpec' texture.
 		// The texture stores values between 0 and 1. Scale these values to [0, 0.7] and 
 		// then clamp values smaller than 0.2 to 0.2 to obtain a natural look.
+
 
 		float intensity_spec = texture(earthSpec, tc).x;//1.0
 

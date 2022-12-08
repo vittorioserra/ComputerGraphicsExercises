@@ -38,6 +38,7 @@ function arrow(context, fromx, fromy, tox, toy, text) {
 
     // http://stuff.titus-c.ch/arrow.html
     let headlen = 5;   // length of head in pixels
+
     let angle = Math.atan2(toy - fromy, tox - fromx);
     context.beginPath();
     context.moveTo(fromx, fromy);
@@ -329,18 +330,38 @@ function Basic1b(canvas) {
         let pixelTop_proj = ProjectPointOntoSurfaceLine( pixelTop );
         let pixelBottom_proj = ProjectPointOntoSurfaceLine( pixelBottom );
 
+        let length = (pixel_maxX - pixel_minX);
+        let n_pixels = nPixels;
+
+        console.log("Length %i", length);
+        console.log("Pixels %i", nPixels);
+
+        let delta = 1.0/n_pixels; //must be normalized
+
+        console.log("delta %i", delta);
+
         // TODO 6.1b)   Determine the appropriate level based on the footprint of the pixel.
         // 1. Use pixelBottom_proj[2] and pixelTop_proj[2] to determine the footprint of the pixel on the texture.
         let footprint = pixelTop_proj[2] - pixelBottom_proj[2];
-        console.log("top, %i", pixelTop_proj[2]);
-        console.log("bottom, %i",pixelBottom_proj[2]);
+        console.log("top, %f", pixelTop_proj[2]);
+        console.log("bottom, %f",pixelBottom_proj[2]);
+        console.log("footprint %f", footprint);
         // 2. Determine the mipmap level where the texel size is larger than the pixel footprint.
         //    Use the mipmap pyramid stored in 'mipmap'.
         //    The texel size of the coarsest level is defined to be 1.
 
+        let level = 0;
+
+        if(footprint < 0.25){
+            level = 0;
+        }else if(footprint < 0.5){
+            level = 1;
+        }else{
+            level = 2;
+        }
 
         // replace this line
-        let level = 0;
+        //let level = 0;
 
         return level;
     }
