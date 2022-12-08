@@ -1,0 +1,1207 @@
+OpenGL version: 4.6 (Compatibility Profile) Mesa 22.2.3
+GLSL version: 4.60
+Renderer: Mesa Intel(R) HD Graphics 620 (KBL GT2)
+Imgui Initialized!
+LINK [shaders/earth.glsl]: SUCCESS
+LINK [shaders/sun.glsl]: SUCCESS
+LINK [shaders/universe.glsl]: SUCCESS
+LINK [shaders/clouds.glsl]: SUCCESS
+objloader: loading file data/icosphere_highres.obj
+Vertices/Faces: 61440/20480
+Read PNG success! data/earthColor2.png Size: 8192x4096 Type: 3x8 PNG_COLOR_TYPE_RGB
+Read PNG success! data/earthBump7.png Size: 8192x4096 Type: 1x16 PNG_COLOR_TYPE_GRAY
+Read PNG success! data/earthClouds3.png Size: 4096x2048 Type: 1x8 PNG_COLOR_TYPE_GRAY
+Read PNG success! data/earthNight.png Size: 2048x1024 Type: 3x8 PNG_COLOR_TYPE_RGB
+Read PNG success! data/earthNormal.png Size: 8192x4096 Type: 3x8 PNG_COLOR_TYPE_RGB
+Read PNG success! data/earthSpec.png Size: 2048x1024 Type: 3x8 PNG_COLOR_TYPE_RGB
+Read PNG success! data/universe.png Size: 6000x3000 Type: 3x8 PNG_COLOR_TYPE_RGB
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements
+Type : Error ; Source : API; ID : 1; Severity : High
+Message : GL_INVALID_OPERATION in glDrawElements

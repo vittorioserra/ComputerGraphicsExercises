@@ -12,6 +12,6 @@
 /home/vserra/cg/cgAdvancedFramework/build/src/Advanced05/CMakeFiles/Advanced05.dir
 /home/vserra/cg/cgAdvancedFramework/build/src/Advanced05/CMakeFiles/edit_cache.dir
 /home/vserra/cg/cgAdvancedFramework/build/src/Advanced05/CMakeFiles/rebuild_cache.dir
-/home/vserra/cg/cgAdvancedFramework/build/src/Advanced05_test/CMakeFiles/Advanced05_test.dir
-/home/vserra/cg/cgAdvancedFramework/build/src/Advanced05_test/CMakeFiles/edit_cache.dir
-/home/vserra/cg/cgAdvancedFramework/build/src/Advanced05_test/CMakeFiles/rebuild_cache.dir
+/home/vserra/cg/cgAdvancedFramework/build/src/Advanced06/CMakeFiles/Advanced06.dir
+/home/vserra/cg/cgAdvancedFramework/build/src/Advanced06/CMakeFiles/edit_cache.dir
+/home/vserra/cg/cgAdvancedFramework/build/src/Advanced06/CMakeFiles/rebuild_cache.dir

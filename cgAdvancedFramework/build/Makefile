@@ -48,10 +48,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /var/lib/snapd/snap/cmake/1204/bin/cmake
+CMAKE_COMMAND = /var/lib/snapd/snap/cmake/1210/bin/cmake
 
 # The command to remove a file.
-RM = /var/lib/snapd/snap/cmake/1204/bin/cmake -E rm -f
+RM = /var/lib/snapd/snap/cmake/1210/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -78,7 +78,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/var/lib/snapd/snap/cmake/1204/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/var/lib/snapd/snap/cmake/1210/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -169,17 +169,17 @@ Advanced05/fast:
 .PHONY : Advanced05/fast
 
 #=============================================================================
-# Target rules for targets named Advanced05_test
+# Target rules for targets named Advanced06
 
 # Build rule for target.
-Advanced05_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Advanced05_test
-.PHONY : Advanced05_test
+Advanced06: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Advanced06
+.PHONY : Advanced06
 
 # fast build rule for target.
-Advanced05_test/fast:
-	$(MAKE) $(MAKESILENT) -f src/Advanced05_test/CMakeFiles/Advanced05_test.dir/build.make src/Advanced05_test/CMakeFiles/Advanced05_test.dir/build
-.PHONY : Advanced05_test/fast
+Advanced06/fast:
+	$(MAKE) $(MAKESILENT) -f src/Advanced06/CMakeFiles/Advanced06.dir/build.make src/Advanced06/CMakeFiles/Advanced06.dir/build
+.PHONY : Advanced06/fast
 
 # Help Target
 help:
@@ -192,7 +192,7 @@ help:
 	@echo "... Advanced03"
 	@echo "... Advanced04"
 	@echo "... Advanced05"
-	@echo "... Advanced05_test"
+	@echo "... Advanced06"
 	@echo "... CG_Framework"
 .PHONY : help
 
