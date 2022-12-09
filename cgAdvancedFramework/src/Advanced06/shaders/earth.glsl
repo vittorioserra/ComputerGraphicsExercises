@@ -152,9 +152,9 @@ void main() {
         mat3 TBN = mat3(
                     tangent,//vec3(1,0,0),
                     bitangent,//vec3(0,1,0),
-                    normal_tex//vec3(0,0,1)
+                    normal//normal_tex//vec3(0,0,1)
                     );
-        n = TBN * normalize(normal);
+        n = TBN * normalize(normal_tex);
     }
     if(normalMethod == 2)
     {
@@ -177,9 +177,9 @@ void main() {
         mat3 TBN = mat3(
                     T,
                     B,
-                    normal_tex
+                    normal
                     );
-        n = TBN * normalize(normal);
+        n = TBN * normalize(normal_tex);
     }
 
 
@@ -215,18 +215,25 @@ void main() {
 		    // be diminished at all. For all values in between,
 		    // you should interpolate!
 
-            float clouds = out_color[3];
-            float epsilon = 0.001;
-            float clouds_light = 1 - clouds * 0.2;
+            //float clouds = out_color[3];
+            //float epsilon = 0.001;
+            //float clouds_light = 1 - clouds * 0.2;
 
-            if(clouds < epsilon){
+            //if(clouds < epsilon){
 
-                clouds_light = 0.0;
+            //    clouds_light = 0.0;
 
-            }
+            //}
+
+            //dayColor *=  clouds_light;
+
+            float cloudAlpha = vec4(texture(earthClouds, tc)).x;
 
 
-            dayColor *=  clouds_light;
+            //the clouds only influence the day-color, so there should be no problems for the night side
+
+            float clouds = cloudAlpha*0.2;
+            dayColor *=  (1-clouds);
 
 		}
 
@@ -251,12 +258,6 @@ void main() {
         intensity_spec = intensity_spec;
 
         vec3 color_specular = sunColor * intensity_spec * pow(max(0, dot(r, v)), 20); // <-- modify this line with the specular intensity value
-
-        if(intensity_spec > 1.373){
-
-            color_specular = vec3(1, 0, 0);
-
-        }
 
         color = color_diffuse + color_specular;
         //color = vec3(texture(earthSpec, tc));

@@ -46,11 +46,13 @@ void main() {
     // - Make sure you don't see clouds on the night side of the earth. 
 	//   You can reach this goal by taking the dot product 
 	//   between normal and direction to the light into account again.
+
+    //reading clouds values form map, tc is already converted
     float cloudAlpha = vec4(texture(earthClouds, tc)).x;
 
+    //calculating blending factor for clouds on shadowed side of the earth
     vec3 n = normalize(normal);
     vec3 l =  normalize(sunPosition - positionWorldSpace);
-
     float cos_phi = dot(n, l);
 
     float blended_clouds = mix(0, cloudAlpha, max(0,cos_phi));
