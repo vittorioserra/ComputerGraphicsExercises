@@ -1,3 +1,3 @@
 all:
 	make -C build -j4
-	#./src/Advanced06/Advanced06
+	#./src/Advanced07/Advanced07
