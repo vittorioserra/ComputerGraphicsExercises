@@ -42,6 +42,7 @@ struct Object
         // TODO 7.5 b)
         // Interpolate between the current and last transformation with the interpolation parameter alpha.
         interpolatedTransformation = currentTransformation;
+        interpolatedTransformation.position = lastTransformation.position + alpha * (currentTransformation.position - lastTransformation.position);
     }
 
 };

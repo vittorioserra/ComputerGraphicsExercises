@@ -59,7 +59,7 @@ float Quaternion::norm() const
 {
     // TODO 7.3 b)
     // Compute the L2 norm of this vector.
-    return sqrt(pow(real,2) + pow(img.x, 2) + pow(img.y, 2) + pow(img.z,2));
+    return sqrt(pow(this->real,2) + pow(this->img.x, 2) + pow(this->img.y, 2) + pow(this->img.z,2));
 }
 
 Quaternion Quaternion::normalize()
@@ -92,9 +92,9 @@ Quaternion Quaternion::conjugate() const
 	// Return the conjugate of this quaternion.
     Quaternion result = Quaternion();
     result.real = this->real;
-    result.img.x= - this->img.x;
-    result.img.y = - this->img.y;
-    result.img.z = - this->img.z;
+    result.img.x= -1.0*this->img.x;
+    result.img.y = -1.0*this->img.y;
+    result.img.z = -1.0*this->img.z;
     return result;
 }
 
@@ -135,16 +135,14 @@ Quaternion operator*(Quaternion l, Quaternion r)
     Quaternion result;
 
     float dot_prod = glm::dot(l.img, r.img);
-    result.real= dot_prod  + l.real*r.real;
+    result.real= l.real*r.real - dot_prod;
 
     vec3 cross_img = glm::cross(l.img, r.img);
 
     vec3 scaled_l = r.real * l.img;//vec3(r.real*l.img.x, r.real*l.img.y, r.real*l.img.z);
     vec3 scaled_r = l.real * r.img;//vec3(l.real*r.img.x, l.real*r.img.y, l.real*r.img.z);
 
-    result.img.x = cross_img.x + scaled_l.x + scaled_r.x;
-    result.img.y = cross_img.y + scaled_l.y + scaled_r.y;
-    result.img.z = cross_img.z + scaled_l.z + scaled_r.z;
+    result.img = cross_img + scaled_l + scaled_r;
 
     return result;
 }
@@ -154,6 +152,7 @@ vec3 operator*(Quaternion l, vec3 r)
     // TODO 7.3 c)
     // Rotate the vector 'r' with the quaternion 'l'.
 
+    /*
     float s = l.real;
 
     vec3 ret_vec = vec3(0);
@@ -168,6 +167,12 @@ vec3 operator*(Quaternion l, vec3 r)
     //r_q.img = r;
 
     //ret_vec = (l*r_q *l.conjugate()).img;
+    */
+
+    vec3 ret_vec = vec3(0);
+    mat3 quat_mat = l.toMat3();
+
+    ret_vec = quat_mat * r;
 
     return ret_vec;
 }
@@ -222,7 +227,7 @@ Quaternion slerp(Quaternion x, Quaternion y, float t)
         float Omega = acos(dot(x, y));
         float sin_Omega = sin(Omega);
 
-        result = x*((sin(1-t)*Omega)/sin_Omega) + y*(sin(t*Omega)/sin_Omega);
+        result = x*((sin((1-t)*Omega))/sin_Omega) + y*(sin(t*Omega)/sin_Omega);
 
 
     }else{

@@ -129,12 +129,15 @@ void FPSCamera::updatePosition(float dt)
     float v_start = 10.0;
     float acceleration = -9.81; //m/s^2
 
+    float next_vy = 0;
+    float next_y = 0;
+
     if(spacePressed&(!executeJump)){
 
         executeJump = true;
         startY =  currentTransformation.position.y;
 
-        std::cout<<"space pressed"<< std::endl;
+        //std::cout<<"space pressed"<< std::endl;
 
         vy = v_start;
     }
@@ -144,11 +147,20 @@ void FPSCamera::updatePosition(float dt)
         vy += acceleration*dt;
         currentTransformation.position.y += vy * dt;
 
+        //looking one frame in the future
+        next_vy = vy + acceleration*dt;
+        next_y = currentTransformation.position.y + next_vy * dt;
+
         if(currentTransformation.position.y <= startY){
 
             executeJump = false;
+            vy = 0.0;
 
-            std::cout<<"set to false"<<std::endl;
+            //std::cout<<"set to false"<<std::endl;
+
+            //so basically iof your update rate is low, we are gonna land one sample below startY, which leads to losing height
+            //the transformation is still not applied hence we can just set it to startY
+            currentTransformation.position.y = startY;
 
         }
 

@@ -41,7 +41,15 @@ struct Object
     {
         // TODO 7.5 b)
         // Interpolate between the current and last transformation with the interpolation parameter alpha.
+
+        //linearly move between two poses for the object
         interpolatedTransformation = currentTransformation;
+        interpolatedTransformation.position = currentTransformation.position + alpha * (lastTransformation.position - currentTransformation.position);
+        interpolatedTransformation.scale = currentTransformation.scale + alpha*(lastTransformation.scale - currentTransformation.scale);
+
+        //slerp for the quaternions
+        interpolatedTransformation.orientation = slerp(currentTransformation.orientation, lastTransformation.orientation, alpha);
+
     }
 
 };

@@ -302,36 +302,40 @@ void CG::decoupledMainLoop()
         double ticksPerUpdate_f = (1.0/updateRate);
         double ticksPerRender_f = (1.0/frameRate);
 
-        std::cout << "slider rates : " << updateRate << " " << frameRate << std::endl;
-
-        std::cout << "float times : " << ticksPerUpdate_f << " " << ticksPerRender_f << std::endl;
+        //std::cout << "slider rates : " << updateRate << " " << frameRate << std::endl;
+        //std::cout << "float times : " << ticksPerUpdate_f << " " << ticksPerRender_f << std::endl;
 
         ticksPerUpdate_f *= (SDL_GetPerformanceFrequency());
         ticksPerRender_f *= (SDL_GetPerformanceFrequency());
 
-        std::cout << "float rates : " << ticksPerUpdate_f << " " << ticksPerRender_f << std::endl;
-
-        std::cout << "performance frequency" << SDL_GetPerformanceFrequency() << std::endl;
+        //std::cout << "float rates : " << ticksPerUpdate_f << " " << ticksPerRender_f << std::endl;
+        //std::cout << "performance frequency" << SDL_GetPerformanceFrequency() << std::endl;
 
         Uint64 ticksPerUpdate = Uint64(ticksPerUpdate_f);
         Uint64 ticksPerRender = Uint64(ticksPerRender_f);
 
-        std::cout<<"Update-ticks and render-ticks :" << ticksPerUpdate << " " << ticksPerRender << std::endl;
+        //std::cout<<"Update-ticks and render-ticks :" << ticksPerUpdate << " " << ticksPerRender << std::endl;
 
         currentTime = SDL_GetPerformanceCounter();
 
         // You can remove these two lines
         // They are only required in a "bad" main loop with variable timestep
+        /*
         //double variableDt = double(currentTime - lastTime)/ SDL_GetPerformanceFrequency();
         //lastTime = currentTime;
         //double variableDt = double(ticksPerUpdate);
         //variableDt = variableDt * ticksPerUpdate;
+        */
 
         // 2. Only update if "nextUpdate" is in the past.
         // - After updating increase "nextUpdate" by the time between two updates.
         // - Use the correct (fixed) dt.
+
+        Uint64 lastUpdate;
+
         if(nextUpdate < currentTime){
-            update(ticksPerUpdate_f * SDL_GetPerformanceFrequency());
+            update(ticksPerUpdate_f/(1.0*SDL_GetPerformanceFrequency()));
+            lastUpdate = nextUpdate;
             nextUpdate = nextUpdate + ticksPerUpdate;
         }
 
@@ -343,30 +347,39 @@ void CG::decoupledMainLoop()
         // - Side note: An uncapped frame rate can be achieved by not increasing "nextRender".
 		// - Use the correct (fixed) dt.
 		if(nextRender < currentTime){
+
+
+
+            // TODO 7.5 b)
+            // Compute the correct interpolation weight "alpha".
+            // The weight is the linear interpolation between the last and next update at the current point of time.
+            Uint64 diff_updates = Uint64(nextUpdate - lastUpdate);
+            uint64 diff_time = currentTime - lastUpdate;
+
+            double diff_updates_f = double(diff_updates);
+            double diff_time_f = double(diff_time);
+            double alpha =(diff_updates_f - diff_time_f)/diff_updates_f;
+
+            alpha = min(0.0, alpha);
+
+            //std::cout<< "alpha term : " << alpha << std::endl;
+            // Everything below counts towards "render".
+            if(interpolationMethod == 0) // No interpolation
+                alpha = 1;
+            else if(interpolationMethod == 1) // Default interpolation: Use your weight
+                alpha = alpha;
+            else if(interpolationMethod == 2) // Extrapolation: Predict position one timestep in the future
+                alpha += 1;
+            //interpolate(variableDt,alpha); // Change this line in order to use the correct dt.
+            interpolate(ticksPerRender_f / (1.0*SDL_GetPerformanceFrequency()), alpha);
             render();
-            //update(ticksPerRender_f * SDL_GetPerformanceFrequency());
+            imgui.beginFrame();
+            renderGui();
+            imgui.endFrame();
+            SDL_GL_SwapWindow(sdlWindow);
+
             nextRender = nextRender + ticksPerRender;
         }
-
-        // TODO 7.5 b)
-        // Compute the correct interpolation weight "alpha".
-        // The weight is the linear interpolation between the last and next update at the current point of time.
-        double alpha = 1;
-        
-		// Everything below counts towards "render".
-		if(interpolationMethod == 0) // No interpolation
-            alpha = 1;
-        else if(interpolationMethod == 1) // Default interpolation: Use your weight
-            alpha = alpha;
-        else if(interpolationMethod == 2) // Extrapolation: Predict position one timestep in the future
-            alpha += 1;
-        //interpolate(variableDt,alpha); // Change this line in order to use the correct dt.
-        interpolate(ticksPerRender_f * SDL_GetPerformanceFrequency(), alpha);
-        //render();
-        imgui.beginFrame();
-        renderGui();
-        imgui.endFrame();
-        SDL_GL_SwapWindow(sdlWindow);
 
 
 
@@ -375,11 +388,39 @@ void CG::decoupledMainLoop()
         // - Compute the time of the next event.
         // - Check if the next event is in the future and if yes wait the appropriate time.
 
+        Uint64 nextEvent;
 
-        Uint64 waitTime = 0; // wait time in ticks (compute this)
+        if(nextRender <= nextUpdate){
+
+            nextEvent = nextRender;
+
+        }else{
+
+            nextEvent = nextUpdate;
+
+        }
+
+        Uint64 waitTime = nextEvent-currentTime; // wait time in ticks (compute this)
+        //std::cout<<"wait time : "<<waitTime<<std::endl;
          // Code for sleeping:
         double w = double(waitTime) / SDL_GetPerformanceFrequency();
-        std::this_thread::sleep_for( std::chrono::duration<double, std::ratio<1,1>>(w) );
+        //std::cout << "wait time in seconds" << w <<std::endl;
+
+        //filter out numerical instability
+        if(w < 0.0){
+            w = 0.0;
+        }
+
+        if(w>(0.20+0.001)){
+            w = 0.0;
+            //std::cout<<"Issue encountered"<<std::endl;
+        }
+
+        if(waitTime <= nextEvent){
+            std::this_thread::sleep_for( std::chrono::duration<double, std::ratio<1,1>>(w) );
+
+        }
+
     }
 
 }
