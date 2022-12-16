@@ -129,8 +129,8 @@ void FPSCamera::updatePosition(float dt)
     float v_start = 10.0;
     float acceleration = -9.81; //m/s^2
 
-    float next_vy = 0;
-    float next_y = 0;
+    //float next_vy = 0;
+    //float next_y = 0;
 
     if(spacePressed&(!executeJump)){
 
@@ -148,8 +148,8 @@ void FPSCamera::updatePosition(float dt)
         currentTransformation.position.y += vy * dt;
 
         //looking one frame in the future
-        next_vy = vy + acceleration*dt;
-        next_y = currentTransformation.position.y + next_vy * dt;
+        //next_vy = vy + acceleration*dt;
+        //next_y = currentTransformation.position.y + next_vy * dt;
 
         if(currentTransformation.position.y <= startY){
 

@@ -334,7 +334,7 @@ void CG::decoupledMainLoop()
         Uint64 lastUpdate;
 
         if(nextUpdate < currentTime){
-            update(ticksPerUpdate_f/(1.0*SDL_GetPerformanceFrequency()));
+            update(1/updateRate);//ticksPerUpdate_f/(1.0*SDL_GetPerformanceFrequency()));
             lastUpdate = nextUpdate;
             nextUpdate = nextUpdate + ticksPerUpdate;
         }
@@ -358,9 +358,9 @@ void CG::decoupledMainLoop()
 
             double diff_updates_f = double(diff_updates);
             double diff_time_f = double(diff_time);
-            double alpha =(diff_updates_f - diff_time_f)/diff_updates_f;
+            double alpha =(diff_updates_f - diff_time_f)/ticksPerUpdate;//diff_updates_f;
 
-            alpha = min(0.0, alpha);
+            //alpha = min(0.0, alpha);
 
             //std::cout<< "alpha term : " << alpha << std::endl;
             // Everything below counts towards "render".
@@ -371,7 +371,7 @@ void CG::decoupledMainLoop()
             else if(interpolationMethod == 2) // Extrapolation: Predict position one timestep in the future
                 alpha += 1;
             //interpolate(variableDt,alpha); // Change this line in order to use the correct dt.
-            interpolate(ticksPerRender_f / (1.0*SDL_GetPerformanceFrequency()), alpha);
+            interpolate(1/updateRate, alpha);//ticksPerRender_f / (1.0*SDL_GetPerformanceFrequency()), alpha);
             render();
             imgui.beginFrame();
             renderGui();
@@ -406,6 +406,7 @@ void CG::decoupledMainLoop()
         double w = double(waitTime) / SDL_GetPerformanceFrequency();
         //std::cout << "wait time in seconds" << w <<std::endl;
 
+        /*
         //filter out numerical instability
         if(w < 0.0){
             w = 0.0;
@@ -416,6 +417,7 @@ void CG::decoupledMainLoop()
             //std::cout<<"Issue encountered"<<std::endl;
         }
 
+        */
         if(waitTime <= nextEvent){
             std::this_thread::sleep_for( std::chrono::duration<double, std::ratio<1,1>>(w) );
 
