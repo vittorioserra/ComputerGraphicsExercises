@@ -300,14 +300,15 @@ void CG::decoupledMainLoop()
         double ticksPerUpdate_f = (1.0/updateRate);
         double ticksPerRender_f = (1.0/frameRate);
 
-        //std::cout << "slider rates : " << updateRate << " " << frameRate << std::endl;
-        //std::cout << "float times : " << ticksPerUpdate_f << " " << ticksPerRender_f << std::endl;
+        std::cout << "slider rates : " << updateRate << " " << frameRate << std::endl;
+        std::cout << "float times : " << ticksPerUpdate_f << " " << ticksPerRender_f << std::endl;
 
         ticksPerUpdate_f *= (SDL_GetPerformanceFrequency());
         ticksPerRender_f *= (SDL_GetPerformanceFrequency());
 
-        //std::cout << "float rates : " << ticksPerUpdate_f << " " << ticksPerRender_f << std::endl;
-        //std::cout << "performance frequency" << SDL_GetPerformanceFrequency() << std::endl;
+        std::cout << "float rates : " << ticksPerUpdate_f << " " << ticksPerRender_f << std::endl;
+        std::cout << "performance frequency" << SDL_GetPerformanceFrequency() << std::endl;
+        std::cout << "rates types  " << typeid(SDL_GetPerformanceFrequency()).name()<< " " << typeid(ticksPerUpdate_f).name() << " " << typeid(ticksPerRender_f).name() << std::endl;
 
         Uint64 ticksPerUpdate = Uint64(ticksPerUpdate_f);
         Uint64 ticksPerRender = Uint64(ticksPerRender_f);
@@ -335,7 +336,7 @@ void CG::decoupledMainLoop()
 
         // 3. Similar to (2.) render only if "nextRender" is in the past.
         // - Interpolate, render, and swapwindow all count towards "render".
-        // - After rendering increase "nextRender" by the time between two frames.
+        // - After rendering increase "nextRender" by the time between two frames.file:///home/vserra/cg/cgAdvancedFramework/src/Advanced07/src/submission_advanced_7.zipcd cg
         // - Side note: An uncapped frame rate can be achieved by not increasing "nextRender".
 		// - Use the correct (fixed) dt.
 		if(nextRender < currentTime){
